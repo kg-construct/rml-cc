@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Collections and Containers in RML</title>
+    <meta charset='utf-8'>
+    <link rel="stylesheet" type="text/css" href="./resources/css/extras.css"/>
+    <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
+    <style type="text/css">
+        /* Adapted from R2RML */
+        pre { 
+            word-wrap:normal
+        }
+        pre.ex-input,
+        pre.ex-mapping, 
+        pre.ex-output,
+        pre.ex-target,
+        pre.ex-access {
+            margin-top: 1.5em;
+            padding: 1em; 
+            font-size: 75%;
+        }
+        pre.ex-input:before,
+        pre.ex-mapping:before,
+        pre.ex-output:before, 
+        pre.ex-target:before,
+        pre.ex-access:before {
+            background: white;
+            display: block;
+            font-family: sans-serif;
+            font-size: 90%;
+            margin: -1.5em 0 0.5em 0;
+            padding: 0.4em 0.4em;
+            width: 18em;
+        }
+        /* Input data example */
+        pre.ex-input {
+            background: #cee;
+        }
+        pre.ex-input,
+        pre.ex-input:before {
+            border: 1px solid #acc;
+        }
+        pre.ex-input:before {
+            content: "Example input data";
+        }
+        /* RML mapping example */
+        pre.ex-mapping {
+            background: #eeb;
+        }
+        pre.ex-mapping,
+        pre.ex-mapping:before {
+            border: 1px solid #cc9;
+        }
+        pre.ex-mapping:before {
+            content: "Example RML mapping";
+        }
+        /* Output RDF example */
+        pre.ex-output {
+            background: #cfc;
+        }
+        pre.ex-output,
+        pre.ex-output:before {
+            border: 1px solid #aca;
+        }
+        pre.ex-output:before {
+            content: "Example output RDF";
+        }
+        /* Target's description example */
+        pre.ex-target {
+            background: #ffc8d4;
+        }
+        pre.ex-target,
+        pre.ex-target:before {
+            border: 1px solid #bbb;
+        }
+        /* Data access description example */
+        pre.ex-access {
+            background: #d4dddd;
+        }
+        pre.ex-access,
+        pre.ex-access:before {
+            border: 1px solid #cca;
+        }
+    </style>
+    <script class="remove">
+      var respecConfig = {
+        localBiblio: {
+          "RDF11-Concepts": {
+            title: "RDF 1.1 Concepts and Abstract Syntax",
+            href: "https://www.w3.org/TR/rdf11-concepts/",
+            status: "W3C Recommendation",
+            publisher: "W3C",
+            date: "25 February 2014",
+          },
+          "SPARQL": {
+            title: "SPARQL 1.1 Overview",
+            href: "https://www.w3.org/TR/sparql11-overview/",
+            status: "W3C Recommendation",
+            publisher: "W3C",
+            date: "21 March 2013",
+          },
+          "CSVW": {
+            title: "CSV on the Web: A Primer",
+            href: "https://www.w3.org/TR/tabular-data-primer/",
+            status: "W3C Working Group Note",
+            publisher: "W3C",
+            date: "25 February 2016",
+          },
+          "DCAT": {
+            title: "Data Catalog Vocabulary (DCAT) Version 2",
+            href: "https://www.w3.org/TR/vocab-dcat-2/",
+            status: "W3C Recommendation",
+            publisher: "W3C",
+            date: "04 February 2020",
+          },
+          "RML": {
+            title: "RDF Mapping Language (RML)",
+            href: "https://rml.io/specs/rml",
+            status: "Unofficial Draft",
+            publisher: "RML team",
+            date: "06 October 2020",
+          },
+          "FnO": {
+            title: "The Function Ontology",
+            href: "https://fno.io/spec",
+            status: "Unofficial Draft",
+            publisher: "FnO team",
+            date: "05 January 2021",
+          }
+        },
+        // These may become useful if the document gets a more 'official' status
+        // postProcess : [ postProc ],
+        doRdfa: "true",
+        processVersion: 2021,
+        // specification status (e.g. WD, LCWD, WG-NOTE, etc.). If in doubt use ED.
+        specStatus: "unofficial",
+        // the specification's short name, as in http://www.w3.org/TR/short-name/
+        shortName: "collections-in-rml",
+        // if your specification has a subtitle that goes below the main
+        // formal title, define it here
+        // subtitle   :  "White Paper",
+        // if you wish the publication date to be other than the last modification, set this
+        // publishDate:  "2015-06-30",
+        // if the specification's copyright date is a range of years, specify
+        // the start date here:
+        copyrightStart: "2022",
+        // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
+        // and its maturity status
+        // previousPublishDate: "2015-10-15",
+        // previousMaturity: "FPWD",
+        // if there a publicly available Editor's Draft, this is the link
+        edDraftURI: "https://w3id.org/kg-construct/collections-containers",
+        // if this is a LCWD, uncomment and set the end of its review period
+        // lcEnd: "2009-08-05",
+        // editors, add as many as you like
+        // only "name" is required
+        editors: [
+          {
+            name: "Name"
+            , mailto: "email@email.com"
+            , company: "CompanyName"
+            , url: "https://example.org",
+            orcidid: "0000-0000-0000-0000",
+            companyURL: "companyurl.com"
+          }
+        ],
+        // name of the WG
+        //wg: "Digital Publishing Interest Group",
+        // URI of the public WG page
+        //wgURI: "http://www.w3.org/dpub/IG/",
+        // name (without the @w3c.org) of the public mailing to which comments are due
+        //wgPublicList: "public-digipub-ig",
+        //issueBase: "https://github.com/w3c/dpub-pwp-loc/issues/",
+        //noRecTrack: "true",
+        otherLinks: [
+          {
+            key: "This Version",
+            data: [{
+              value: "https://https://w3id.org/kg-construct/collection-containers/%thisDate%/",
+              href: "https://https://w3id.org/kg-construct/collection-containers/%thisDate%/"
+            }]
+          },
+          {
+            key: "Previous Version",
+            data: [{
+              value: "https://https://w3id.org/kg-construct/collection-containers/%prevDate%/",
+              href: "https://https://w3id.org/kg-construct/collection-containers/%prevDate%/"
+            }]
+          },
+          {
+            key: "Website",
+            data: [{
+              value: "https://https://w3id.org/kg-construct/collection-containers",
+              href: "https://https://w3id.org/kg-construct/collection-containers"
+            }]
+          }
+        ],
+        // alternateFormats: [],
+        //charterDisclosureURI: "http://www.w3.org/2004/01/pp-impl/64149/status",
+        // URI of the patent status for this WG, for Rec-track documents
+        // !!!! IMPORTANT !!!!
+        // This is important for Rec-track documents, do not copy a patent URI from a random
+        // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
+        // Team Contact.
+        //wgPatentURI: "http://www.w3.org/2004/01/pp-impl/64149/status",
+        // !!!! IMPORTANT !!!! MAKE THE ABOVE BLINK IN YOUR HEAD
+      };
+    </script>
+    <script data-goatcounter="https://dataio.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+    <noscript>
+        <img src="https://dataio.goatcounter.com/count?p=/test-noscript">
+    </noscript>
+</head>
+<body>
+<section id='abstract' data-include="./section/abstract.md" data-include-format="markdown"></section>
+
+<section id='sotd'>
+    <p data-format="markdown">
+        This is an early draft,
+        yet efforts are made to keep things stable.
+    </p>
+</section>
+
+<section id="conformance"></section>
+
+<section data-include="./section/overview.md" data-include-format="markdown"></section>
+
+</body>
+</html>
