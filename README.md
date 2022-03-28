@@ -1,4 +1,4 @@
-# Target in RML specification
+# Collections and Containers in RML specification
 
 Repository for https://w3id.org/kg-construct/collections-containers
 
