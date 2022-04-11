@@ -49,11 +49,11 @@ html = html.replace (/\.\/resources/g, '../resources');
 fs.writeFileSync (path.resolve(__dirname, 'docs', dateString, 'index.html'), html);
 
 // Copy assets
-fs.copyFileSync('Supergirl.xml', path.resolve(__dirname, 'docs', dateString, 'Supergirl.xml'))
-fs.copyFileSync('Supergirl.xml', path.resolve(__dirname, 'docs', 'Supergirl.xml'))
-fs.copyFileSync('Leverage.csv', path.resolve(__dirname, 'docs', dateString, 'Leverage.csv'))
-fs.copyFileSync('Leverage.csv', path.resolve(__dirname, 'docs', 'Leverage.csv'))
-fs.copyFileSync('Friends.json', path.resolve(__dirname, 'docs', dateString, 'Friends.json'))
-fs.copyFileSync('Friends.json', path.resolve(__dirname, 'docs', 'Friends.json'))
-fs.copyFileSync('DBPedia.csv', path.resolve(__dirname, 'docs', dateString, 'DBPedia.csv'))
-fs.copyFileSync('DBPedia.csv', path.resolve(__dirname, 'docs', 'DBPedia.csv'))
+// fs.copyFileSync('Supergirl.xml', path.resolve(__dirname, 'docs', dateString, 'Supergirl.xml'))
+// fs.copyFileSync('Supergirl.xml', path.resolve(__dirname, 'docs', 'Supergirl.xml'))
+// fs.copyFileSync('Leverage.csv', path.resolve(__dirname, 'docs', dateString, 'Leverage.csv'))
+// fs.copyFileSync('Leverage.csv', path.resolve(__dirname, 'docs', 'Leverage.csv'))
+// fs.copyFileSync('Friends.json', path.resolve(__dirname, 'docs', dateString, 'Friends.json'))
+// fs.copyFileSync('Friends.json', path.resolve(__dirname, 'docs', 'Friends.json'))
+// fs.copyFileSync('DBPedia.csv', path.resolve(__dirname, 'docs', dateString, 'DBPedia.csv'))
+// fs.copyFileSync('DBPedia.csv', path.resolve(__dirname, 'docs', 'DBPedia.csv'))
