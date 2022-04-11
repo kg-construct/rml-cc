@@ -1,5 +1,3 @@
 ## Abstract {#abstract}
 
-This document describes a formal representation to ....
-
-The version of this document is *v1.0.0*.
+This document describes the [[RML]] vocabulary and approach to generating [[RDF11-Concepts]] containers and collections.

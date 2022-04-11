@@ -120,6 +120,13 @@
             publisher: "RML team",
             date: "06 October 2020",
           },
+          "RDFS": {
+            title: "RDF Schema 1.1",
+            href: "https://www.w3.org/TR/2014/REC-rdf-schema-20140225/",
+            status: "W3C Recommendation",
+            publisher: "W3C",
+            date: "25 February 2014",
+          },          
           "FnO": {
             title: "The Function Ontology",
             href: "https://fno.io/spec",
@@ -155,13 +162,19 @@
         // editors, add as many as you like
         // only "name" is required
         editors: [
+        {
+            name: "Christophe Debruyne"
+            , company: "Montefiore Institute, University of Liège"
+            , url: "http://www.christophedebruyne.be/",
+            orcidid: "0000-0003-4734-3847",
+            companyURL: "https://www.montefiore.uliege.be/"
+          },
           {
-            name: "Name"
-            , mailto: "email@email.com"
-            , company: "CompanyName"
-            , url: "https://example.org",
-            orcidid: "0000-0000-0000-0000",
-            companyURL: "companyurl.com"
+            name: "Franck Michel"
+            , company: "CNRS, Université Côte d'Azur"
+            , url: "https://w3id.org/people/franckmichel",
+            orcidid: "0000-0001-9064-0463",
+            companyURL: "https://www.cnrs.fr/"
           }
         ],
         // name of the WG
@@ -214,14 +227,22 @@
 
 <section id='sotd'>
     <p data-format="markdown">
-        This is an early draft,
-        yet efforts are made to keep things stable.
+        This is an early draft, yet efforts are made to keep things stable.
     </p>
 </section>
 
-<section id="conformance"></section>
+<section id="conformance">
+  <p data-format="markdown">
+    The key words MUST and SHOULD in this document are to be interpreted as 
+    described in [BCP 14](https://www.rfc-editor.org/info/bcp14) [[RFC2119]] [[RFC8174]] when, 
+    and only when, they appear in all capitals, as shown here.
+  </p>
+</section>
 
 <section data-include="./section/overview.md" data-include-format="markdown"></section>
+<section data-include="./section/vocabularyanddefinitions.md" data-include-format="markdown"></section>
+<section data-include="./section/considerations.md" data-include-format="markdown"></section>
+<section data-include="./section/examples.md" data-include-format="markdown"></section>
 
 </body>
 </html>
