@@ -78,10 +78,11 @@ In the following example, we relate books to authors with a `rr:parentTriplesMap
 .
 ```
 
-The execution of this mapping will produce the following RDF:
-
+Intuitively, we will join each record (or iteration) with data from the parent triples map. The join may yield one or more results, which are then gathered into a list. The execution of this mapping will produce the following RDF:
 
 ```
 <book/1> ex:writtenby ( <person/1> ) . 
 <book/2> ex:writtenby ( <person/2> <person/3> ) .
 ```
+
+In RML, it is assumed that each term map is multie-valued. That this, each term map may return one or more values. The default behavior is to append the values in the order of the term maps appearing in the gather map.
