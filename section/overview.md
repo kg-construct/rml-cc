@@ -1,12 +1,18 @@
 ## Overview and Example {#overview}
-This section gives a brief overview of the R2RML mapping language. This section also provides simple examples that output collections and containers from documents and relational data.
+This section gives a brief overview of the RML mapping language. 
+It also provides simple examples of the generation of RDF collections and containers from documents and relational data.
 
-A `rml:GatherMap` is an object map that generates collections (rdf:List) or containers (rdf:Bag, rdf:Seq, rdf:Alt). A gathermap has a list of term maps that inform the RML processor which terms have to be generated for the list or container. The predicate `rml:gather` is used to link these lists with instances of `rml:GatherMap`. The generation of a collection or container depends on the `rml:gatherAs` predicate, which may take on any of the following values: `rdf:List`, `rdf:Bag`, `rdf:Seq`,  and `rdf:Alt`. These are the three important construct for generating containers and containers. Other predicats, and their use in examples, will be explained further down this document.
+Herebelow we present the three main constructs for generating collections and containers. Other predicates, and their use in examples, will be explained further down this document.
+
+An `rml:GatherMap` is an term map that generates a collection (rdf:List) or container (rdf:Bag, rdf:Seq, rdf:Alt). 
+A gather map has a list of term maps that inform the RML processor which RDF terms have to be generated as members of the list or container. 
+The `rml:gather` predicate is used to link an instance of `rml:GatherMap` with a list of term maps. The generation of a collection or container depends on the `rml:gatherAs` predicate, which may take on any of the following values: `rdf:List`, `rdf:Bag`, `rdf:Seq`,  and `rdf:Alt`.
+
 
 ### Example
 In this section, we use the following relational database and document for our example.
 
-The table `BOOK`:
+Table `BOOK`:
 
 | ID  | TITLE |
 | --- | --- |
@@ -14,7 +20,7 @@ The table `BOOK`:
 |  2  | The Long Earth |
 
 
-The table `AUTHOR`:
+Table `AUTHOR`:
 
 | ID | BOOKID | TITLE | FNAME | LNAME |
 | --- | --- | --- | --- | --- |
@@ -32,7 +38,7 @@ The following mapping will relate instances of authors to names. The names of au
         rr:template "/person/{ID}" ;
     ] ;
     rr:predicateObjectMap [
-    rr:predicate ex:name ;
+        rr:predicate ex:name ;
         rr:objectMap [
             rr:column "ID" ; rr:termType rr:BlankNode ;
             rml:gather ( 
@@ -44,7 +50,7 @@ The following mapping will relate instances of authors to names. The names of au
 .
 ```
 
-In this example, we generate for each row in the table, an blank resource of the type `rdf:Bag`. Each such bag "gathers" values from different term maps. The execution of this mapping will produce the following RDF:
+In this example we generate, for each row in the table, an blank resource of type `rdf:Bag`. Each such bag "gathers" values from different term maps. The execution of this mapping will produce the following RDF:
 
 ```
 <person/1> ex:name [ a rdf:Bag; rdf:_1 "Mary"; rdf:_2 "Shelley" ] . 
@@ -52,7 +58,8 @@ In this example, we generate for each row in the table, an blank resource of the
 <person/3> ex:name [ a rdf:Bag; rdf:_1 "Stephen"; rdf:_2 "Baxter" ] .
 ```
 
-While not shown in this example, different term maps allow to collect terms of different types: resources, literals, typed literals, language-tagged, etc. The fourth record in the table did not generate a bag, since each term map in the gather map did not yield a value. By default, empty lists and containers are wittheld. One does have the possibility to keep those with `rml:allowEmptyListAndContainer`.
+While not shown in this example, different term maps allow to collect terms of different types: resources, literals, typed literals, language-tagged, etc. The fourth record in the table did not generate a bag, since each term map in the gather map did not yield a value. 
+By default, empty lists and containers are withheld. One does have the possibility to keep those with `rml:allowEmptyListAndContainer`.
 
 In the following example, we relate books to authors with a `rr:parentTriplesMap`. Authors are represented by a list.
 
@@ -63,7 +70,7 @@ In the following example, we relate books to authors with a `rr:parentTriplesMap
         rr:template "/book/{ID}" ;
     ] ;
     rr:predicateObjectMap [
-    rr:predicate ex:writtenBy ;
+        rr:predicate ex:writtenBy ;
         rr:objectMap [
             rr:column "ID" ; rr:termType rr:BlankNode ;
             rml:gather ( 
@@ -85,4 +92,4 @@ Intuitively, we will join each record (or iteration) with data from the parent t
 <book/2> ex:writtenby ( <person/2> <person/3> ) .
 ```
 
-In RML, it is assumed that each term map is multie-valued. That this, each term map may return one or more values. The default behavior is to append the values in the order of the term maps appearing in the gather map.
+In RML, it is assumed that each term map is multi-valued. That this, each term map may return one or more values. The default behavior is to append the values in the order of the term maps appearing in the gather map.

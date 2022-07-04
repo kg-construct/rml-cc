@@ -1,6 +1,8 @@
 ## Examples {#examples}
 
-In the following section, we present additional examples and describe the expected output. For each example, we provide the document that correspond with the current iteration. For example, if we were to generate RDF from the following JSON document and RML mapping:
+In this section, we present additional examples and describe the expected output. For each example, we provide the document that corresponds with the current iteration. 
+
+Examples will be based on the following context of a JSON document and RML mapping:
 
 ```
 { 
@@ -56,11 +58,11 @@ We expect the following output:
   <c> ex:with ("7" "8" "9") .
 ```
 
-This example illustrates that, if template, column, or reference is provided for identifying a container or list, then each iteration yield a new instance of a container or list even if the contents of two iterations are the same.
+This example illustrates that, if NO template, column, or reference is provided for identifying a collection/container, then each iteration yields a new instance of a collection/container.
 
-### Identifying lists and containers
+### Identifying collections and containers
 
-Given the JSON document and the RML mapping completed with the following predicate object map:
+By contrast, if we now provide a template, column, or reference for identifying a collection/container, then each iteration yields a new instance of a collection/container whose head node is identified as instructed.
 
 ```
   rr:predicateObjectMap [
@@ -86,7 +88,7 @@ We expect the following output:
 
 ### Dealing with empty collections and containers
 
-By default, `rml:allowEmptyListAndContainer` is false. Processing the following JSON document with the predicate object map provided in [our simple example](#simpleexample) would not result in a list for `<d>`.
+By default, `rml:allowEmptyListAndContainer` is false. Processing the following JSON document with the predicate object map provided the [simple example](#simpleexample) would not result in a list for `<d>`.
 
 ```
 { 
@@ -99,7 +101,7 @@ By default, `rml:allowEmptyListAndContainer` is false. Processing the following 
 }
 ```
 
-However, when one overrides the value for this property and set it to true, then the following prodicate object map:
+However, when one overrides the value for this property and sets it to true, then the following predicate object map:
 
 ```
   rr:predicateObjectMap [
@@ -121,7 +123,7 @@ will generate:
   <d> ex:with () .
 ```
 
-There is one special case when dealing with empty *collections*. As `rdf:nil` is serverved for the empty list, an RML processor MUST replace each IRI or blank node that is an empty list with `rdf:nil`. In other words, when the following predicate object map is used:
+There is one special case when dealing with empty *collections*. As `rdf:nil` is reserved for the empty list, an RML processor MUST replace each IRI or blank node that is an empty list with `rdf:nil`. In other words, when the following predicate object map is used:
 
 ```
   rr:predicateObjectMap [
