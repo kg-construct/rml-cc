@@ -40,9 +40,9 @@ The following mapping will relate instances of authors to names. The names of au
     rr:predicateObjectMap [
         rr:predicate ex:name ;
         rr:objectMap [
-            rr:column "ID" ; rr:termType rr:BlankNode ;
+            rml:reference "ID" ; rr:termType rr:BlankNode ;
             rml:gather ( 
-                [ rr:column "TITLE" ]  [ rr:column "FNAME" ]  [ rr:column "LNAME" ] 
+                [ rml:reference "TITLE" ]  [ rml:reference "FNAME" ]  [ rml:reference "LNAME" ] 
             ) ;
             rml:gatherAs rdf:Bag ;
         ] ;
@@ -72,7 +72,7 @@ In the following example, we relate books to authors with a `rr:parentTriplesMap
     rr:predicateObjectMap [
         rr:predicate ex:writtenBy ;
         rr:objectMap [
-            rr:column "ID" ; rr:termType rr:BlankNode ;
+            rml:reference "ID" ; rr:termType rr:BlankNode ;
             rml:gather ( 
                 [ 
                     rr:parentTriplesMap <#AuthorTM>;
