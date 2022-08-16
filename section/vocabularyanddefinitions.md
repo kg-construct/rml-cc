@@ -5,12 +5,12 @@ This section introduces the classes, properties, and constants of the RML Contai
 ### Classes
 
 #### `rml:GatherMap`
-Gather maps are term maps that use `rml:gather` and `rml:gatherAs` to generate collections and containers from a list of term maps. 
+Gather maps are term maps that use [`rml:gather`](#rml-gather) and [`rml:gatherAs`](#rml-gatheras) to generate collections and containers from a list of term maps. 
 
 If a gather map has no template or term type directive, at each iteration it is assumed to be generating a blank node that is the head of the collection or container.
 
-* A `rml:GatherMap` MUST have exactly one `rml:gather` property.
-* A `rml:GatherMap` MUST have exactly one `rml:gatherAs` property.
+* A `rml:GatherMap` MUST have exactly one [`rml:gather`](#rml-gather) property.
+* A `rml:GatherMap` MUST have exactly one [`rml:gatherAs`](#rml-gatheras) property.
 
 ### Properties
 
@@ -19,8 +19,8 @@ If a gather map has no template or term type directive, at each iteration it is 
 The `rml:gather` informs the RML processor where the terms of a collection or container come from. This property relates a gather map with a non-empty list of term maps. 
 That list of term maps may contain other gather maps, which means that this will generate nested containers and collections. One is not limited to nesting only containers or collections, both containers and collections can be mixed.
 
-* The domain of `rml:gather` is `rml:GatherMap`.
-* The range of `rml:gather` is a non-empty list of `rr:TermMap` instances. This list may include instances of `rml:GatherMap`. We thus support the nesting of collections and containers.
+* The domain of `rml:gather` is [`rml:GatherMap`](#rml-gathermap).
+* The range of `rml:gather` is a non-empty list of `rr:TermMap` instances. This list may include instances of [`rml:GatherMap`](#rml-gathermap). We thus support the nesting of collections and containers.
 
 #### `rml:strategy`
 This informs the processor how to create collections and containers when faced with multi-valued term maps. 
@@ -34,7 +34,7 @@ A gather map does not need to specify a strategy, the default strategy is `rml:A
 
 This `rml:strategy` property allows one to design and implement their own strategies for gathering terms into collections and containers.
 
-* The domain of `rml:strategy` is `rml:GatherMap`.
+* The domain of `rml:strategy` is [`rml:GatherMap`](#rml-gathermap).
 * The range of `rml:strategy` is an IRI.
 
 
@@ -42,13 +42,13 @@ This `rml:strategy` property allows one to design and implement their own strate
 
 The property `rml:gatherAs` relates a gather map with the desired result type: a type of container or collections.
 
-* The domain of `rml:gatherAs` is `rml:GatherMap`.
+* The domain of `rml:gatherAs` is [`rml:GatherMap`](#rml-gathermap).
 * The range of `rml:gatherAs` is one of the following: `rdf:Seq`, `rdf:Bag`, `rdf:Alt`, `rdf:List`.
 
 #### `rml:allowEmptyListAndContainer`
-The range of `rml:allowEmptyListAndContainer` is a `xsd:boolean` and is by default false. This predicate is to be used alongside `rml:gather` and `rml:gatherAs`. When true and an `rml:gather` does not yield any element, then the gather map will generate `rdf:nil` for an RDF collection, or a resource with no members for an RDF container.
+The range of `rml:allowEmptyListAndContainer` is a `xsd:boolean` and is by default false. This predicate is to be used alongside [`rml:gather`](#rml-gather) and [`rml:gatherAs`](#rml-gatheras). When true and an [`rml:gather`](#rml-gather) does not yield any element, then the gather map will generate `rdf:nil` for an RDF collection, or a resource with no members for an RDF container.
 
-* The domain of `rml:allowEmptyListAndContainer` is `rml:GatherMap`.
+* The domain of `rml:allowEmptyListAndContainer` is [`rml:GatherMap`](#rml-gathermap).
 * The range of `rml:allowEmptyListAndContainer` is `xsd:boolean`.
 
 ### Constants
