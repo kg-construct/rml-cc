@@ -9,6 +9,10 @@ An [`rml:GatherMap`](#rml-gathermap) is a term map that generates a collection (
 A gather map has a list of term maps that inform the RML processor which RDF terms have to be generated as members of the list or container. 
 The [`rml:gather`](#rml-gather) predicate is used to link an instance of [`rml:GatherMap`](#rml-gathermap) with a list of term maps. The generation of a collection or container depends on the `rml:gatherAs` predicate, which may take on any of the following values: `rdf:List`, `rdf:Bag`, `rdf:Seq`,  and `rdf:Alt`.
 
+<figure>
+  <img src="./resources/images/overview.svg" alt="Graphical overview of RML's vocabulary to generate RDF collections and containers."/>
+  <figcaption>Graphical overview of RML's vocabulary to generate RDF collections and containers.</figcaption>
+</figure>
 
 ### Running example {#runningexample}
 
