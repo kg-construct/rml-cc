@@ -34,3 +34,9 @@ If such a term map generates a collection or container by means of a gather map,
 In the case of an RDF list, this is the node that is the subject of the first `rdf:first` predicate.
 
 The [examples section](#gatherinsubject) demonstrates how a gather map can be used within a subject map.
+
+### Valid RDF and well-formedness of Collections and Containers
+
+The mapping language proposed here guarantees the generation of valid RDF. However, the well-formedness of RDF collections and containers is up to the one creating and managing the mappings. An RML processor with support for gather maps may include a validator for collections and containers, but this is not required.
+
+In this section, we provide an example of a mapping that generates valid RDF but ill-formed lists.
