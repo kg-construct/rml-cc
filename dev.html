@@ -92,6 +92,7 @@
     </style>
     <script class="remove">
       var respecConfig = {
+        format: "markdown",
         localBiblio: {
           "RDF11-Concepts": {
             title: "RDF 1.1 Concepts and Abstract Syntax",
@@ -165,6 +166,7 @@
         // previousMaturity: "FPWD",
         // if there a publicly available Editor's Draft, this is the link
         edDraftURI: "https://w3id.org/kg-construct/collections-containers",
+        latestVersion: null,
         // if this is a LCWD, uncomment and set the end of its review period
         // lcEnd: "2009-08-05",
         // editors, add as many as you like
@@ -195,24 +197,10 @@
         //noRecTrack: "true",
         otherLinks: [
           {
-            key: "This Version",
-            data: [{
-              value: "https://https://w3id.org/kg-construct/collection-containers/%thisDate%/",
-              href: "https://https://w3id.org/kg-construct/collection-containers/%thisDate%/"
-            }]
-          },
-          {
-            key: "Previous Version",
-            data: [{
-              value: "https://https://w3id.org/kg-construct/collection-containers/%prevDate%/",
-              href: "https://https://w3id.org/kg-construct/collection-containers/%prevDate%/"
-            }]
-          },
-          {
             key: "Website",
             data: [{
-              value: "https://https://w3id.org/kg-construct/collection-containers",
-              href: "https://https://w3id.org/kg-construct/collection-containers"
+              value: "https://w3id.org/kg-construct/collection-containers",
+              href: "https://w3id.org/kg-construct/collection-containers"
             }]
           }
         ],
@@ -232,12 +220,7 @@
 </head>
 <body>
 <section id="abstract" data-include="./section/abstract.md" data-include-format="markdown"></section>
-
-<section id="sotd">
-    <p data-format="markdown">
-        This is an early draft, yet efforts are made to keep things stable.
-    </p>
-</section>
+<section id="sotd" data-include="./section/status.md" data-include-format="markdown" class="override"></section>
 
 <section id="conformance">
   <p data-format="markdown">
