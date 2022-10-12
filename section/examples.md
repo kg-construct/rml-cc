@@ -5,7 +5,7 @@ In this section, we present additional examples and describe the expected output
 
 ### Dealing with empty collections and containers
 
-By default, [`rml:allowEmptyListAndContainer`](#rml-allowemptylistandcontainer)` is false. 
+By default, [`rml:allowEmptyListAndContainer`](#rml-allowemptylistandcontainer) is false. 
 Thus, processing the following JSON document with the predicate object map provided in the [running example](#runningexample) would not yield any result for the document with `"id": "d"`.
 
 ```json
