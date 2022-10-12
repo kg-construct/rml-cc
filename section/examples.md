@@ -173,7 +173,7 @@ Here we exemplify the use of a term map in a subject map. Continuing with the JS
   ];
 
   rr:subjectMap [
-    rr:template "list/{id}" ;
+    rr:template "seq/{id}" ;
     rml:gather ( [ rml:reference "values.*" ; ] ) ;
     rml:gatherAs rdf:Seq ;  
   ] ;
@@ -187,12 +187,12 @@ Here we exemplify the use of a term map in a subject map. Continuing with the JS
 The expected result is:
 
 ```turtle
-  <list/a> rdf:_1 "1" ; rdf:_2 "2" ; rdf:_3 "3" .
-  <list/a> prov:wasDerivedFrom <data.json> .
+  <seq/a> rdf:_1 "1" ; rdf:_2 "2" ; rdf:_3 "3" .
+  <seq/a> prov:wasDerivedFrom <data.json> .
   
-  <list/b> rdf:_1 "4" ; rdf:_2 "5" ; rdf:_3 "6" .
-  <list/b> prov:wasDerivedFrom <data.json> .
+  <seq/b> rdf:_1 "4" ; rdf:_2 "5" ; rdf:_3 "6" .
+  <seq/b> prov:wasDerivedFrom <data.json> .
   
-  <list/c> rdf:_1 "7" ; rdf:_2 "8" ; rdf:_3 "9" .
-  <list/c> prov:wasDerivedFrom <data.json> .
+  <seq/c> rdf:_1 "7" ; rdf:_2 "8" ; rdf:_3 "9" .
+  <seq/c> prov:wasDerivedFrom <data.json> .
 ```
