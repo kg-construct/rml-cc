@@ -37,6 +37,61 @@ The [examples section](#gatherinsubject) demonstrates how a gather map can be us
 
 ### Valid RDF and well-formedness of Collections and Containers
 
-The mapping language proposed here guarantees the generation of valid RDF. However, the well-formedness of RDF collections and containers is up to the one creating and managing the mappings. An RML processor with support for gather maps may include a validator for collections and containers, but this is not required.
+The mapping language proposed here guarantees the generation of valid RDF. However, the well-formedness of RDF collections and containers is up to the person creating and managing the mappings. An RML processor with support for gather maps may include a validator for collections and containers, but this is not required. In this section, we provide an example of a mapping that generates valid RDF but ill-formed lists.
 
-In this section, we provide an example of a mapping that generates valid RDF but ill-formed lists.
+Given the JSON document below.
+
+```json
+[ 
+  { "id": "a",  "values": [ "1" , "2" ] },
+  { "id": "a",  "values": [ "3" , "4" ] },
+  { "id": "b",  "values": [ "5" , "6" ] } 
+]
+```
+
+We are going to create an RML mapping that will generate valid RDF, but ill-formed lists. In the mapping below, we will generate blank nodes who are identified by the value of `id` in each element of our JSON document.
+
+```turtle
+@prefix rml: <http://semweb.mmlab.be/ns/rml#>.
+@prefix rr:  <http://www.w3.org/ns/r2rml#>.
+@prefix ql:  <http://semweb.mmlab.be/ns/ql#>.
+@prefix ex:  <http://example.com/ns>.
+@base        <http://example.com/ns>.
+
+<#TM> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "data.json" ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.*" ;
+  ] ;
+
+  rr:subjectMap [
+    rr:template "{id}" ;
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate ex:with ;
+    rr:objectMap [
+        # Generate blank node identifiers for lists based on the value of "id"
+        rr:template "{id}" ;
+        rml:gather ( [ rml:reference "values.*" ; ] ) ;
+        rml:gatherAs rdf:List ;
+    ] ;
+  ] ;
+.
+```
+
+The first two iterations will refer to the same blank node, as they both have the value `"a"` for the key `id`. As two lists are being generated, this blank node will have two `rdf:first` and two `rdf:rest` properties as that blank node is used for two cons-pairs. This cons-pair is ill-formed and hence so are the lists. The third iteration does yield a well-formed list. The output generated with this mapping is, however, valid RDF.
+
+```turtle
+@prefix ex:  <http://example.org/ns#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+ex:a    ex:with     _:b0 .
+
+_:b0    rdf:first   1 , 3 ;
+        rdf:rest    ( 2 ) ;
+        rdf:rest    ( 4 ) .
+
+ex:b    ex:with (5 6) .
+```
