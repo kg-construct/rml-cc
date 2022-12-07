@@ -1,6 +1,6 @@
-<!DOCTYPE html><html lang="en" dir="ltr"><head>
+<!DOCTYPE html><html dir="ltr" lang="en"><head>
 <meta charset="utf-8">
-<meta name="generator" content="ReSpec 32.3.0">
+<meta name="generator" content="ReSpec 32.4.0">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 dfn{cursor:pointer}
@@ -178,7 +178,6 @@ dd{margin-left:0}
 .removeOnSave{display:none}
 }
 </style>
-<meta id="ConnectiveDocSignExtentionInstalled" name="ConnectiveDocSignExtentionInstalled" data-extension-version="1.0.6">
 <meta name="description" content="This document describes the [RML] vocabulary and approach to generating RDF containers and collections [RDF11-Concepts].">
 <style>
 .hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;background:#fafafa}
@@ -290,14 +289,14 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       ]
     }
   ],
-  "publishISODate": "2022-10-12T00:00:00.000Z",
-  "generatedSubtitle": "Unofficial Draft 12 October 2022"
+  "publishISODate": "2022-12-07T00:00:00.000Z",
+  "generatedSubtitle": "Unofficial Draft 07 December 2022"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-UD"></head>
-<body class="h-entry" data-new-gr-c-s-check-loaded="14.1083.0" data-gr-ext-installed=""><div class="head">
+<body class="h-entry"><div class="head">
     
     <h1 id="title" class="title">Collections and Containers in RML</h1> 
-    <p id="w3c-state">Unofficial Draft <time class="dt-published" datetime="2022-10-12">12 October 2022</time></p>
+    <p id="w3c-state">Unofficial Draft <time class="dt-published" datetime="2022-12-07">07 December 2022</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
@@ -345,7 +344,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
 </section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">1. </bdi>Conformance</a></li><li class="tocline"><a class="tocxref" href="#overview"><bdi class="secno">2. </bdi>Overview and Example</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#runningexample"><bdi class="secno">2.1 </bdi>Running example</a></li><li class="tocline"><a class="tocxref" href="#simpleexample"><bdi class="secno">2.2 </bdi>A simple example</a></li><li class="tocline"><a class="tocxref" href="#identifying-collections-and-containers"><bdi class="secno">2.3 </bdi>Identifying collections and containers</a></li></ol></li><li class="tocline"><a class="tocxref" href="#vocabulary"><bdi class="secno">3. </bdi>Vocabulary and definitions</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#classes"><bdi class="secno">3.1 </bdi>Classes</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#rml-gathermap"><bdi class="secno">3.1.1 </bdi><code>rml:GatherMap</code></a></li></ol></li><li class="tocline"><a class="tocxref" href="#properties"><bdi class="secno">3.2 </bdi>Properties</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#rml-gather"><bdi class="secno">3.2.1 </bdi><code>rml:gather</code></a></li><li class="tocline"><a class="tocxref" href="#rml-strategy"><bdi class="secno">3.2.2 </bdi><code>rml:strategy</code></a></li><li class="tocline"><a class="tocxref" href="#rml-gatheras"><bdi class="secno">3.2.3 </bdi><code>rml:gatherAs</code></a></li><li class="tocline"><a class="tocxref" href="#rml-allowemptylistandcontainer"><bdi class="secno">3.2.4 </bdi><code>rml:allowEmptyListAndContainer</code></a></li></ol></li><li class="tocline"><a class="tocxref" href="#constants"><bdi class="secno">3.3 </bdi>Constants</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#rml-append"><bdi class="secno">3.3.1 </bdi><code>rml:Append</code></a></li><li class="tocline"><a class="tocxref" href="#rml-cartesianproduct"><bdi class="secno">3.3.2 </bdi><code>rml:CartesianProduct</code></a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#considerations"><bdi class="secno">4. </bdi>Considerations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#identifying-collections-and-containers-0"><bdi class="secno">4.1 </bdi>Identifying collections and containers</a></li><li class="tocline"><a class="tocxref" href="#iterations-and-gather-maps-yielding-the-same-identifier"><bdi class="secno">4.2 </bdi>Iterations and gather maps yielding the same identifier</a></li><li class="tocline"><a class="tocxref" href="#the-use-of-rr-column"><bdi class="secno">4.3 </bdi>The use of <code>rr:column</code></a></li><li class="tocline"><a class="tocxref" href="#using-a-rml-gathermap-in-various-types-of-term-map"><bdi class="secno">4.4 </bdi>Using a <code>rml:GatherMap</code> in various types of term map</a></li><li class="tocline"><a class="tocxref" href="#valid-rdf-and-well-formedness-of-collections-and-containers"><bdi class="secno">4.5 </bdi>Valid RDF and well-formedness of Collections and Containers</a></li></ol></li><li class="tocline"><a class="tocxref" href="#examples"><bdi class="secno">5. </bdi>Examples</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#dealing-with-empty-collections-and-containers"><bdi class="secno">5.1 </bdi>Dealing with empty collections and containers</a></li><li class="tocline"><a class="tocxref" href="#relationalexample"><bdi class="secno">5.2 </bdi>Relational data example</a></li><li class="tocline"><a class="tocxref" href="#using-referencing-object-map"><bdi class="secno">5.3 </bdi>Using referencing object map</a></li><li class="tocline"><a class="tocxref" href="#gatherinsubject"><bdi class="secno">5.4 </bdi>Using a gather map in a subject map</a></li></ol></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">A. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">A.1 </bdi>Normative references</a></li><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">A.2 </bdi>Informative references</a></li></ol></li></ol></nav>
 
 <section id="conformance"><div class="header-wrapper"><h2 id="x1-conformance"><bdi class="secno">1. </bdi>Conformance</h2><a class="self-link" href="#conformance" aria-label="Permalink for Section 1."></a></div><p>As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative. Everything else in this specification is normative.</p><p>
-        The key words <em class="rfc2119">MUST</em> and <em class="rfc2119">SHOULD</em> in this document
+        The key words <em class="rfc2119">MAY</em>, <em class="rfc2119">MUST</em>, and <em class="rfc2119">SHOULD</em> in this document
         are to be interpreted as described in
         <a href="https://datatracker.ietf.org/doc/html/bcp14">BCP 14</a>
         [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">RFC2119</a></cite>] [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc8174" title="Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words">RFC8174</a></cite>]
@@ -365,9 +364,10 @@ It also provides simple examples of the generation of RDF collections and contai
 A gather map has a list of term maps that inform the RML processor which RDF terms have to be generated as members of the list or container. 
 The <a href="#rml-gather"><code>rml:gather</code></a> predicate is used to link an instance of <a href="#rml-gathermap"><code>rml:GatherMap</code></a> with a list of term maps. The generation of a collection or container depends on the <code>rml:gatherAs</code> predicate, which may take on any of the following values: <code>rdf:List</code>, <code>rdf:Bag</code>, <code>rdf:Seq</code>,  and <code>rdf:Alt</code>.</p>
 <figure id="fig-graphical-overview-of-rml-s-vocabulary-to-generate-rdf-collections-and-containers">
-  <img src="./resources/images/overview.svg" alt="Graphical overview of RML's vocabulary to generate RDF collections and containers." height="886" width="995">
+  <img src="./resources/images/overview.svg" alt="Graphical overview of RML's vocabulary to generate RDF collections and containers." width="995" height="886">
   <figcaption>Figure <bdi class="figno">1</bdi> <span class="fig-title">Graphical overview of RML's vocabulary to generate RDF collections and containers.</span></figcaption>
 </figure>
+
 
 <section id="running-example"><div class="header-wrapper"><h3 id="runningexample"><bdi class="secno">2.1 </bdi>Running example</h3><a class="self-link" href="#runningexample" aria-label="Permalink for Section 2.1"></a></div><p>In this section, the data source consists of a JSON file, <code>data.json</code>, containing the following JSON array:</p>
 <pre><code class="json hljs" aria-busy="false">[ 
@@ -439,6 +439,7 @@ Each iteration yields an instance of collection/container whose head node is a b
 <ul>
 <li>A <code>rml:GatherMap</code> <em class="rfc2119">MUST</em> have exactly one <a href="#rml-gather"><code>rml:gather</code></a> property.</li>
 <li>A <code>rml:GatherMap</code> <em class="rfc2119">MUST</em> have exactly one <a href="#rml-gatheras"><code>rml:gatherAs</code></a> property.</li>
+<li>A <code>rml:GatherMap</code> <em class="rfc2119">MAY</em> have exactly one <a href="#rml-strategy"><code>rml:strategy</code></a> property.</li>
 </ul>
 </section></section><section id="properties"><div class="header-wrapper"><h3 id="x3-2-properties"><bdi class="secno">3.2 </bdi>Properties</h3><a class="self-link" href="#properties" aria-label="Permalink for Section 3.2"></a></div>
 <section id="rml-gather"><div class="header-wrapper"><h4 id="x3-2-1-rml-gather"><bdi class="secno">3.2.1 </bdi><code>rml:gather</code></h4><a class="self-link" href="#rml-gather" aria-label="Permalink for Section 3.2.1"></a></div>
@@ -446,14 +447,14 @@ Each iteration yields an instance of collection/container whose head node is a b
 That list of term maps may contain other gather maps, which means that this will generate nested containers and collections. One is not limited to nesting only containers or collections, both containers and collections can be mixed.</p>
 <ul>
 <li>The domain of <code>rml:gather</code> is <a href="#rml-gathermap"><code>rml:GatherMap</code></a>.</li>
-<li>The range of <code>rml:gather</code> is a non-empty list of <code>rr:TermMap</code> instances. This list may include instances of <a href="#rml-gathermap"><code>rml:GatherMap</code></a>. We thus support the nesting of collections and containers.</li>
+<li>The range of <code>rml:gather</code> is a non-empty list (rdf:List) of <code>rr:TermMap</code> instances. In particular, this list may include instances of <a href="#rml-gathermap"><code>rml:GatherMap</code></a> thus allowing for nested gather maps.</li>
 </ul>
 </section><section id="rml-strategy"><div class="header-wrapper"><h4 id="x3-2-2-rml-strategy"><bdi class="secno">3.2.2 </bdi><code>rml:strategy</code></h4><a class="self-link" href="#rml-strategy" aria-label="Permalink for Section 3.2.2"></a></div>
-<p>Declaring an <code>rml:strategy</code> on a gather map informs the processor how to create collections and containers when faced with multi-valued term maps. 
-This specification defines both <code>rml:Append</code> and <code>rml:CartesianProduct</code> as instances of <code>rml:Strategy</code>. </p>
-<p>In the <code>rml:Append</code> strategy, terms generated by each term map of the list are simply appended to the collection (respectively container) being constructed. Thus, only one collection (respectively container) is generated.</p>
-<p>Conversely, in the <code>rml:CartesianProduct</code> strategy, the gather map generates collections (respectively containers) each containing one term generated by each term map of the list. In other words, it carries out a cartesian product between the terms generated by each term map, thus constructing as many collections (respectively containers) as the product of the number of terms from each term map. For example, if a collection contains two term maps generating respectively 2 and 3 terms, the gather map will generate 6 collections of 2 terms each.</p>
-<p>A gather map does not need to specify a strategy, the default strategy is <code>rml:Append</code>.</p>
+<p>Declaring an <code>rml:strategy</code> on a gather map informs the processor about how to create collections and containers when faced with <strong>multi-valued term maps</strong>.
+This specification defines <a href="#rml-append"><code>rml:Append</code></a> and <a href="#rml-cartesianproduct"><code>rml:CartesianProduct</code></a> as instances of rml:Strategy. </p>
+<p>In the <a href="#rml-append"><code>rml:Append</code></a> strategy, the sets of RDF terms generated by each term map of the gather map are simply appended to the collection (respectively container) being constructed. Thus, only one collection (respectively container) is generated.</p>
+<p>Conversely, in the <a href="#rml-cartesianproduct"><code>rml:CartesianProduct</code></a> strategy, the gather map generates collections (respectively containers) each containing one RDF term generated by each term map of the gather map. In other words, it carries out a cartesian product between the terms generated by each term map, thus constructing as many collections (respectively containers) as the product of the number of RDF terms from each term map. </p>
+<p>A gather map does not need to specify a strategy, <strong>the default strategy is <code>rml:Append</code></strong>.</p>
 </section><section id="rml-gatheras"><div class="header-wrapper"><h4 id="x3-2-3-rml-gatheras"><bdi class="secno">3.2.3 </bdi><code>rml:gatherAs</code></h4><a class="self-link" href="#rml-gatheras" aria-label="Permalink for Section 3.2.3"></a></div>
 <p>The property <code>rml:gatherAs</code> relates a gather map with the desired result type: a type of container or collections.</p>
 <ul>
@@ -468,7 +469,47 @@ This specification defines both <code>rml:Append</code> and <code>rml:CartesianP
 </ul>
 </section></section><section id="constants"><div class="header-wrapper"><h3 id="x3-3-constants"><bdi class="secno">3.3 </bdi>Constants</h3><a class="self-link" href="#constants" aria-label="Permalink for Section 3.3"></a></div>
 <section id="rml-append"><div class="header-wrapper"><h4 id="x3-3-1-rml-append"><bdi class="secno">3.3.1 </bdi><code>rml:Append</code></h4><a class="self-link" href="#rml-append" aria-label="Permalink for Section 3.3.1"></a></div>
+<p><code>rml:Append</code> is an instance of <code>rml:Strategy</code>. 
+Used as the object of property <a href="rml-strategy"><code>rml:strategy</code></a>, it informs the processor that the sets of RDF terms generated by each term map of the gather map are to be appended within the collection or container. The order os that in which the term maps are declared in the gather map. See the example below.</p>
+<p>For the input document:</p>
+<pre><code class="json hljs" aria-busy="false">  { 
+    "ids": [ "1" , "2" , "3" ],
+    "values": [ "4" , "5" ] 
+  },
+</code></pre>
+<p>The following term map:</p>
+<pre><code class="turtle hljs" aria-busy="false">    rr:objectMap [
+        rml:gather ( [ rml:reference "ids.*" ] [ rml:reference "values.*" ]) ;
+        rml:gatherAs rdf:List ;
+        rml:strategy rml:Append;   # this is the default strategy
+    ] ;
+</code></pre>
+<p>would generate a list by appending the terms produced by the two term maps in the gather map:</p>
+<pre><code class="turtle hljs" aria-busy="false">  ("1" "2" "3" "4" "5" )
+</code></pre>
 </section><section id="rml-cartesianproduct"><div class="header-wrapper"><h4 id="x3-3-2-rml-cartesianproduct"><bdi class="secno">3.3.2 </bdi><code>rml:CartesianProduct</code></h4><a class="self-link" href="#rml-cartesianproduct" aria-label="Permalink for Section 3.3.2"></a></div>
+<p><code>rml:CartesianProduct</code> is an instance of <code>rml:Strategy</code>. 
+Used as the object of property <a href="rml-strategy"><code>rml:strategy</code></a>, it informs the processor that the RDF terms generated by each term map of the gather map are to be grouped (in the constructed collection or container) by doing a cartesian product of these terms.
+Therefore, this constructs as many collections or containers as the product of the number of terms from each term map.
+See the example below.</p>
+<p>For the input document:</p>
+<pre><code class="json hljs" aria-busy="false">  { 
+    "ids": [ "1" , "2" , "3" ],
+    "values": [ "4" , "5" ] 
+  },
+</code></pre>
+<p>The following term map:</p>
+<pre><code class="turtle hljs" aria-busy="false">    rr:objectMap [
+        rml:gather ( [ rml:reference "ids.*" ] [ rml:reference "values.*" ]) ;
+        rml:gatherAs rdf:List ;
+        rml:strategy rml:CartesianProduct;
+    ] ;
+</code></pre>
+<p>would generate 3*2 = 6 lists by grouping the terms produced by the two term maps in the gather map:</p>
+<pre><code class="turtle hljs" aria-busy="false">("1" "4") ("1" "5") 
+("2" "4") ("2" "4")
+("3" "4") ("3" "4")
+</code></pre>
 </section></section></section>
 <section id="considerations-0"><div class="header-wrapper"><h2 id="considerations"><bdi class="secno">4. </bdi>Considerations</h2><a class="self-link" href="#considerations" aria-label="Permalink for Section 4."></a></div><section id="identifying-collections-and-containers-0"><div class="header-wrapper"><h3 id="x4-1-identifying-collections-and-containers"><bdi class="secno">4.1 </bdi>Identifying collections and containers</h3><a class="self-link" href="#identifying-collections-and-containers-0" aria-label="Permalink for Section 4.1"></a></div>
 <p>An <code>rr:template</code> or <code>rml:reference</code> may be provided for the generation of blank node IDs (<code>rr:BlankNode</code>) or IRIs (<code>rr:IRI</code>). In some cases, there are challenges when identifiers are generated. The challenge generating identifiers for collections and containers: one needs to be careful when a gather map uses multi-valued references in the template or generates multiple collections and containers:</p>
@@ -977,4 +1018,4 @@ function hidePanel(panel) {
   panel.hidden = true;
   panel.classList.remove("docked");
 }
-})()</script><script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
+})()</script><script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script></body></html>

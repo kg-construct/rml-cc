@@ -14,6 +14,7 @@ The [`rml:gather`](#rml-gather) predicate is used to link an instance of [`rml:G
   <figcaption>Graphical overview of RML's vocabulary to generate RDF collections and containers.</figcaption>
 </figure>
 
+
 ### Running example {#runningexample}
 
 In this section, the data source consists of a JSON file, `data.json`, containing the following JSON array:
