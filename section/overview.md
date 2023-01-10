@@ -63,10 +63,7 @@ Given the JSON document and the RML mapping completed with the following predica
   ] ;
 ```
 
-The iterator entails one iteration for each document whithin the array.
-Each iteration yields an instance of collection/container whose head node is a blank node.
-
-We expect the following output:
+If a gather map has no `rr:template`, `rr:constant`, or `rml:reference` directive for the identification of a generated resource (`rr:IRI` or `rr:BlankNode`), it is assumed to be generating a new (unique) blank node that is the head of the new collection, or a new container at each iteration. In our example, each iteration yields an instance of a list whose first cons-pair is a blank node. In other words, we expect the following output: 
 
 ```turtle
   <a> ex:with ("1" "2" "3") .
@@ -74,8 +71,14 @@ We expect the following output:
   <c> ex:with ("7" "8" "9") .
 ```
 
-
 ### Identifying collections and containers
+
+#### Without `rr:template`, `rr:constant`, or `rml:reference`
+
+A gather map thus does not require the presence of a `rr:template`, `rr:constant`, or `rml:reference` property and the resulting collections and containers are thus (partly) identified by the iteration. Indeed, such a gather map's `rml:gather` property may include *multi-valued term maps* in its list and such gather map may yield multiple lists or containers. In that case, a new unique blank node for each list or container will be generated. The number of lists of containers depends on the [strategy](#rml-strategy).
+
+
+#### With `rr:template`, `rr:constant`, or `rml:reference`
 
 If we now provide a template in the object map for identifying a collection/container, then each iteration yields an instance of collection/container whose head node is identified as instructed:
 
@@ -100,6 +103,3 @@ We expect the following output:
   <c> ex:with <list/c> .
   <list/c> rdf:first "7" ; rdf:rest ("8" "9") .
 ```
-
-
-

@@ -4,12 +4,8 @@ This section introduces the classes, properties, and constants of the RML Contai
 
 ### Classes
 
-#### `rml:GatherMap`
+#### `rml:GatherMap` {#gathermapidentification}
 Gather maps are term maps that use [`rml:gather`](#rml-gather) and [`rml:gatherAs`](#rml-gatheras) to generate collections and containers from a list of term maps. 
-
-If a gather map has no `rr:template`, `rr:constant`, or `rml:reference` directive for the identification of a generated resource (`rr:IRI` or `rr:BlankNode`), at each iteration it is assumed to be generating a new (unique) blank node that is the head of the new collection, or a new container. Such a gather map's `rml:gather` property may include multi-valued term maps in its list. A gather map may yield multiple lists or containers. In that case, a new unique blank node for each list or container will be generated.
-
-<!-- TODO: POINT TO EXAMPLE -->
 
 * A `rml:GatherMap` MUST have exactly one [`rml:gather`](#rml-gather) property.
 * A `rml:GatherMap` MUST have exactly one [`rml:gatherAs`](#rml-gatheras) property.
@@ -61,15 +57,15 @@ Used as the object of property [`rml:strategy`](rml-strategy), it informs the pr
 For the input document:
 ```json
   { 
-    "ids": [ "1" , "2" , "3" ],
-    "values": [ "4" , "5" ] 
+    "a": [ "1" , "2" , "3" ],
+    "b": [ "4" , "5" ] 
   }
 ```
 
 The following term map:
 ```turtle
     rr:objectMap [
-        rml:gather ( [ rml:reference "ids.*" ] [ rml:reference "values.*" ]) ;
+        rml:gather ( [ rml:reference "a.*" ] [ rml:reference "b.*" ]) ;
         rml:gatherAs rdf:List ;
         rml:strategy rml:append;   # this is the default strategy
     ] ;
@@ -91,15 +87,15 @@ See the example below.
 For the input document:
 ```json
   { 
-    "ids": [ "1" , "2" , "3" ],
-    "values": [ "4" , "5" ] 
+    "a": [ "1" , "2" , "3" ],
+    "b": [ "4" , "5" ] 
   }
 ```
 
 The following term map:
 ```turtle
     rr:objectMap [
-        rml:gather ( [ rml:reference "ids.*" ] [ rml:reference "values.*" ]) ;
+        rml:gather ( [ rml:reference "a.*" ] [ rml:reference "b.*" ]) ;
         rml:gatherAs rdf:List ;
         rml:strategy rml:cartesianProduct;
     ] ;
@@ -111,5 +107,3 @@ would generate 3*2 = 6 lists by grouping the terms produced by the two term maps
 ("2" "4") ("2" "5")
 ("3" "4") ("3" "5")
 ```
-
-
