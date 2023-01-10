@@ -7,7 +7,9 @@ This section introduces the classes, properties, and constants of the RML Contai
 #### `rml:GatherMap`
 Gather maps are term maps that use [`rml:gather`](#rml-gather) and [`rml:gatherAs`](#rml-gatheras) to generate collections and containers from a list of term maps. 
 
-If a gather map has no template or term type directive, at each iteration it is assumed to be generating a blank node that is the head of the collection or container.
+If a gather map has no `rr:template`, `rr:constant`, or `rml:reference` directive for the identification of a generated resource (`rr:IRI` or `rr:BlankNode`), at each iteration it is assumed to be generating a new (unique) blank node that is the head of the new collection, or a new container. Such a gather map's `rml:gather` property may include multi-valued term maps in its list. A gather map may yield multiple lists or containers. In that case, a new unique blank node for each list or container will be generated.
+
+<!-- TODO: POINT TO EXAMPLE -->
 
 * A `rml:GatherMap` MUST have exactly one [`rml:gather`](#rml-gather) property.
 * A `rml:GatherMap` MUST have exactly one [`rml:gatherAs`](#rml-gatheras) property.
@@ -106,8 +108,8 @@ The following term map:
 would generate 3*2 = 6 lists by grouping the terms produced by the two term maps in the gather map:
 ```turtle
 ("1" "4") ("1" "5") 
-("2" "4") ("2" "4")
-("3" "4") ("3" "4")
+("2" "4") ("2" "5")
+("3" "4") ("3" "5")
 ```
 
 
