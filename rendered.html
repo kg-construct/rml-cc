@@ -1,6 +1,6 @@
-<!DOCTYPE html><html dir="ltr" lang="en"><head>
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
 <meta charset="utf-8">
-<meta name="generator" content="ReSpec 32.6.0">
+<meta name="generator" content="ReSpec 32.6.1">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 dfn{cursor:pointer}
@@ -178,6 +178,7 @@ dd{margin-left:0}
 .removeOnSave{display:none}
 }
 </style>
+<meta id="ConnectiveDocSignExtentionInstalled" name="ConnectiveDocSignExtentionInstalled" data-extension-version="1.0.6">
 <meta name="description" content="This document describes the [RML] vocabulary and approach to generating RDF containers and collections [RDF11-Concepts].">
 <style>
 .hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;background:#fafafa}
@@ -289,14 +290,14 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       ]
     }
   ],
-  "publishISODate": "2022-12-07T00:00:00.000Z",
-  "generatedSubtitle": "Unofficial Draft 07 December 2022"
+  "publishISODate": "2022-10-12T00:00:00.000Z",
+  "generatedSubtitle": "Unofficial Draft 12 October 2022"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-UD"></head>
-<body class="h-entry toc-inline"><div class="head">
+<body class="h-entry" data-new-gr-c-s-check-loaded="14.1093.0" data-gr-ext-installed=""><div class="head">
     
     <h1 id="title" class="title">Collections and Containers in RML</h1> 
-    <p id="w3c-state">Unofficial Draft <time class="dt-published" datetime="2022-12-07">07 December 2022</time></p>
+    <p id="w3c-state">Unofficial Draft <time class="dt-published" datetime="2022-10-12">12 October 2022</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
@@ -341,7 +342,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
 <section id="sotd" class="override introductory"><h2>Status of This Document</h2>
 <p>This specification was published by the <a href="https://www.w3.org/groups/cg/kg-construct">Knowledge Graph Construction Community Group</a>. It is not a W3C Standard nor is it on the W3C Standards Track. Please note that under the <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a> there is a limited opt-out and other conditions apply. Learn more about <a href="https://www.w3.org/community/">W3C Community and Business Groups</a>.</p>
 <p><a href="https://github.com/kg-construct/collection-containers-spec/issues">GitHub Issues</a> are preferred for discussion of this specification.</p>
-</section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">1. </bdi>Conformance</a></li><li class="tocline"><a class="tocxref" href="#overview"><bdi class="secno">2. </bdi>Overview and Example</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#runningexample"><bdi class="secno">2.1 </bdi>Running example</a></li><li class="tocline"><a class="tocxref" href="#simpleexample"><bdi class="secno">2.2 </bdi>A simple example</a></li><li class="tocline"><a class="tocxref" href="#identifying-collections-and-containers"><bdi class="secno">2.3 </bdi>Identifying collections and containers</a></li></ol></li><li class="tocline"><a class="tocxref" href="#vocabulary"><bdi class="secno">3. </bdi>Vocabulary and definitions</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#classes"><bdi class="secno">3.1 </bdi>Classes</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#rml-gathermap"><bdi class="secno">3.1.1 </bdi><code>rml:GatherMap</code></a></li></ol></li><li class="tocline"><a class="tocxref" href="#properties"><bdi class="secno">3.2 </bdi>Properties</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#rml-gather"><bdi class="secno">3.2.1 </bdi><code>rml:gather</code></a></li><li class="tocline"><a class="tocxref" href="#rml-strategy"><bdi class="secno">3.2.2 </bdi><code>rml:strategy</code></a></li><li class="tocline"><a class="tocxref" href="#rml-gatheras"><bdi class="secno">3.2.3 </bdi><code>rml:gatherAs</code></a></li><li class="tocline"><a class="tocxref" href="#rml-allowemptylistandcontainer"><bdi class="secno">3.2.4 </bdi><code>rml:allowEmptyListAndContainer</code></a></li></ol></li><li class="tocline"><a class="tocxref" href="#constants"><bdi class="secno">3.3 </bdi>Constants</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#rml-append"><bdi class="secno">3.3.1 </bdi><code>rml:append</code></a></li><li class="tocline"><a class="tocxref" href="#rml-cartesianproduct"><bdi class="secno">3.3.2 </bdi><code>rml:cartesianProduct</code></a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#considerations"><bdi class="secno">4. </bdi>Considerations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#identifying-collections-and-containers-0"><bdi class="secno">4.1 </bdi>Identifying collections and containers</a></li><li class="tocline"><a class="tocxref" href="#the-use-of-rr-column"><bdi class="secno">4.2 </bdi>The use of <code>rr:column</code></a></li><li class="tocline"><a class="tocxref" href="#using-a-rml-gathermap-in-various-types-of-term-map"><bdi class="secno">4.3 </bdi>Using a <code>rml:GatherMap</code> in various types of term map</a></li><li class="tocline"><a class="tocxref" href="#valid-rdf-and-well-formedness-of-collections-and-containers"><bdi class="secno">4.4 </bdi>Valid RDF and well-formedness of Collections and Containers</a></li></ol></li><li class="tocline"><a class="tocxref" href="#examples"><bdi class="secno">5. </bdi>Examples</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#dealing-with-empty-collections-and-containers"><bdi class="secno">5.1 </bdi>Dealing with empty collections and containers</a></li><li class="tocline"><a class="tocxref" href="#relationalexample"><bdi class="secno">5.2 </bdi>Relational data example</a></li><li class="tocline"><a class="tocxref" href="#using-referencing-object-map"><bdi class="secno">5.3 </bdi>Using referencing object map</a></li><li class="tocline"><a class="tocxref" href="#gatherinsubject"><bdi class="secno">5.4 </bdi>Using a gather map in a subject map</a></li></ol></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">A. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">A.1 </bdi>Normative references</a></li><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">A.2 </bdi>Informative references</a></li></ol></li></ol></nav>
+</section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">1. </bdi>Conformance</a></li><li class="tocline"><a class="tocxref" href="#overview"><bdi class="secno">2. </bdi>Overview and Example</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#runningexample"><bdi class="secno">2.1 </bdi>Running example</a></li><li class="tocline"><a class="tocxref" href="#simpleexample"><bdi class="secno">2.2 </bdi>A simple example</a></li><li class="tocline"><a class="tocxref" href="#identifying-collections-and-containers"><bdi class="secno">2.3 </bdi>Identifying collections and containers</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#without-rr-template-rr-constant-or-rml-reference"><bdi class="secno">2.3.1 </bdi>Without <code>rr:template</code>, <code>rr:constant</code>, or <code>rml:reference</code></a></li><li class="tocline"><a class="tocxref" href="#with-rr-template-rr-constant-or-rml-reference"><bdi class="secno">2.3.2 </bdi>With <code>rr:template</code>, <code>rr:constant</code>, or <code>rml:reference</code></a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#vocabulary"><bdi class="secno">3. </bdi>Vocabulary and definitions</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#classes"><bdi class="secno">3.1 </bdi>Classes</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#gathermapidentification"><bdi class="secno">3.1.1 </bdi><code>rml:GatherMap</code></a></li></ol></li><li class="tocline"><a class="tocxref" href="#properties"><bdi class="secno">3.2 </bdi>Properties</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#rml-gather"><bdi class="secno">3.2.1 </bdi><code>rml:gather</code></a></li><li class="tocline"><a class="tocxref" href="#rml-strategy"><bdi class="secno">3.2.2 </bdi><code>rml:strategy</code></a></li><li class="tocline"><a class="tocxref" href="#rml-gatheras"><bdi class="secno">3.2.3 </bdi><code>rml:gatherAs</code></a></li><li class="tocline"><a class="tocxref" href="#rml-allowemptylistandcontainer"><bdi class="secno">3.2.4 </bdi><code>rml:allowEmptyListAndContainer</code></a></li></ol></li><li class="tocline"><a class="tocxref" href="#constants"><bdi class="secno">3.3 </bdi>Constants</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#rml-append"><bdi class="secno">3.3.1 </bdi><code>rml:append</code></a></li><li class="tocline"><a class="tocxref" href="#rml-cartesianproduct"><bdi class="secno">3.3.2 </bdi><code>rml:cartesianProduct</code></a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#considerations"><bdi class="secno">4. </bdi>Considerations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#the-use-of-rr-column"><bdi class="secno">4.1 </bdi>The use of <code>rr:column</code></a></li><li class="tocline"><a class="tocxref" href="#using-a-rml-gathermap-in-various-types-of-term-map"><bdi class="secno">4.2 </bdi>Using a <code>rml:GatherMap</code> in various types of term map</a></li><li class="tocline"><a class="tocxref" href="#generating-lists-and-containers-based-on-multiple-iterations"><bdi class="secno">4.3 </bdi>Generating lists and containers based on multiple iterations</a></li><li class="tocline"><a class="tocxref" href="#multiple-iterations-and-multi-valued-term-maps"><bdi class="secno">4.4 </bdi>Multiple iterations and multi-valued term maps</a></li><li class="tocline"><a class="tocxref" href="#well-formedness-of-collections-and-containers"><bdi class="secno">4.5 </bdi>Well-formedness of collections and containers</a></li></ol></li><li class="tocline"><a class="tocxref" href="#examples"><bdi class="secno">5. </bdi>Examples</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#dealing-with-empty-collections-and-containers"><bdi class="secno">5.1 </bdi>Dealing with empty collections and containers</a></li><li class="tocline"><a class="tocxref" href="#relationalexample"><bdi class="secno">5.2 </bdi>Relational data example</a></li><li class="tocline"><a class="tocxref" href="#using-referencing-object-map"><bdi class="secno">5.3 </bdi>Using referencing object map</a></li><li class="tocline"><a class="tocxref" href="#gatherinsubject"><bdi class="secno">5.4 </bdi>Using a gather map in a subject map</a></li></ol></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">A. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">A.1 </bdi>Normative references</a></li><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">A.2 </bdi>Informative references</a></li></ol></li></ol></nav>
 
 <section id="conformance"><div class="header-wrapper"><h2 id="x1-conformance"><bdi class="secno">1. </bdi>Conformance</h2><a class="self-link" href="#conformance" aria-label="Permalink for Section 1."></a></div><p>As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative. Everything else in this specification is normative.</p><p>
         The key words <em class="rfc2119">MAY</em>, <em class="rfc2119">MUST</em>, and <em class="rfc2119">SHOULD</em> in this document
@@ -364,7 +365,7 @@ It also provides simple examples of the generation of RDF collections and contai
 A gather map has a list of term maps that inform the RML processor which RDF terms have to be generated as members of the list or container. 
 The <a href="#rml-gather"><code>rml:gather</code></a> predicate is used to link an instance of <a href="#rml-gathermap"><code>rml:GatherMap</code></a> with a list of term maps. The generation of a collection or container depends on the <code>rml:gatherAs</code> predicate, which may take on any of the following values: <code>rdf:List</code>, <code>rdf:Bag</code>, <code>rdf:Seq</code>,  and <code>rdf:Alt</code>.</p>
 <figure id="fig-graphical-overview-of-rml-s-vocabulary-to-generate-rdf-collections-and-containers">
-  <img src="./resources/images/overview.svg" alt="Graphical overview of RML's vocabulary to generate RDF collections and containers.">
+  <img src="./resources/images/overview.svg" alt="Graphical overview of RML's vocabulary to generate RDF collections and containers." height="886" width="995">
   <figcaption>Figure <bdi class="figno">1</bdi> <span class="fig-title">Graphical overview of RML's vocabulary to generate RDF collections and containers.</span></figcaption>
 </figure>
 
@@ -404,14 +405,15 @@ The <a href="#rml-gather"><code>rml:gather</code></a> predicate is used to link 
     ] ;
   ] ;
 </code></pre>
-<p>The iterator entails one iteration for each document whithin the array.
-Each iteration yields an instance of collection/container whose head node is a blank node.</p>
-<p>We expect the following output:</p>
+<p>If a gather map has no <code>rr:template</code>, <code>rr:constant</code>, or <code>rml:reference</code> directive for the identification of a generated resource (<code>rr:IRI</code> or <code>rr:BlankNode</code>), it is assumed to be generating a new (unique) blank node that is the head of the new collection, or a new container at each iteration. In our example, each iteration yields an instance of a list whose first cons-pair is a blank node. In other words, we expect the following output: </p>
 <pre><code class="turtle hljs" aria-busy="false">  &lt;a&gt; ex:with ("1" "2" "3") .
   &lt;b&gt; ex:with ("4" "5" "6") .
   &lt;c&gt; ex:with ("7" "8" "9") .
 </code></pre>
 </section><section id="identifying-collections-and-containers"><div class="header-wrapper"><h3 id="x2-3-identifying-collections-and-containers"><bdi class="secno">2.3 </bdi>Identifying collections and containers</h3><a class="self-link" href="#identifying-collections-and-containers" aria-label="Permalink for Section 2.3"></a></div>
+<section id="without-rr-template-rr-constant-or-rml-reference"><div class="header-wrapper"><h4 id="x2-3-1-without-rr-template-rr-constant-or-rml-reference"><bdi class="secno">2.3.1 </bdi>Without <code>rr:template</code>, <code>rr:constant</code>, or <code>rml:reference</code></h4><a class="self-link" href="#without-rr-template-rr-constant-or-rml-reference" aria-label="Permalink for Section 2.3.1"></a></div>
+<p>A gather map thus does not require the presence of a <code>rr:template</code>, <code>rr:constant</code>, or <code>rml:reference</code> property and the resulting collections and containers are thus (partly) identified by the iteration. Indeed, such a gather map's <code>rml:gather</code> property may include <em>multi-valued term maps</em> in its list and such gather map may yield multiple lists or containers. In that case, a new unique blank node for each list or container will be generated. The number of lists of containers depends on the <a href="#rml-strategy">strategy</a>.</p>
+</section><section id="with-rr-template-rr-constant-or-rml-reference"><div class="header-wrapper"><h4 id="x2-3-2-with-rr-template-rr-constant-or-rml-reference"><bdi class="secno">2.3.2 </bdi>With <code>rr:template</code>, <code>rr:constant</code>, or <code>rml:reference</code></h4><a class="self-link" href="#with-rr-template-rr-constant-or-rml-reference" aria-label="Permalink for Section 2.3.2"></a></div>
 <p>If we now provide a template in the object map for identifying a collection/container, then each iteration yields an instance of collection/container whose head node is identified as instructed:</p>
 <pre><code class="turtle hljs" aria-busy="false">  rr:predicateObjectMap [
     rr:predicate ex:with ;
@@ -430,12 +432,10 @@ Each iteration yields an instance of collection/container whose head node is a b
   &lt;c&gt; ex:with &lt;list/c&gt; .
   &lt;list/c&gt; rdf:first "7" ; rdf:rest ("8" "9") .
 </code></pre>
-</section></section>
+</section></section></section>
 <section id="vocabulary-and-definitions"><div class="header-wrapper"><h2 id="vocabulary"><bdi class="secno">3. </bdi>Vocabulary and definitions</h2><a class="self-link" href="#vocabulary" aria-label="Permalink for Section 3."></a></div><p>This section introduces the classes, properties, and constants of the RML Containers and Collections specification.</p>
 <section id="classes"><div class="header-wrapper"><h3 id="x3-1-classes"><bdi class="secno">3.1 </bdi>Classes</h3><a class="self-link" href="#classes" aria-label="Permalink for Section 3.1"></a></div>
-<section id="rml-gathermap"><div class="header-wrapper"><h4 id="x3-1-1-rml-gathermap"><bdi class="secno">3.1.1 </bdi><code>rml:GatherMap</code></h4><a class="self-link" href="#rml-gathermap" aria-label="Permalink for Section 3.1.1"></a></div>
-<p>Gather maps are term maps that use <a href="#rml-gather"><code>rml:gather</code></a> and <a href="#rml-gatheras"><code>rml:gatherAs</code></a> to generate collections and containers from a list of term maps. </p>
-<p>If a gather map has no template or term type directive, at each iteration it is assumed to be generating a blank node that is the head of the collection or container.</p>
+<section id="rml-gathermap"><div class="header-wrapper"><h4 id="gathermapidentification"><bdi class="secno">3.1.1 </bdi><code>rml:GatherMap</code></h4><a class="self-link" href="#gathermapidentification" aria-label="Permalink for Section 3.1.1"></a></div><p>Gather maps are term maps that use <a href="#rml-gather"><code>rml:gather</code></a> and <a href="#rml-gatheras"><code>rml:gatherAs</code></a> to generate collections and containers from a list of term maps. </p>
 <ul>
 <li>A <code>rml:GatherMap</code> <em class="rfc2119">MUST</em> have exactly one <a href="#rml-gather"><code>rml:gather</code></a> property.</li>
 <li>A <code>rml:GatherMap</code> <em class="rfc2119">MUST</em> have exactly one <a href="#rml-gatheras"><code>rml:gatherAs</code></a> property.</li>
@@ -473,13 +473,13 @@ This specification defines <a href="#rml-append"><code>rml:append</code></a> and
 Used as the object of property <a href="rml-strategy"><code>rml:strategy</code></a>, it informs the processor that the sets of RDF terms generated by each term map of the gather map are to be appended within the collection or container. The order os that in which the term maps are declared in the gather map. See the example below.</p>
 <p>For the input document:</p>
 <pre><code class="json hljs" aria-busy="false">  { 
-    <span class="hljs-attr">"ids"</span>: [ <span class="hljs-string">"1"</span> , <span class="hljs-string">"2"</span> , <span class="hljs-string">"3"</span> ],
-    <span class="hljs-attr">"values"</span>: [ <span class="hljs-string">"4"</span> , <span class="hljs-string">"5"</span> ] 
+    <span class="hljs-attr">"a"</span>: [ <span class="hljs-string">"1"</span> , <span class="hljs-string">"2"</span> , <span class="hljs-string">"3"</span> ],
+    <span class="hljs-attr">"b"</span>: [ <span class="hljs-string">"4"</span> , <span class="hljs-string">"5"</span> ] 
   }
 </code></pre>
 <p>The following term map:</p>
 <pre><code class="turtle hljs" aria-busy="false">    rr:objectMap [
-        rml:gather ( [ rml:reference "ids.*" ] [ rml:reference "values.*" ]) ;
+        rml:gather ( [ rml:reference "a.*" ] [ rml:reference "b.*" ]) ;
         rml:gatherAs rdf:List ;
         rml:strategy rml:append;   # this is the default strategy
     ] ;
@@ -494,91 +494,117 @@ Therefore, this constructs as many collections or containers as the product of t
 See the example below.</p>
 <p>For the input document:</p>
 <pre><code class="json hljs" aria-busy="false">  { 
-    <span class="hljs-attr">"ids"</span>: [ <span class="hljs-string">"1"</span> , <span class="hljs-string">"2"</span> , <span class="hljs-string">"3"</span> ],
-    <span class="hljs-attr">"values"</span>: [ <span class="hljs-string">"4"</span> , <span class="hljs-string">"5"</span> ] 
+    <span class="hljs-attr">"a"</span>: [ <span class="hljs-string">"1"</span> , <span class="hljs-string">"2"</span> , <span class="hljs-string">"3"</span> ],
+    <span class="hljs-attr">"b"</span>: [ <span class="hljs-string">"4"</span> , <span class="hljs-string">"5"</span> ] 
   }
 </code></pre>
 <p>The following term map:</p>
 <pre><code class="turtle hljs" aria-busy="false">    rr:objectMap [
-        rml:gather ( [ rml:reference "ids.*" ] [ rml:reference "values.*" ]) ;
+        rml:gather ( [ rml:reference "a.*" ] [ rml:reference "b.*" ]) ;
         rml:gatherAs rdf:List ;
         rml:strategy rml:cartesianProduct;
     ] ;
 </code></pre>
 <p>would generate 3*2 = 6 lists by grouping the terms produced by the two term maps in the gather map:</p>
 <pre><code class="turtle hljs" aria-busy="false">("1" "4") ("1" "5") 
-("2" "4") ("2" "4")
-("3" "4") ("3" "4")
+("2" "4") ("2" "5")
+("3" "4") ("3" "5")
 </code></pre>
 </section></section></section>
-<section id="considerations-0"><div class="header-wrapper"><h2 id="considerations"><bdi class="secno">4. </bdi>Considerations</h2><a class="self-link" href="#considerations" aria-label="Permalink for Section 4."></a></div><section id="identifying-collections-and-containers-0"><div class="header-wrapper"><h3 id="x4-1-identifying-collections-and-containers"><bdi class="secno">4.1 </bdi>Identifying collections and containers</h3><a class="self-link" href="#identifying-collections-and-containers-0" aria-label="Permalink for Section 4.1"></a></div>
-<p>An <code>rr:template</code> or <code>rml:reference</code> may be provided for the generation of blank node IDs (<code>rr:BlankNode</code>) or IRIs (<code>rr:IRI</code>). In some cases, there are challenges when identifiers are generated. The challenge generating identifiers for collections and containers: one needs to be careful when a gather map uses multi-valued references in the template or generates multiple collections and containers:</p>
-<ul>
-<li>In the former, the gather map must return “deep” copies of collections. This is to avoid only generating a new IRI or blank node identifier for the first cons-pair and hence having multiple lists sharing the same sublist.</li>
-<li>In the latter, we may end up with multiple lists and containers sharing the same blank node identifier or IRI, which may produce valid RDF, but nonsensical containers and collections.</li>
-</ul>
-<p>If no <code>rr:template</code> or <code>rml:reference</code> is provided for generating blank node IDs (<code>rr:BlankNode</code>) or IRIs (<code>rr:IRI</code>), then each iteration generates a new blank node identifier for the collection or container.</p>
-
-
-</section><section id="the-use-of-rr-column"><div class="header-wrapper"><h3 id="x4-2-the-use-of-rr-column"><bdi class="secno">4.2 </bdi>The use of <code>rr:column</code></h3><a class="self-link" href="#the-use-of-rr-column" aria-label="Permalink for Section 4.2"></a></div>
+<section id="considerations-0"><div class="header-wrapper"><h2 id="considerations"><bdi class="secno">4. </bdi>Considerations</h2><a class="self-link" href="#considerations" aria-label="Permalink for Section 4."></a></div><section id="the-use-of-rr-column"><div class="header-wrapper"><h3 id="x4-1-the-use-of-rr-column"><bdi class="secno">4.1 </bdi>The use of <code>rr:column</code></h3><a class="self-link" href="#the-use-of-rr-column" aria-label="Permalink for Section 4.1"></a></div>
 <p>In RML, <code>rr:column</code> is considered a subproperty of <code>rml:reference</code>. One can still avail of <code>rr:column</code> when creating mappings for relational databases. The use of <code>rr:column</code> is not discouraged, but one is encouraged to favor <code>rml:reference</code>. </p>
-</section><section id="using-a-rml-gathermap-in-various-types-of-term-map"><div class="header-wrapper"><h3 id="x4-3-using-a-rml-gathermap-in-various-types-of-term-map"><bdi class="secno">4.3 </bdi>Using a <code>rml:GatherMap</code> in various types of term map</h3><a class="self-link" href="#using-a-rml-gathermap-in-various-types-of-term-map" aria-label="Permalink for Section 4.3"></a></div>
+</section><section id="using-a-rml-gathermap-in-various-types-of-term-map"><div class="header-wrapper"><h3 id="x4-2-using-a-rml-gathermap-in-various-types-of-term-map"><bdi class="secno">4.2 </bdi>Using a <code>rml:GatherMap</code> in various types of term map</h3><a class="self-link" href="#using-a-rml-gathermap-in-various-types-of-term-map" aria-label="Permalink for Section 4.2"></a></div>
 <p>Although most examples demonstrate the use of a gather map in the context of an object map, a gather map is a regular term map.
 As such, it can be used in other types of term maps such as a subject or predicate map.</p>
 <p>Term maps generate single RDF terms to be used as the terms of RDF triples.
 If such a term map generates a collection or container by means of a gather map, the term retained to form an RDF triple is the head node of the collection or container.
 In the case of an RDF list, this is the node that is the subject of the first <code>rdf:first</code> predicate.</p>
 <p>The <a href="#gatherinsubject">examples section</a> demonstrates how a gather map can be used within a subject map.</p>
-</section><section id="valid-rdf-and-well-formedness-of-collections-and-containers"><div class="header-wrapper"><h3 id="x4-4-valid-rdf-and-well-formedness-of-collections-and-containers"><bdi class="secno">4.4 </bdi>Valid RDF and well-formedness of Collections and Containers</h3><a class="self-link" href="#valid-rdf-and-well-formedness-of-collections-and-containers" aria-label="Permalink for Section 4.4"></a></div>
-<p>The mapping language proposed here guarantees the generation of valid RDF. However, the well-formedness of RDF collections and containers is up to the person creating and managing the mappings. An RML processor with support for gather maps may include a validator for collections and containers, but this is not required. In this section, we provide an example of a mapping that generates valid RDF but ill-formed lists.</p>
-<p>Given the JSON document below.</p>
+</section><section id="generating-lists-and-containers-based-on-multiple-iterations"><div class="header-wrapper"><h3 id="x4-3-generating-lists-and-containers-based-on-multiple-iterations"><bdi class="secno">4.3 </bdi>Generating lists and containers based on multiple iterations</h3><a class="self-link" href="#generating-lists-and-containers-based-on-multiple-iterations" aria-label="Permalink for Section 4.3"></a></div>
+<p>In most of our examples, we have covered the cases where we either did not provide an <code>rr:template</code>, <code>rr:constant</code> or <code>rml:reference</code> directive for the collection or container to be generated. Each collection or container is identified by the iteration. When a gather map generates more than one list or container, then a new blank node identifier is generated for each list or container.</p>
+<p>In this section, we will exemplify what must happen when an <code>rr:template</code>, <code>rr:constant</code> or <code>rml:reference</code> is provided to a gather map that has multi-valied term maps in its <code>rml:gather</code>.</p>
+<p>We use the document JSON below. Notice that there are two JSON object with the value <code>"a"</code> for <code>"id"</code>.</p>
 <pre><code class="json hljs" aria-busy="false">[ 
-  { <span class="hljs-attr">"id"</span>: <span class="hljs-string">"a"</span>,  <span class="hljs-attr">"values"</span>: [ <span class="hljs-string">"1"</span> , <span class="hljs-string">"2"</span> ] },
-  { <span class="hljs-attr">"id"</span>: <span class="hljs-string">"a"</span>,  <span class="hljs-attr">"values"</span>: [ <span class="hljs-string">"3"</span> , <span class="hljs-string">"4"</span> ] },
-  { <span class="hljs-attr">"id"</span>: <span class="hljs-string">"b"</span>,  <span class="hljs-attr">"values"</span>: [ <span class="hljs-string">"5"</span> , <span class="hljs-string">"6"</span> ] } 
+  { <span class="hljs-attr">"id"</span>: <span class="hljs-string">"a"</span>,  <span class="hljs-attr">"values"</span>: [ <span class="hljs-string">"1"</span> , <span class="hljs-string">"2"</span> , <span class="hljs-string">"3"</span> ] },
+  { <span class="hljs-attr">"id"</span>: <span class="hljs-string">"b"</span>,  <span class="hljs-attr">"values"</span>: [ <span class="hljs-string">"4"</span> , <span class="hljs-string">"5"</span> , <span class="hljs-string">"6"</span> ] },
+  { <span class="hljs-attr">"id"</span>: <span class="hljs-string">"a"</span>,  <span class="hljs-attr">"values"</span>: [ <span class="hljs-string">"7"</span> , <span class="hljs-string">"8"</span> , <span class="hljs-string">"9"</span> ] } 
 ]
 </code></pre>
-<p>We are going to create an RML mapping that will generate valid RDF, but ill-formed lists. In the mapping below, we will generate blank nodes who are identified by the value of <code>id</code> in each element of our JSON document.</p>
-<pre><code class="turtle hljs" aria-busy="false">@prefix rml: &lt;http://semweb.mmlab.be/ns/rml#&gt;.
-@prefix rr:  &lt;http://www.w3.org/ns/r2rml#&gt;.
-@prefix ql:  &lt;http://semweb.mmlab.be/ns/ql#&gt;.
-@prefix ex:  &lt;http://example.com/ns&gt;.
-@base        &lt;http://example.com/ns&gt;.
-
-&lt;#TM&gt; a rr:TriplesMap;
-  rml:logicalSource [
-    rml:source "data.json" ;
-    rml:referenceFormulation ql:JSONPath ;
-    rml:iterator "$.*" ;
-  ] ;
-
-  rr:subjectMap [
-    rr:template "{id}" ;
-  ] ;
-
-  rr:predicateObjectMap [
+<p>The following gather map without directives for a blank node identifier or IRI must generate three lists, two related to <code>&lt;a&gt;</code> and one to <code>&lt;b&gt;</code>.</p>
+<p>Predicate object map:</p>
+<pre><code class="turtle hljs" aria-busy="false">  rr:predicateObjectMap [
     rr:predicate ex:with ;
     rr:objectMap [
-        # Generate blank node identifiers for lists based on the value of "id"
-        rr:template "{id}" ;
         rml:gather ( [ rml:reference "values.*" ; ] ) ;
         rml:gatherAs rdf:List ;
     ] ;
   ] ;
-.
 </code></pre>
-<p>The first two iterations will refer to the same blank node, as they both have the value <code>"a"</code> for the key <code>id</code>. As two lists are being generated, this blank node will have two <code>rdf:first</code> and two <code>rdf:rest</code> properties as that blank node is used for two cons-pairs. This cons-pair is ill-formed and hence so are the lists. The third iteration does yield a well-formed list. The output generated with this mapping is, however, valid RDF.</p>
-<pre><code class="turtle hljs" aria-busy="false">@prefix ex:  &lt;http://example.org/ns#&gt; .
-@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-
-ex:a    ex:with     _:b0 .
-
-_:b0    rdf:first   1 , 3 ;
-        rdf:rest    ( 2 ) ;
-        rdf:rest    ( 4 ) .
-
-ex:b    ex:with (5 6) .
+<p>Expected output:</p>
+<pre><code class="turtle hljs" aria-busy="false">  &lt;a&gt; ex:with ("1" "2" "3"), ("7" "8" "9")  .
+  &lt;b&gt; ex:with ("4" "5" "6") .
 </code></pre>
+<p>When an <code>rr:template</code>, <code>rr:constant</code> or <code>rml:reference</code> is provided, then the processor concatenates (i.e., append) the new collection or container to the previous one. For example, if we add a <code>rr:template</code> directive to the predicate object map:</p>
+<pre><code class="turtle hljs" aria-busy="false">  rr:predicateObjectMap [
+    rr:predicate ex:with ;
+    rr:objectMap [
+        rr:template "list/{id}" ;
+        rml:gather ( [ rml:reference "values.*" ; ] ) ;
+        rml:gatherAs rdf:List ;
+    ] ;
+  ] ;
+</code></pre>
+<p>Then the processor must generate following output:</p>
+<pre><code class="turtle hljs" aria-busy="false">  &lt;a&gt; ex:with &lt;list/a&gt; .
+  &lt;list/a&gt; rdf:first "1" ; rdf:rest ("2" "3" "7" "8" "9") .
+  &lt;b&gt; ex:with &lt;list/b&gt; .
+  &lt;list/b&gt; rdf:first "4" ; rdf:rest ("5" "6") .
+</code></pre>
+<p>It is assumed that a processor will respect the order of the iterations.</p>
+</section><section id="multiple-iterations-and-multi-valued-term-maps"><div class="header-wrapper"><h3 id="x4-4-multiple-iterations-and-multi-valued-term-maps"><bdi class="secno">4.4 </bdi>Multiple iterations and multi-valued term maps</h3><a class="self-link" href="#multiple-iterations-and-multi-valued-term-maps" aria-label="Permalink for Section 4.4"></a></div>
+<p>When dealing with multi-valued term maps in a gather map, the default strategy is <code>rml:append</code>. Given the following document an mapping:</p>
+<pre><code class="json hljs" aria-busy="false">[ 
+  { <span class="hljs-attr">"id"</span>: <span class="hljs-string">"a"</span>,  <span class="hljs-attr">"values1"</span>: [ <span class="hljs-string">"1"</span> ], <span class="hljs-attr">"values2"</span>: [ <span class="hljs-string">"a"</span> , <span class="hljs-string">"b"</span> ] },
+  { <span class="hljs-attr">"id"</span>: <span class="hljs-string">"b"</span>,  <span class="hljs-attr">"values1"</span>: [ <span class="hljs-string">"3"</span> , <span class="hljs-string">"4"</span> ], <span class="hljs-attr">"values2"</span>: [ <span class="hljs-string">"c"</span> , <span class="hljs-string">"d"</span> ] },
+  { <span class="hljs-attr">"id"</span>: <span class="hljs-string">"a"</span>,  <span class="hljs-attr">"values1"</span>: [ <span class="hljs-string">"5"</span> , <span class="hljs-string">"6"</span> ], <span class="hljs-attr">"values2"</span>: [ <span class="hljs-string">"e"</span> ] } 
+]
+</code></pre>
+<pre><code class="turtle hljs" aria-busy="false">  rr:predicateObjectMap [
+    rr:predicate ex:with ;
+    rr:objectMap [
+        rr:template "list/{id}" ;
+        rml:gather ( [ rml:reference "values1.*" ; ] [ rml:reference "values2.*" ; ] ) ;
+        rml:gatherAs rdf:List ;
+    ] ;
+  ] ;
+</code></pre>
+<p>The expected output is:</p>
+<pre><code class="turtle hljs" aria-busy="false">  &lt;a&gt; ex:with &lt;list/a&gt; .
+  &lt;list/a&gt; rdf:first "1" ; rdf:rest ("a" "b" "5" "6" "e") .
+  &lt;b&gt; ex:with &lt;list/b&gt; .
+  &lt;list/b&gt; rdf:first "3" ; rdf:rest ("4" "c" "d") .
+</code></pre>
+<p>When changing the default strategy to <code>rml:cartesianProduct</code>, however, each iteration will yield multiple lists. As they are all identified with the same template, all those lists are combined into one list as described in the previous section. In other words, the following mapping will yield the following result:</p>
+<pre><code class="turtle hljs" aria-busy="false">  rr:predicateObjectMap [
+    rr:predicate ex:with ;
+    rr:objectMap [
+        rr:template "list/{id}" ;
+        rml:gather ( [ rml:reference "values1.*" ; ] [ rml:reference "values2.*" ; ] ) ;
+        rml:gatherAs rdf:List ;
+        rml:strategy rml:cartesianProduct ;
+    ] ;
+  ] ;
+</code></pre>
+<pre><code class="turtle hljs" aria-busy="false">  &lt;a&gt; ex:with &lt;list/a&gt; .
+  &lt;list/a&gt; rdf:first "1" ; rdf:rest ("a" "1" "b" "5" "e" "6" "e") .
+  &lt;b&gt; ex:with &lt;list/b&gt; .
+  &lt;list/b&gt; rdf:first "3" ; rdf:rest ("c" "3" "d" "4" "c" "4" "d") .
+</code></pre>
+</section><section id="well-formedness-of-collections-and-containers"><div class="header-wrapper"><h3 id="x4-5-well-formedness-of-collections-and-containers"><bdi class="secno">4.5 </bdi>Well-formedness of collections and containers</h3><a class="self-link" href="#well-formedness-of-collections-and-containers" aria-label="Permalink for Section 4.5"></a></div>
+<p>There is an important difference between valid RDF and well-formed containers and collections. The following RDF is valid, though the collection is ill-formed as the first cons-pair has two <code>rdf:rest</code> properties.</p>
+<pre><code aria-busy="false" class="hljs css">ex:illformed rdf:first <span class="hljs-number">1</span> ; rdf:rest (<span class="hljs-number">2</span>, <span class="hljs-number">3</span>), (<span class="hljs-number">4</span>, <span class="hljs-number">5</span>) .
+</code></pre>
+<p>An RML collection and container validator (RMLCCV) is a system that checks for the well-formedness of collections and containers. The RMLCCV <em class="rfc2119">MUST</em> report on any ill-formed collections and containers that are raised in the RDF generation process. An RML processor may include an RMLCCV, but this is not required.</p>
 </section></section>
 <section id="examples-0"><div class="header-wrapper"><h2 id="examples"><bdi class="secno">5. </bdi>Examples</h2><a class="self-link" href="#examples" aria-label="Permalink for Section 5."></a></div><p>In this section, we present additional examples and describe the expected output.</p>
 <section id="dealing-with-empty-collections-and-containers"><div class="header-wrapper"><h3 id="x5-1-dealing-with-empty-collections-and-containers"><bdi class="secno">5.1 </bdi>Dealing with empty collections and containers</h3><a class="self-link" href="#dealing-with-empty-collections-and-containers" aria-label="Permalink for Section 5.1"></a></div>
@@ -1012,4 +1038,4 @@ function hidePanel(panel) {
   panel.hidden = true;
   panel.classList.remove("docked");
 }
-})()</script><script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script></body></html>
+})()</script><script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

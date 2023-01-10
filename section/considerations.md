@@ -77,7 +77,58 @@ Then the processor must generate following output:
 
 It is assumed that a processor will respect the order of the iterations.
 
-<! -- ### Multiple iterations and multi-valued term maps -->
+### Multiple iterations and multi-valued term maps
+
+When dealing with multi-valued term maps in a gather map, the default strategy is `rml:append`. Given the following document an mapping:
+
+```json
+[ 
+  { "id": "a",  "values1": [ "1" ], "values2": [ "a" , "b" ] },
+  { "id": "b",  "values1": [ "3" , "4" ], "values2": [ "c" , "d" ] },
+  { "id": "a",  "values1": [ "5" , "6" ], "values2": [ "e" ] } 
+]
+```
+
+```turtle
+  rr:predicateObjectMap [
+    rr:predicate ex:with ;
+    rr:objectMap [
+        rr:template "list/{id}" ;
+        rml:gather ( [ rml:reference "values1.*" ; ] [ rml:reference "values2.*" ; ] ) ;
+        rml:gatherAs rdf:List ;
+    ] ;
+  ] ;
+```
+
+The expected output is:
+
+```turtle
+  <a> ex:with <list/a> .
+  <list/a> rdf:first "1" ; rdf:rest ("a" "b" "5" "6" "e") .
+  <b> ex:with <list/b> .
+  <list/b> rdf:first "3" ; rdf:rest ("4" "c" "d") .
+```
+
+When changing the default strategy to `rml:cartesianProduct`, however, each iteration will yield multiple lists. As they are all identified with the same template, all those lists are combined into one list as described in the previous section. In other words, the following mapping will yield the following result:
+
+```turtle
+  rr:predicateObjectMap [
+    rr:predicate ex:with ;
+    rr:objectMap [
+        rr:template "list/{id}" ;
+        rml:gather ( [ rml:reference "values1.*" ; ] [ rml:reference "values2.*" ; ] ) ;
+        rml:gatherAs rdf:List ;
+        rml:strategy rml:cartesianProduct ;
+    ] ;
+  ] ;
+```
+
+```turtle
+  <a> ex:with <list/a> .
+  <list/a> rdf:first "1" ; rdf:rest ("a" "1" "b" "5" "e" "6" "e") .
+  <b> ex:with <list/b> .
+  <list/b> rdf:first "3" ; rdf:rest ("c" "3" "d" "4" "c" "4" "d") .
+```
 
 ### Well-formedness of collections and containers
 
