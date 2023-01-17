@@ -1,4 +1,4 @@
-## Examples {#examples}
+## Examples (Informative) {#examples}
 
 In this section, we present additional examples and describe the expected output.
 
@@ -30,7 +30,7 @@ However, when we override the value for this property and set it to true:
   ] ;
 ```
 
-then the predicate object map will generate:
+the predicate object map will generate:
 
 ```turtle
   <a> ex:with ("1" "2" "3") .
@@ -54,7 +54,7 @@ In other words, when the following predicate object map is used:
   ] ;
 ```
 
-then the docmment with `"id": "d"` entails an empty list, that is a list whose head node is `rdf:nil` and therefore has no IRI.
+then the document with `"id": "d"` entails an empty list, that is a list whose head node is `rdf:nil` and therefore has no IRI.
 We expect the following output where
 
 ```turtle
