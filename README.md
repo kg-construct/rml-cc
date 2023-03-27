@@ -1,6 +1,6 @@
 # Collections and Containers in RML specification
 
-Repository for https://w3id.org/kg-construct/collections-containers
+Repository for https://w3id.org/kg-construct/rml-collections-containers
 
 ## Quickstart
 
@@ -13,4 +13,4 @@ Repository for https://w3id.org/kg-construct/collections-containers
 - Save as snapshot to `rendered.html` [using the respec functionality](https://respec.org/docs/#using-browser)
 - Run `node publish.js` to get the `index.html` + archived version in the `dist` folder
 
-The `dist` folder contents should mimic the contents on https://w3id.org/kg-construct/collections-containers.
+The `dist` folder contents should mimic the contents on https://w3id.org/kg-construct/rml-collections-containers.
