@@ -11,11 +11,11 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @base <http://w3id.org/rml/> .
 
-<http://w3id.org/rml/> rdf:type owl:Ontology ;
+<http://w3id.org/rml/cc/> rdf:type owl:Ontology ;
                         dc:description "RML module to generate RDF collections and containers"@en ;
                         dc:modified "2023-04-05" ;
                         dc:title "RML-Containers"@en ;
-                        vann:preferredNamespaceUri "http://w3id.org/rml/cc" .
+                        vann:preferredNamespaceUri "http://w3id.org/rml/cc/" .
 
 #################################################################
 #    Annotation properties
