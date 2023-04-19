@@ -1,0 +1,171 @@
+@prefix : <http://w3id.org/rml/cc/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://w3id.org/rml/cc/> .
+
+<http://w3id.org/rml/cc/> rdf:type owl:Ontology ;
+                           <http://purl.org/dc/elements/1.1/contributor> "Ana Iglesias Molina" ,
+                                                                         "Christophe Debruyne" ,
+                                                                         "Franck Michel" ;
+                           <http://purl.org/dc/elements/1.1/description> "RML module to generate RDF collections and containers"@en ;
+                           <http://purl.org/dc/elements/1.1/license> <http://purl.org/NET/rdflicense/cc-by4.0> ;
+                           <http://purl.org/dc/elements/1.1/modified> "2023-04-19" ;
+                           <http://purl.org/dc/elements/1.1/title> "RML-Containers"@en ;
+                           <http://purl.org/vocab/vann/preferredNamespaceUri> "http://w3id.org/rml/cc/" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://creativecommons.org/ns#license
+<http://creativecommons.org/ns#license> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/contributor
+<http://purl.org/dc/elements/1.1/contributor> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/creator
+<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/description
+<http://purl.org/dc/elements/1.1/description> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/issued
+<http://purl.org/dc/elements/1.1/issued> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/license
+<http://purl.org/dc/elements/1.1/license> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/modified
+<http://purl.org/dc/elements/1.1/modified> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/publisher
+<http://purl.org/dc/elements/1.1/publisher> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+<http://purl.org/dc/elements/1.1/title> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+<http://purl.org/vocab/vann/preferredNamespacePrefix> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespaceUri
+<http://purl.org/vocab/vann/preferredNamespaceUri> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.linkedmodel.org/schema/vaem#acronym
+<http://www.linkedmodel.org/schema/vaem#acronym> rdf:type owl:AnnotationProperty .
+
+
+###  http://xmlns.com/foaf/0.1/name
+<http://xmlns.com/foaf/0.1/name> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://w3id.org/rml/gather
+<http://w3id.org/rml/gather> rdf:type owl:ObjectProperty ;
+                             rdfs:domain <http://w3id.org/rml/GatherMap> ;
+                             rdfs:comment "Specifies where the terms of a collection or container come from."@en ;
+                             rdfs:isDefinedBy <http://w3id.org/rml/cc/> ;
+                             rdfs:label "gather" .
+
+
+###  http://w3id.org/rml/gatherAs
+<http://w3id.org/rml/gatherAs> rdf:type owl:ObjectProperty ;
+                               rdfs:domain <http://w3id.org/rml/GatherMap> ;
+                               rdfs:range [ rdf:type owl:Class ;
+                                            owl:unionOf ( rdf:Alt
+                                                          rdf:Bag
+                                                          rdf:List
+                                                          rdf:Seq
+                                                        )
+                                          ] ;
+                               rdfs:comment "Relates a GatherMap with the desired result type of collection or container."@en ;
+                               rdfs:isDefinedBy <http://w3id.org/rml/cc/> ;
+                               rdfs:label "gather as" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://w3id.org/rml/allowEmptyListAndContainer
+<http://w3id.org/rml/allowEmptyListAndContainer> rdf:type owl:DatatypeProperty ;
+                                                 rdfs:domain <http://w3id.org/rml/GatherMap> ;
+                                                 rdfs:range xsd:boolean ;
+                                                 rdfs:comment "Indicates the behavior of a GatherMap in case rml:gather does not yield any element"@en ;
+                                                 rdfs:isDefinedBy <http://w3id.org/rml/cc/> ;
+                                                 rdfs:label "allow empty list and container" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://w3id.org/rml/GatherMap
+<http://w3id.org/rml/GatherMap> rdf:type owl:Class ;
+                                rdfs:subClassOf <http://w3id.org/rml/TermMap> ;
+                                rdfs:comment "Denotes a term map that generates a collection (rdf:List) or container (rdf:Bag, rdf:Seq, rdf:Alt)."@en ;
+                                rdfs:isDefinedBy <http://w3id.org/rml/cc/> ;
+                                rdfs:label "Gather Map" .
+
+
+###  http://w3id.org/rml/Strategy
+<http://w3id.org/rml/Strategy> rdf:type owl:Class .
+
+
+###  http://w3id.org/rml/TermMap
+<http://w3id.org/rml/TermMap> rdf:type owl:Class .
+
+
+###  http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt
+rdf:Alt rdf:type owl:Class .
+
+
+###  http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag
+rdf:Bag rdf:type owl:Class .
+
+
+###  http://www.w3.org/1999/02/22-rdf-syntax-ns#List
+rdf:List rdf:type owl:Class .
+
+
+###  http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq
+rdf:Seq rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://w3id.org/rml/append
+<http://w3id.org/rml/append> rdf:type owl:NamedIndividual ,
+                                      <http://w3id.org/rml/Strategy> ;
+                             rdfs:comment "Informs that the sets of RDF terms generated by each TermMap of the GatherMap are to be appended within the collection or container."@en ;
+                             rdfs:isDefinedBy <http://w3id.org/rml/cc/> ;
+                             rdfs:label "Append" .
+
+
+###  http://w3id.org/rml/cartessianProduct
+<http://w3id.org/rml/cartessianProduct> rdf:type owl:NamedIndividual ,
+                                                 <http://w3id.org/rml/Strategy> ;
+                                        rdfs:comment "Informs that the RDF terms generated by each TermMap of the GatherMap are to be grouped (in the constructed collection or container) by doing a cartesian product of these terms."@en ;
+                                        rdfs:isDefinedBy <http://w3id.org/rml/cc/> ;
+                                        rdfs:label "Cartessian Product" .
+
+
+###  Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/

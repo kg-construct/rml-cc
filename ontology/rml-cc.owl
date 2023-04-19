@@ -13,8 +13,12 @@
 
 <http://w3id.org/rml/cc/> rdf:type owl:Ontology ;
                         dc:description "RML module to generate RDF collections and containers"@en ;
-                        dc:modified "2023-04-05" ;
+                        dc:modified "2023-04-19" ;
                         dc:title "RML-Containers"@en ;
+                        dc:contributor "Franck Michel" ;
+                        dc:contributor "Christophe Debruyne" ;
+                        dc:contributor "Ana Iglesias Molina" ;
+                        dc:license <http://purl.org/NET/rdflicense/cc-by4.0> ;
                         vann:preferredNamespaceUri "http://w3id.org/rml/cc/" .
 
 #################################################################
