@@ -1,6 +1,6 @@
 # Collections and Containers in RML specification
 
-## Web specification
+## Specification
 
 The specification webpage is generated from directory [/spec](spec).
 
