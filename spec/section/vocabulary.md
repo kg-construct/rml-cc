@@ -64,26 +64,26 @@ Used as the object of property [`rml:strategy`](rml-strategy), it informs the pr
 
 
 For the input document:
-```json
+<pre class="ex-input">
   { 
     "a": [ "1" , "2" , "3" ],
     "b": [ "4" , "5" ] 
   }
-```
+</pre>
 
 The following term map:
-```turtle
+<pre class="ex-mapping">
     rr:objectMap [
         rml:gather ( [ rml:reference "a.*" ] [ rml:reference "b.*" ]) ;
         rml:gatherAs rdf:List ;
         rml:strategy rml:append;   # this is the default strategy
     ] ;
-```
+</pre>
 
 would generate a list by appending the terms produced by the two term maps in the gather map:
-```turtle
+<pre class="ex-output">
   ("1" "2" "3" "4" "5" )
-```
+</pre>
 
 
 #### `rml:cartesianProduct`
@@ -93,25 +93,25 @@ Used as the object of property [`rml:strategy`](rml-strategy), it informs the pr
 Therefore, this constructs as many collections or containers as the product of the number of terms from each term map. Example:
 
 For the input document:
-```json
+<pre class="ex-input">
   { 
     "a": [ "1" , "2" , "3" ],
     "b": [ "4" , "5" ] 
   }
-```
+</pre>
 
 The following term map:
-```turtle
+<pre class="ex-mapping">
     rr:objectMap [
         rml:gather ( [ rml:reference "a.*" ] [ rml:reference "b.*" ]) ;
         rml:gatherAs rdf:List ;
         rml:strategy rml:cartesianProduct;
     ] ;
-```
+</pre>
 
 would generate 3*2 = 6 lists by grouping the terms produced by the two term maps in the gather map:
-```turtle
+<pre class="ex-output">
 ("1" "4") ("1" "5") 
 ("2" "4") ("2" "5")
 ("3" "4") ("3" "5")
-```
+</pre>

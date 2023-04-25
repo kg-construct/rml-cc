@@ -22,15 +22,16 @@ A **named collection or container** is a collection or container whose head node
 
 There is an important difference between valid RDF and well-formed containers and collections. The following RDF is valid, though the collection is ill-formed since the first cons-pair has two `rdf:first` and two `rdf:rest` properties:
 
-```
+<pre class="ex-output">
 ex:illformedList 
   rdf:first 1 ; rdf:rest (2, 3) ;
   rdf:first 4 ; rdf:rest (5, 6) .
-```
+</pre>
 
 Similarly, an ill-formed container would have multiple times the same `rdf:_n` property, e.g.:
-```
-ex:illformedContainer rdf:_1 1 ; rdf:_2 2 ; rdf:_3 3 ; rdf:_1 4 ;.
-```
+
+<pre class="ex-output">
+ex:illformedContainer rdf:_1 1 ; rdf:_2 2 ; rdf:_3 3 ; rdf:_1 4 .
+</pre>
 
 An RML collection and container validator (RMLCCV) is a system that checks for the well-formedness of collections and containers. The RMLCCV MUST report on any ill-formed collections and containers that are raised in the RDF generation process. An RML processor may include an RMLCCV, but this is not required.

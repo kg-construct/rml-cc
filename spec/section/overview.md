@@ -1,112 +1,45 @@
-## Overview and Example (Informative) {#overview}
+## Overview {#overview}
 
-This section gives a brief overview of the RML mapping language. 
-It also provides simple examples of the generation of RDF collections and containers from JSON documents.
+*This section is non-normative.*
 
-Herebelow we present the three main constructs for generating collections and containers. Other predicates, and their use in examples, will be explained further down this document.
+The RDF Mapping Language (RML) [[RML]] is a language for expressing mappings between heterogeneous data and RDF. In RML, rules can be expressed to iterate over a data source and refer to specific data within an iteration. Using these iterators and references, RML rules define how to express data in the data source in RDF. RML is based on and extends R2RML [[R2RML]]. R2RML is defined to express customized mappings only from relational databases to RDF datasets.
 
-An [`rml:GatherMap`](#rml-gathermap) is a term map that generates a collection (`rdf:List`) or container (`rdf:Bag`, `rdf:Seq`, `rdf:Alt`). 
-A gather map has a list of term maps that inform the RML processor which RDF terms have to be generated as members of the list or container. 
-The [`rml:gather`](#rml-gather) predicate is used to link an instance of [`rml:GatherMap`](#rml-gathermap) with a list of term maps. The generation of a collection or container depends on the `rml:gatherAs` predicate, which may take any of the following values: `rdf:List`, `rdf:Bag`, `rdf:Seq`,  and `rdf:Alt`.
-
-The figure below illustrates the GatherMap and its relationships with other entities of the RML model.
-
-<figure>
-  <img src="./resources/images/overview.svg" alt="Graphical overview of RML's vocabulary to generate RDF collections and containers."/>
-  <figcaption>Graphical overview of RML's vocabulary to generate RDF collections and containers.</figcaption>
-</figure>
+This document describes RML-CC:
+an extension of RML that enables the generation of RDF collections and containers with RML.
 
 
-### Running example {#runningexample}
+### Conformance {#conformance}
+As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative. Everything else in this specification is normative.
 
-In this section, the data source consists of a JSON file, `data.json`, containing the following JSON array:
-
-```json
-[ 
-  { "id": "a",  "values": [ "1" , "2" , "3" ] },
-  { "id": "b",  "values": [ "4" , "5" , "6" ] },
-  { "id": "c",  "values": [ "7" , "8" , "9" ] } 
-]
-```
-
-The associated RML mapping starts as follows:
-
-```turtle
-@prefix rml: <http://semweb.mmlab.be/ns/rml#>.
-@prefix rr:  <http://www.w3.org/ns/r2rml#>.
-@prefix ql:  <http://semweb.mmlab.be/ns/ql#>.
-@prefix ex:  <http://example.com/ns>.
-@base        <http://example.com/ns>.
-
-<#TM> a rr:TriplesMap;
-  rml:logicalSource [
-    rml:source "data.json" ;
-    rml:referenceFormulation ql:JSONPath ;
-    rml:iterator "$.*" ;
-  ];
-
-  rr:subjectMap [
-    rr:template "{id}" ;
-  ] ;
-.
-```
-
-Note that the `rml:iterator` in the logical source will yield three [iterations](#iterations), each one providing one of the three sub-documents of the JSON array:
-```json
-  { "id": "a",  "values": [ "1" , "2" , "3" ] }
-  { "id": "b",  "values": [ "4" , "5" , "6" ] }
-  { "id": "c",  "values": [ "7" , "8" , "9" ] } 
-```
+The key words MUST and SHOULD in this document are to be interpreted as 
+described in [BCP 14](https://www.rfc-editor.org/info/bcp14) [[RFC2119]] [[RFC8174]] when, 
+and only when, they appear in all capitals, as shown here.
 
 
-### A simple example {#simpleexample}
+### Document conventions {#conventions}
+We assume readers have basic familiarity with RDF and RML.
 
-Given the JSON document and the RML mapping completed with the following predicate object map:
+In this document, examples assume
+the following namespace prefix bindings unless otherwise stated:
 
-```turtle
-  rr:predicateObjectMap [
-    rr:predicate ex:with ;
-    rr:objectMap [
-        rml:gather ( [ rml:reference "values.*" ; ] ) ;
-        rml:gatherAs rdf:List ;
-    ] ;
-  ] ;
-```
+| Prefix | Namespace                         |
+| ------ | --------------------------------- |
+| `rml:` | http://w3id.org/rml/              |
+| `rr:`  | http://www.w3.org/ns/r2rml#       |
+| `xsd:` | http://www.w3.org/2001/XMLSchema# |
+| `ex:`  | http://example.org/               |
+| `:`    | http://example.org/               |
 
-In this example, each [iteration](#iterations) yields a new (unique) blank node that is the head of the collection being produced.
-The following output will be produced:
+The examples are contained in color-coded boxes. We use the Turtle syntax [[Turtle]] to write RDF.
 
-```turtle
-  <a> ex:with ("1" "2" "3") .
-  <b> ex:with ("4" "5" "6") .
-  <c> ex:with ("7" "8" "9") .
-```
+<pre class="ex-input">
+# This box contains an example input
+</pre>
 
+<pre class="ex-mapping">
+# This box contains an example mapping
+</pre>
 
-### Collections and containers identified with an IRI or blank node ID
-
-In the previous example, the gather map does not contain any `rr:template`, `rr:constant` or `rml:reference` property.
-By contrast, the example below identifies the collection with a `rr:template` property. The IRI generated by the template will be assigned to the head node of the collection. We refer to this as a **[named collection](#named)**.
-
-The following mapping:
-
-```turtle
-  rr:predicateObjectMap [
-    rr:predicate ex:with ;
-    rr:objectMap [
-        rr:template "list/{id}" ;
-        rml:gather ( [ rml:reference "values.*" ; ] ) ;
-        rml:gatherAs rdf:List ;
-    ] ;
-  ] ;
-```
-
-will yield the following output:
-
-```turtle
-  <a> ex:with <list/a> . <list/a> rdf:first "1" ; rdf:rest ("2" "3") .
-  <b> ex:with <list/b> . <list/b> rdf:first "4" ; rdf:rest ("5" "6") .
-  <c> ex:with <list/c> . <list/c> rdf:first "7" ; rdf:rest ("8" "9") .
-```
-
-This is similar to the previous example, yet in this case the head node of each produced collection is assigned an IRI `<list/a>`, `<list/b>` and `<list/c>`.
+<pre class="ex-output">
+# This box contains the example output
+</pre>
