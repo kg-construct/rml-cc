@@ -1,0 +1,236 @@
+<h2 id="crossreference" class="list">Cross reference for RML-Containers classes, object properties and data properties <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+This section provides details for each class and property defined by RML-Containers.
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="classes">
+   <h3 id="classes-headline" class="list">Classes</h3>
+   <ul class="hlist">
+      <li>
+         <a href="#http://w3id.org/rml/GatherMap" title="http://w3id.org/rml/GatherMap">Gather Map</a>
+      </li>
+   </ul>
+   <div class="entity" id="http://w3id.org/rml/GatherMap">
+      <h3>Gather Map<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/rml/GatherMap</p>
+      <div class="comment">
+         <span class="markdown">Denotes a term map that generates a collection (rdf:List) or container (rdf:Bag, rdf:Seq, rdf:Alt).</span>
+      </div>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://w3id.org/rml/cc/">http://w3id.org/rml/cc/</a>
+         </dd>
+      </dl>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="http://w3id.org/rml/TermMap"
+               target="_blank"
+               title="http://w3id.org/rml/TermMap">term map</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#http://w3id.org/rml/allowEmptyListAndContainer" title="http://w3id.org/rml/allowEmptyListAndContainer">allow empty list and container</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#http://w3id.org/rml/gather" title="http://w3id.org/rml/gather">gather</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://w3id.org/rml/gatherAs" title="http://w3id.org/rml/gatherAs">gather as</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+      </dl>
+   </div>
+</div><div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="objectproperties">
+   <h3 id="properties" class="list">Object Properties</h3>
+   <ul class="hlist">
+      <li>
+         <a href="#http://w3id.org/rml/gather" title="http://w3id.org/rml/gather">gather</a>
+      </li>
+      <li>
+         <a href="#http://w3id.org/rml/gatherAs" title="http://w3id.org/rml/gatherAs">gather as</a>
+      </li>
+   </ul>
+   <div class="entity" id="http://w3id.org/rml/gather">
+      <h3>gather<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/rml/gather</p>
+      <div class="comment">
+         <span class="markdown">Specifies where the terms of a collection or container come from.</span>
+      </div>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://w3id.org/rml/cc/">http://w3id.org/rml/cc/</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://w3id.org/rml/GatherMap" title="http://w3id.org/rml/GatherMap">Gather Map</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://w3id.org/rml/gatherAs">
+      <h3>gather as<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/rml/gatherAs</p>
+      <div class="comment">
+         <span class="markdown">Relates a GatherMap with the desired result type of collection or container.</span>
+      </div>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://w3id.org/rml/cc/">http://w3id.org/rml/cc/</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://w3id.org/rml/GatherMap" title="http://w3id.org/rml/GatherMap">Gather Map</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt"
+                  target="_blank"
+                  title="http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt">alt</a>
+               <sup class="type-c" title="class">c</sup> 
+               <span class="logic">or</span> 
+               <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"
+                  target="_blank"
+                  title="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag">bag</a>
+               <sup class="type-c" title="class">c</sup> 
+               <span class="logic">or</span> 
+               <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"
+                  target="_blank"
+                  title="http://www.w3.org/1999/02/22-rdf-syntax-ns#List">list</a>
+               <sup class="type-c" title="class">c</sup> 
+               <span class="logic">or</span> 
+               <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"
+                  target="_blank"
+                  title="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq">seq</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+</div><div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dataproperties">
+   <h3 id="dataproperties-headline" class="list">Data Properties</h3>
+   <ul class="hlist">
+      <li>
+         <a href="#http://w3id.org/rml/allowEmptyListAndContainer" title="http://w3id.org/rml/allowEmptyListAndContainer">allow empty list and container</a>
+      </li>
+   </ul>
+   <div class="entity" id="http://w3id.org/rml/allowEmptyListAndContainer">
+      <h3>allow empty list and container<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/rml/allowEmptyListAndContainer</p>
+      <div class="comment">
+         <span class="markdown">Indicates the behavior of a GatherMap in case rml:gather does not yield any element</span>
+      </div>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://w3id.org/rml/cc/">http://w3id.org/rml/cc/</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://w3id.org/rml/GatherMap" title="http://w3id.org/rml/GatherMap">Gather Map</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2001/XMLSchema#boolean"
+                  target="_blank"
+                  title="http://www.w3.org/2001/XMLSchema#boolean">boolean</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+</div><div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="namedindividuals">
+   <h3 id="namedindividuals" class="list">Named Individuals</h3>
+   <ul class="hlist">
+      <li>
+         <a href="#http://w3id.org/rml/append" title="http://w3id.org/rml/append">Append</a>
+      </li>
+      <li>
+         <a href="#http://w3id.org/rml/cartessianProduct" title="http://w3id.org/rml/cartessianProduct">Cartessian Product</a>
+      </li>
+   </ul>
+   <div class="entity" id="http://w3id.org/rml/append">
+      <h3>Append<sup class="type-ni" title="named individual">ni</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/rml/append</p>
+      <div class="comment">
+         <span class="markdown">Informs that the sets of RDF terms generated by each TermMap of the GatherMap are to be appended within the collection or container.</span>
+      </div>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://w3id.org/rml/cc/">http://w3id.org/rml/cc/</a>
+         </dd>
+      </dl>
+      <dl class="description">
+         <dt>belongs to</dt>
+         <dd>
+            <a href="http://w3id.org/rml/Strategy"
+               target="_blank"
+               title="http://w3id.org/rml/Strategy">strategy</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://w3id.org/rml/cartessianProduct">
+      <h3>Cartessian Product<sup class="type-ni" title="named individual">ni</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/rml/cartessianProduct</p>
+      <div class="comment">
+         <span class="markdown">Informs that the RDF terms generated by each TermMap of the GatherMap are to be grouped (in the constructed collection or container) by doing a cartesian product of these terms.</span>
+      </div>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://w3id.org/rml/cc/">http://w3id.org/rml/cc/</a>
+         </dd>
+      </dl>
+      <dl class="description">
+         <dt>belongs to</dt>
+         <dd>
+            <a href="http://w3id.org/rml/Strategy"
+               target="_blank"
+               title="http://w3id.org/rml/Strategy">strategy</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+</div><div id="legend">
+<h2>Legend <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<div   class="entity">
+<sup class="type-c" title="Classes">c</sup>: Classes <br/>
+<sup class="type-op" title="Object Properties">op</sup>: Object Properties <br/>
+<sup class="type-dp" title="Data Properties">dp</sup>: Data Properties <br/>
+<sup class="type-ni" title="Named Individuals">ni</sup>: Named Individuals
+</div>
+</div>
