@@ -1,0 +1,182 @@
+###############################################################################
+# RMLCC Gather Map shape                                                      #
+# Copyright Dylan Van Assche, IDLab - UGent - imec (2023)                     #
+###############################################################################
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rml: <http://w3id.org/rml/core/> .
+@prefix rmlcc: <http://w3id.org/rml/cc/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+
+schema:RMLGatherMapShape
+    a sh:NodeShape ;
+    sh:ignoredProperties (rdf:type) ;
+    sh:name "rmlcc:GatherMap" ;
+    sh:description """
+    Represents a Gather Map.
+    """ ;
+    sh:message """
+    rmlcc:GatherMap requires one rml:strategy, one rml:gatherAs, and a list of
+    rml:TermMap with rml:gather.
+    """ ;
+
+    # Exactly one rml:template, one rml:constant or one rml:reference is 
+    # required.
+    sh:property [
+        sh:path [sh:alternativePath (rml:template 
+                                     rml:constant
+                                     rml:reference)] ;
+        sh:name "rml:template/rml:constant/rml:reference" ;
+        sh:description """
+        Exactly one rml:template, one rml:constant or one rml:reference is
+        required for a named collection. When none of them are given,
+        the collection is unnamed.
+        """ ;
+        sh:message """
+        Exactly one rml:template, one rml:constant or one rml:reference is
+        required for a named collection. When none of them are given,
+        the collection is unnamed.
+        """ ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+
+    # rml:template
+    sh:property [
+        sh:path rml:template ;
+        sh:name "rml:template" ;
+        sh:description """
+        A template (format string) to specify how to generate a value for a 
+        subject, predicate, or object, using one or more columns from a logical
+        table row or iterator.
+        """ ;
+        sh:message """
+        rml:template must be a string.
+        """ ;
+        sh:nodeKind sh:Literal ;
+        sh:datatype xsd:string ;
+    ] ;
+
+    # rml:constant
+    sh:property [
+        sh:path rml:constant ;
+        sh:name "rml:constant" ;
+        sh:description """
+        A property for indicating whether a term map is a constant-valued term 
+        map.
+        """ ;
+        sh:message """
+        rml:constant must be an IRI.
+        """ ;
+        sh:nodeKind sh:IRI ;
+    ] ;
+
+    # rml:reference
+    sh:property [
+        sh:path rml:reference ;
+        sh:name "rml:reference" ;
+        sh:description """
+        A reference rml:reference is used to refer to a column in case of 
+        databases, a record in case of CSV or TSV data source, an element in 
+        case of XML data source, an object in case of a JSON data source, etc.
+
+        A reference must be a valid identifier, considering the reference 
+        formulation (rml:referenceFormulation) specified. The reference can be
+        an absolute path, or a path relative to the iterator specified at the 
+        logical source. 
+        """ ;
+        sh:message """
+        rml:reference must be a string.
+        """ ;
+        sh:nodeKind sh:Literal ;
+        sh:datatype xsd:string ;
+    ] ;
+
+    # rml:termType
+    sh:property [
+        sh:path rml:termType ;
+        sh:name "rml:termType" ;
+        sh:description """
+        An IRI indicating whether subject or object generated using the value 
+        from column name specified for rml:column should be an IRI reference, 
+        blank node, or a literal.
+        """ ;
+        sh:message """
+        rml:termType must be either rml:IRI or rml:BlankNode for an rml:SubjectMap.
+        May only be provided once.
+        """ ;
+        sh:maxCount 1 ;
+        sh:in (rml:IRI rml:BlankNode) ;
+        sh:nodeKind sh:IRI ;
+    ] ;
+
+    # rmlcc:strategy
+    sh:property [
+        sh:path rmlcc:strategy ;
+        sh:name "rmlcc:strategy" ;
+        sh:description """
+        rmlcc:strategy specifies the collection strategy to use: rmlcc:append
+        or rmlcc:catessianProduct. rmlcc:append is the default strategy.
+        """ ;
+        sh:message """
+        Zero or one rmlcc:strategy is required.
+        """ ;
+        sh:in (rmlcc:append rmlcc:cartessian) ;
+        sh:nodeKind sh:IRI;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+
+    # rmlcc:gatherAs
+    sh:property [
+        sh:path rmlcc:gatherAs ;
+        sh:name "rmlcc:gatherAs" ;
+        sh:description """
+        rmlcc:gatherAs specifies how to gather the collection e.g. a rdf:Alt,
+        rdf:List, rdf:Bag, or rdf:Seq.
+        """ ;
+        sh:message """
+        One rmlcc:gatherAs is required.
+        """ ;
+        sh:in (rdf:Alt rdf:List rdf:Bag rdf:Seq) ;
+        sh:nodeKind sh:IRI;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+
+    # rmlcc:allowEmptyListAndContainer
+    sh:property [
+        sh:path rmlcc:allowEmptyListAndContainer ;
+        sh:name "rmlcc:allowEmptyListAndContainer" ;
+        sh:description """
+        Defines the behavior when the collection is empty. True will generate
+        a rdf:nil for a RDF collection or a resource with no members for an RDF
+        container. False will not generate any collection or container.
+        Default is false.
+        """ ;
+        sh:message """
+        Zero or one rmlcc:allowEmptyListAndContainer is required with datatype
+        xsd:boolean.
+        """ ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:Literal ;
+        sh:datatype xsd:boolean ;
+    ] ;
+
+    # rmlcc:gather
+    sh:property [
+        sh:path rmlcc:gather ;
+        sh:name "rmlcc:gather" ;
+        sh:description """
+        RML Term Maps to gather in the collection or container.
+        """ ;
+        sh:message """
+        one or more rmlcc:gather properties are needed, each pointing to a
+        RML Term Map.
+        """ ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:minCount 1 ;
+    ] ;
+.
