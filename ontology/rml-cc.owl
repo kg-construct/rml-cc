@@ -89,7 +89,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 :gatherAs rdf:type owl:ObjectProperty ;
           rdfs:domain :GatherMap ;
           rdfs:range [ rdf:type owl:Class ;
-                       owl:unionOf ( rdf:Alt
+                       owl:oneOf ( rdf:Alt
                                      rdf:Bag
                                      rdf:List
                                      rdf:Seq
