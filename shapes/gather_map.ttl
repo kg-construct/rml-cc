@@ -34,8 +34,8 @@ schema:RMLGatherMapShape
             sh:message """
             Zero or one rml:strategy is required.
             """ ;
-            sh:in (rml:append rml:cartessian) ;
-            sh:nodeKind sh:IRI;
+            sh:node schema:RMLStrategyAppendShape ;
+            sh:nodeKind sh:IRI ;
             sh:minCount 0 ;
             sh:maxCount 1 ;
         ]

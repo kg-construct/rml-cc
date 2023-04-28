@@ -18,3 +18,7 @@ schema:RMLTermMapShape
 schema:RMLLogicalTargetPropertiesShape
     a sh:NodeShape;
 .
+
+schema:RMLStrategyAppendShape
+    a sh:NodeShape;
+.

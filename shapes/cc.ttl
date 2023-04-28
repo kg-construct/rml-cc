@@ -34,13 +34,13 @@
             rml:strategy specifies the collection strategy to use: rml:append
             or rml:catessianProduct. rml:append is the default strategy.
             """ ;
-                sh:in ( rml:append rml:cartessian ) ;
                 sh:maxCount 1 ;
                 sh:message """
             Zero or one rml:strategy is required.
             """ ;
                 sh:minCount 0 ;
                 sh:name "strategy" ;
+                sh:node <http://schema.org/RMLStrategyAppendShape> ;
                 sh:nodeKind sh:IRI ;
                 sh:path rml:strategy ] [ sh:description """
             rml:gatherAs specifies how to gather the collection e.g. a rdf:Alt,
@@ -90,6 +90,8 @@
     sh:name "GatherMap" .
 
 <http://schema.org/RMLLogicalTargetPropertiesShape> a sh:NodeShape .
+
+<http://schema.org/RMLStrategyAppendShape> a sh:NodeShape .
 
 <http://schema.org/RMLTermMapShape> a sh:NodeShape .
 
