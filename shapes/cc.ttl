@@ -17,7 +17,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix rml: <http://w3id.org/rml/> .
-@prefix schema: <https://schema.org/> .
+@prefix : <http://w3id.org/rml/shapes/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
@@ -29,8 +29,8 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://schema.org/RMLGatherMapShape> a sh:NodeShape ;
-    sh:and ( <http://schema.org/RMLTermMapShape> <http://schema.org/RMLLogicalTargetPropertiesShape> [ sh:description """
+<http://w3id.org/rml/shapes/RMLGatherMapShape> a sh:NodeShape ;
+    sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ sh:description """
             rml:strategy specifies the collection strategy to use: rml:append
             or rml:catessianProduct. rml:append is the default strategy.
             """ ;
@@ -40,7 +40,7 @@
             """ ;
                 sh:minCount 0 ;
                 sh:name "strategy" ;
-                sh:node <http://schema.org/RMLStrategyAppendShape> ;
+                sh:node <http://w3id.org/rml/shapes/RMLStrategyAppendShape> ;
                 sh:nodeKind sh:IRI ;
                 sh:path rml:strategy ] [ sh:description """
             rml:gatherAs specifies how to gather the collection e.g. a rdf:Alt,
@@ -89,9 +89,9 @@
     """ ;
     sh:name "GatherMap" .
 
-<http://schema.org/RMLLogicalTargetPropertiesShape> a sh:NodeShape .
+<http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> a sh:NodeShape .
 
-<http://schema.org/RMLStrategyAppendShape> a sh:NodeShape .
+<http://w3id.org/rml/shapes/RMLStrategyAppendShape> a sh:NodeShape .
 
-<http://schema.org/RMLTermMapShape> a sh:NodeShape .
+<http://w3id.org/rml/shapes/RMLTermMapShape> a sh:NodeShape .
 
