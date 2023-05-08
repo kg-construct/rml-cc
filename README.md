@@ -1,4 +1,6 @@
-# Collections and Containers in RML specification
+# RML-CC
+
+Collections and Containers in RML specification
 
 ## Specification
 
@@ -19,3 +21,13 @@ It is accessible using URL https://w3id.org/rml/cc/spec.
 - Run `node publish.js` to get the `index.html` + archived version in the [`docs`](docs) folder
 
 URL https://w3id.org/rml/cc/spec must redirect to the `/spec/docs`(docs) folder.
+
+## License
+
+RML-CC (c) by W3C Community Group on Knowledge Graph Construction
+
+RML-CC is licensed under a
+Creative Commons Attribution-ShareAlike 4.0 International License.
+
+You should have received a copy of the license along with this
+work.  If not, see <http://creativecommons.org/licenses/by-sa/4.0/>.
