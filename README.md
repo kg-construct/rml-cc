@@ -1,6 +1,11 @@
 # RML-CC
 
-Collections and Containers in RML specification
+Collections and Containers in RML specification, SHACL shapes, ontology, and test-cases.
+
+- Specification: http://w3id.org/rml/cc/spec
+- Ontology: http://w3id.org/rml/cc/
+- SHACL shapes: http://w3id.org/rml/cc/shapes
+- Test-cases: [test-cases](./test-cases)
 
 ## Specification
 
