@@ -1,0 +1,89 @@
+###############################################################################
+# RMLCC Gather Map shape                                                      #
+# Copyright Dylan Van Assche, IDLab - UGent - imec (2023)                     #
+###############################################################################
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix : <http://w3id.org/rml/shapes/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rml: <http://w3id.org/rml/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+
+:RMLGatherMapShape
+    a sh:NodeShape ;
+    sh:name "GatherMap" ;
+    sh:description """
+    Represents a Gather Map.
+    """ ;
+    sh:message """
+    Gather Map requires one rml:strategy, one rml:gatherAs, and a list of
+    Term Map with rml:gather.
+    """ ;
+
+    sh:and (
+        # Inherited shapes
+        :RMLTermMapShape
+        :RMLLogicalTargetPropertiesShape
+        # Gather Map specific shapes
+        [
+            sh:path rml:strategy ;
+            sh:name "strategy" ;
+            sh:description """
+            rml:strategy specifies the collection strategy to use: rml:append
+            or rml:catessianProduct. rml:append is the default strategy.
+            """ ;
+            sh:message """
+            Zero or one rml:strategy is required.
+            """ ;
+            sh:node :RMLStrategyAppendShape ;
+            sh:nodeKind sh:IRI ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+        ]
+        [
+            sh:path rml:gatherAs ;
+            sh:name "gatherAs" ;
+            sh:description """
+            rml:gatherAs specifies how to gather the collection e.g. a rdf:Alt,
+            rdf:List, rdf:Bag, or rdf:Seq.
+            """ ;
+            sh:message """
+            One rml:gatherAs is required.
+            """ ;
+            sh:in (rdf:Alt rdf:List rdf:Bag rdf:Seq) ;
+            sh:nodeKind sh:IRI;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+        ]
+        [
+            sh:path rml:allowEmptyListAndContainer ;
+            sh:name "allowEmptyListAndContainer" ;
+            sh:description """
+            Defines the behavior when the collection is empty. True will generate
+            a rdf:nil for a RDF collection or a resource with no members for an RDF
+            container. False will not generate any collection or container.
+            Default is false.
+            """ ;
+            sh:message """
+            Zero or one rml:allowEmptyListAndContainer is required with datatype
+            xsd:boolean.
+            """ ;
+            sh:minCount 0 ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:datatype xsd:boolean ;
+        ]
+        [
+            sh:path rml:gather ;
+            sh:name "gather" ;
+            sh:description """
+            RML Term Maps to gather in the collection or container.
+            """ ;
+            sh:message """
+            one or more rml:gather properties are needed, each pointing to a
+            RML Term Map.
+            """ ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:minCount 1 ;
+        ]
+    ) ;
+.
