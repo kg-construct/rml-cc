@@ -1,0 +1,16 @@
+title: "RML-CC: Ontology, specification, shapes and test cases"
+license: CC-BY-4.0
+authors:
+  - family-names: Debruyne
+    given-names: Christophe
+  - family-names: Michel
+    given-names: Franck
+  - family-names: Iglesias-Molina
+    given-names: Ana
+  - family-names: Van Assche
+    given-names: Dylan
+cff-version: 1.0.0
+version: 0.1.0
+doi: 10.5281/zenodo.7919852
+date-released: 2023-05-10
+url: "https://w3id.org/rml/cc"
