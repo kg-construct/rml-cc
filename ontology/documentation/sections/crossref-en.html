@@ -4,10 +4,10 @@ This section provides details for each class and property defined by RML-Contain
    <h3 id="classes-headline" class="list">Classes</h3>
    <ul class="hlist">
       <li>
-         <a href="#http://w3id.org/rml/GatherMap" title="http://w3id.org/rml/GatherMap">Gather Map</a>
+         <a href="#GatherMap" title="http://w3id.org/rml/GatherMap">Gather Map</a>
       </li>
    </ul>
-   <div class="entity" id="http://w3id.org/rml/GatherMap">
+   <div class="entity" id="GatherMap">
       <h3>Gather Map<sup class="type-c" title="class">c</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
          </span>
@@ -33,9 +33,9 @@ This section provides details for each class and property defined by RML-Contain
          </dd>
          <dt>is in domain of</dt>
          <dd>
-            <a href="#http://w3id.org/rml/allowEmptyListAndContainer" title="http://w3id.org/rml/allowEmptyListAndContainer">allow empty list and container</a>
-            <sup class="type-dp" title="data property">dp</sup>, <a href="#http://w3id.org/rml/gather" title="http://w3id.org/rml/gather">gather</a>
-            <sup class="type-op" title="object property">op</sup>, <a href="#http://w3id.org/rml/gatherAs" title="http://w3id.org/rml/gatherAs">gather as</a>
+            <a href="#allowEmptyListAndContainer" title="http://w3id.org/rml/allowEmptyListAndContainer">allow empty list and container</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#gather" title="http://w3id.org/rml/gather">gather</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#gatherAs" title="http://w3id.org/rml/gatherAs">gather as</a>
             <sup class="type-op" title="object property">op</sup>
          </dd>
       </dl>
@@ -44,13 +44,13 @@ This section provides details for each class and property defined by RML-Contain
    <h3 id="properties" class="list">Object Properties</h3>
    <ul class="hlist">
       <li>
-         <a href="#http://w3id.org/rml/gather" title="http://w3id.org/rml/gather">gather</a>
+         <a href="#gather" title="http://w3id.org/rml/gather">gather</a>
       </li>
       <li>
-         <a href="#http://w3id.org/rml/gatherAs" title="http://w3id.org/rml/gatherAs">gather as</a>
+         <a href="#gatherAs" title="http://w3id.org/rml/gatherAs">gather as</a>
       </li>
    </ul>
-   <div class="entity" id="http://w3id.org/rml/gather">
+   <div class="entity" id="gather">
       <h3>gather<sup class="type-op" title="object property">op</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
          </span>
@@ -70,13 +70,13 @@ This section provides details for each class and property defined by RML-Contain
          <dl>
             <dt>has domain</dt>
             <dd>
-               <a href="#http://w3id.org/rml/GatherMap" title="http://w3id.org/rml/GatherMap">Gather Map</a>
+               <a href="#GatherMap" title="http://w3id.org/rml/GatherMap">Gather Map</a>
                <sup class="type-c" title="class">c</sup>
             </dd>
          </dl>
       </div>
    </div>
-   <div class="entity" id="http://w3id.org/rml/gatherAs">
+   <div class="entity" id="gatherAs">
       <h3>gather as<sup class="type-op" title="object property">op</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
          </span>
@@ -96,31 +96,19 @@ This section provides details for each class and property defined by RML-Contain
          <dl>
             <dt>has domain</dt>
             <dd>
-               <a href="#http://w3id.org/rml/GatherMap" title="http://w3id.org/rml/GatherMap">Gather Map</a>
+               <a href="#GatherMap" title="http://w3id.org/rml/GatherMap">Gather Map</a>
                <sup class="type-c" title="class">c</sup>
             </dd>
             <dt>has range</dt>
-            <dd>
-               <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt"
+            <dd>{ <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt"
                   target="_blank"
-                  title="http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt">alt</a>
-               <sup class="type-c" title="class">c</sup> 
-               <span class="logic">or</span> 
-               <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"
+                  title="http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt">alt</a> , <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"
                   target="_blank"
-                  title="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag">bag</a>
-               <sup class="type-c" title="class">c</sup> 
-               <span class="logic">or</span> 
-               <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"
+                  title="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag">bag</a> , <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"
                   target="_blank"
-                  title="http://www.w3.org/1999/02/22-rdf-syntax-ns#List">list</a>
-               <sup class="type-c" title="class">c</sup> 
-               <span class="logic">or</span> 
-               <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"
+                  title="http://www.w3.org/1999/02/22-rdf-syntax-ns#List">list</a> , <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"
                   target="_blank"
-                  title="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq">seq</a>
-               <sup class="type-c" title="class">c</sup>
-            </dd>
+                  title="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq">seq</a> }</dd>
          </dl>
       </div>
    </div>
@@ -128,10 +116,10 @@ This section provides details for each class and property defined by RML-Contain
    <h3 id="dataproperties-headline" class="list">Data Properties</h3>
    <ul class="hlist">
       <li>
-         <a href="#http://w3id.org/rml/allowEmptyListAndContainer" title="http://w3id.org/rml/allowEmptyListAndContainer">allow empty list and container</a>
+         <a href="#allowEmptyListAndContainer" title="http://w3id.org/rml/allowEmptyListAndContainer">allow empty list and container</a>
       </li>
    </ul>
-   <div class="entity" id="http://w3id.org/rml/allowEmptyListAndContainer">
+   <div class="entity" id="allowEmptyListAndContainer">
       <h3>allow empty list and container<sup class="type-dp" title="data property">dp</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
          </span>
@@ -151,7 +139,7 @@ This section provides details for each class and property defined by RML-Contain
          <dl>
             <dt>has domain</dt>
             <dd>
-               <a href="#http://w3id.org/rml/GatherMap" title="http://w3id.org/rml/GatherMap">Gather Map</a>
+               <a href="#GatherMap" title="http://w3id.org/rml/GatherMap">Gather Map</a>
                <sup class="type-c" title="class">c</sup>
             </dd>
             <dt>has range</dt>
@@ -167,13 +155,13 @@ This section provides details for each class and property defined by RML-Contain
    <h3 id="namedindividuals" class="list">Named Individuals</h3>
    <ul class="hlist">
       <li>
-         <a href="#http://w3id.org/rml/append" title="http://w3id.org/rml/append">Append</a>
+         <a href="#append" title="http://w3id.org/rml/append">Append</a>
       </li>
       <li>
-         <a href="#http://w3id.org/rml/cartessianProduct" title="http://w3id.org/rml/cartessianProduct">Cartessian Product</a>
+         <a href="#cartessianProduct" title="http://w3id.org/rml/cartessianProduct">Cartessian Product</a>
       </li>
    </ul>
-   <div class="entity" id="http://w3id.org/rml/append">
+   <div class="entity" id="append">
       <h3>Append<sup class="type-ni" title="named individual">ni</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a>
          </span>
@@ -199,7 +187,7 @@ This section provides details for each class and property defined by RML-Contain
          </dd>
       </dl>
    </div>
-   <div class="entity" id="http://w3id.org/rml/cartessianProduct">
+   <div class="entity" id="cartessianProduct">
       <h3>Cartessian Product<sup class="type-ni" title="named individual">ni</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a>
          </span>

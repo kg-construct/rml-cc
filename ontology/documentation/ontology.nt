@@ -1,111 +1,123 @@
 <http://w3id.org/rml/cc/> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
+<http://w3id.org/rml/cc/> <http://www.w3.org/2002/07/owl#versionIRI> <http://w3id.org/rml/cc> .
 <http://w3id.org/rml/cc/> <http://purl.org/dc/terms/contributor> "Ana Iglesias Molina" .
 <http://w3id.org/rml/cc/> <http://purl.org/dc/terms/contributor> "Christophe Debruyne" .
 <http://w3id.org/rml/cc/> <http://purl.org/dc/terms/contributor> "Franck Michel" .
+<http://w3id.org/rml/cc/> <http://purl.org/dc/terms/created> "2023-03-14" .
 <http://w3id.org/rml/cc/> <http://purl.org/dc/terms/description> "RML module to generate RDF collections and containers"@en .
 <http://w3id.org/rml/cc/> <http://purl.org/dc/terms/license> <http://purl.org/NET/rdflicense/cc-by4.0> .
-<http://w3id.org/rml/cc/> <http://purl.org/dc/terms/modified> "2023-04-19" .
+<http://w3id.org/rml/cc/> <http://purl.org/dc/terms/modified> "2023-06-15" .
+<http://w3id.org/rml/cc/> <http://purl.org/dc/terms/publisher> <https://www.w3.org/community/kg-construct/> .
 <http://w3id.org/rml/cc/> <http://purl.org/dc/terms/title> "RML-Containers"@en .
-<http://w3id.org/rml/cc/> <http://purl.org/vocab/vann/preferredNamespaceUri> "http://w3id.org/rml/cc/" .
-#
-#
+<http://w3id.org/rml/cc/> <http://purl.org/ontology/bibo/status> "draft" .
+<http://w3id.org/rml/cc/> <http://purl.org/vocab/vann/preferredNamespacePrefix> "rml" .
+<http://w3id.org/rml/cc/> <http://purl.org/vocab/vann/preferredNamespaceUri> "http://w3id.org/rml/" .
+<http://w3id.org/rml/cc/> <http://www.w3.org/2002/07/owl#versionInfo> "0.1.0" .
+# 
+# 
 # #################################################################
 # #
 # #    Annotation properties
 # #
 # #################################################################
-#
-#
+# 
+# 
 # http://creativecommons.org/ns#license
 <http://creativecommons.org/ns#license> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
-#
+# 
 # http://purl.org/dc/terms/contributor
 <http://purl.org/dc/terms/contributor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
-#
+# 
+# http://purl.org/dc/terms/created
+<http://purl.org/dc/terms/created> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
 # http://purl.org/dc/terms/creator
 <http://purl.org/dc/terms/creator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
-#
+# 
 # http://purl.org/dc/terms/description
 <http://purl.org/dc/terms/description> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
-#
+# 
 # http://purl.org/dc/terms/issued
 <http://purl.org/dc/terms/issued> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
-#
+# 
 # http://purl.org/dc/terms/license
 <http://purl.org/dc/terms/license> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
-#
+# 
 # http://purl.org/dc/terms/modified
 <http://purl.org/dc/terms/modified> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
-#
+# 
 # http://purl.org/dc/terms/publisher
 <http://purl.org/dc/terms/publisher> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
-#
+# 
 # http://purl.org/dc/terms/title
 <http://purl.org/dc/terms/title> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
-#
+# 
+# http://purl.org/ontology/bibo/status
+<http://purl.org/ontology/bibo/status> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
 # http://purl.org/vocab/vann/preferredNamespacePrefix
 <http://purl.org/vocab/vann/preferredNamespacePrefix> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
-#
+# 
 # http://purl.org/vocab/vann/preferredNamespaceUri
 <http://purl.org/vocab/vann/preferredNamespaceUri> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
-#
+# 
 # http://www.linkedmodel.org/schema/vaem#acronym
 <http://www.linkedmodel.org/schema/vaem#acronym> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
-#
+# 
 # http://xmlns.com/foaf/0.1/name
 <http://xmlns.com/foaf/0.1/name> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
-#
-#
-#
+# 
+# 
+# 
 # #################################################################
 # #
 # #    Object Properties
 # #
 # #################################################################
-#
-#
+# 
+# 
 # http://w3id.org/rml/gather
 <http://w3id.org/rml/gather> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
 <http://w3id.org/rml/gather> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/rml/GatherMap> .
 <http://w3id.org/rml/gather> <http://www.w3.org/2000/01/rdf-schema#comment> "Specifies where the terms of a collection or container come from."@en .
 <http://w3id.org/rml/gather> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/cc/> .
 <http://w3id.org/rml/gather> <http://www.w3.org/2000/01/rdf-schema#label> "gather" .
-#
+# 
 # http://w3id.org/rml/gatherAs
 <http://w3id.org/rml/gatherAs> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
 <http://w3id.org/rml/gatherAs> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/rml/GatherMap> .
 <http://w3id.org/rml/gatherAs> <http://www.w3.org/2000/01/rdf-schema#range> _:genid1 .
-_:genid1 <http://www.w3.org/2002/07/owl#unionOf> _:genid5 .
+_:genid1 <http://www.w3.org/2002/07/owl#oneOf> _:genid5 .
 _:genid5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid4 .
 _:genid4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid3 .
 _:genid3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid2 .
 _:genid2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
 _:genid2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq> .
-<http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
 _:genid2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-<http://www.w3.org/1999/02/22-rdf-syntax-ns#List> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.w3.org/1999/02/22-rdf-syntax-ns#List> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
 _:genid3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
 _:genid3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
 _:genid4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag> .
-<http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
 _:genid4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
 _:genid5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt> .
-<http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
 _:genid5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
 _:genid1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://w3id.org/rml/gatherAs> <http://www.w3.org/2000/01/rdf-schema#comment> "Relates a GatherMap with the desired result type of collection or container."@en .
 <http://w3id.org/rml/gatherAs> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/cc/> .
 <http://w3id.org/rml/gatherAs> <http://www.w3.org/2000/01/rdf-schema#label> "gather as" .
-#
-#
-#
+# 
+# 
+# 
 # #################################################################
 # #
 # #    Data properties
 # #
 # #################################################################
-#
-#
+# 
+# 
 # http://w3id.org/rml/allowEmptyListAndContainer
 <http://w3id.org/rml/allowEmptyListAndContainer> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
 <http://w3id.org/rml/allowEmptyListAndContainer> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/rml/GatherMap> .
@@ -113,16 +125,16 @@ _:genid1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/20
 <http://w3id.org/rml/allowEmptyListAndContainer> <http://www.w3.org/2000/01/rdf-schema#comment> "Indicates the behavior of a GatherMap in case rml:gather does not yield any element"@en .
 <http://w3id.org/rml/allowEmptyListAndContainer> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/cc/> .
 <http://w3id.org/rml/allowEmptyListAndContainer> <http://www.w3.org/2000/01/rdf-schema#label> "allow empty list and container" .
-#
-#
-#
+# 
+# 
+# 
 # #################################################################
 # #
 # #    Classes
 # #
 # #################################################################
-#
-#
+# 
+# 
 # http://w3id.org/rml/GatherMap
 <http://w3id.org/rml/GatherMap> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://w3id.org/rml/GatherMap> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/rml/TermMap> .
@@ -130,41 +142,41 @@ _:genid1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/20
 <http://w3id.org/rml/GatherMap> <http://www.w3.org/2000/01/rdf-schema#comment> "Denotes a term map that generates a collection (rdf:List) or container (rdf:Bag, rdf:Seq, rdf:Alt)."@en .
 <http://w3id.org/rml/GatherMap> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/cc/> .
 <http://w3id.org/rml/GatherMap> <http://www.w3.org/2000/01/rdf-schema#label> "Gather Map" .
-#
+# 
 # http://w3id.org/rml/Strategy
 <http://w3id.org/rml/Strategy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-#
+# 
 # http://w3id.org/rml/TermMap
-#
-# http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt
-#
-# http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag
-#
-# http://www.w3.org/1999/02/22-rdf-syntax-ns#List
-#
-# http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq
-#
-#
-#
+# 
+# 
+# 
 # #################################################################
 # #
 # #    Individuals
 # #
 # #################################################################
-#
-#
+# 
+# 
 # http://w3id.org/rml/append
 <http://w3id.org/rml/append> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
 <http://w3id.org/rml/append> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/rml/Strategy> .
 <http://w3id.org/rml/append> <http://www.w3.org/2000/01/rdf-schema#comment> "Informs that the sets of RDF terms generated by each TermMap of the GatherMap are to be appended within the collection or container."@en .
 <http://w3id.org/rml/append> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/cc/> .
 <http://w3id.org/rml/append> <http://www.w3.org/2000/01/rdf-schema#label> "Append" .
-#
+# 
 # http://w3id.org/rml/cartessianProduct
 <http://w3id.org/rml/cartessianProduct> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
 <http://w3id.org/rml/cartessianProduct> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/rml/Strategy> .
 <http://w3id.org/rml/cartessianProduct> <http://www.w3.org/2000/01/rdf-schema#comment> "Informs that the RDF terms generated by each TermMap of the GatherMap are to be grouped (in the constructed collection or container) by doing a cartesian product of these terms."@en .
 <http://w3id.org/rml/cartessianProduct> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/cc/> .
 <http://w3id.org/rml/cartessianProduct> <http://www.w3.org/2000/01/rdf-schema#label> "Cartessian Product" .
-#
+# 
+# http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt
+# 
+# http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag
+# 
+# http://www.w3.org/1999/02/22-rdf-syntax-ns#List
+# 
+# http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq
+# 
 # Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/
