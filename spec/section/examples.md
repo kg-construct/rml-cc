@@ -20,9 +20,9 @@ Thus, processing the following JSON document with the predicate object map provi
 However, when we override the value for this property and set it to true:
 
 <pre class="ex-mapping">
-  rr:predicateObjectMap [
-    rr:predicate ex:with ;
-    rr:objectMap [
+  rml:predicateObjectMap [
+    rml:predicate ex:with ;
+    rml:objectMap [
         rml:allowEmptyListAndContainer true ;
         rml:gather ( [ rml:reference "values.*" ; ] ) ;
         rml:gatherAs rdf:List ;
@@ -43,10 +43,10 @@ There is one special case when dealing with empty *collections*. Since `rdf:nil`
 In other words, when the following predicate object map is used:
 
 <pre class="ex-mapping">
-  rr:predicateObjectMap [
-    rr:predicate ex:with ;
-    rr:objectMap [
-        rr:template "list/{id}" ;
+  rml:predicateObjectMap [
+    rml:predicate ex:with ;
+    rml:objectMap [
+        rml:template "list/{id}" ;
         rml:allowEmptyListAndContainer true ;
         rml:gather ( [ rml:reference "values.*" ; ] ) ;
         rml:gatherAs rdf:List ;
@@ -93,12 +93,12 @@ The following mapping will relate instances of authors to names. The names of au
 
 <pre class="ex-mapping">
 <#AuthorTM>
-    rr:logicalTable [ rr:tableName "AUTHOR" ; ] ;
-    rr:subjectMap [ rr:template "/person/{ID}" ; ] ;
-    rr:predicateObjectMap [
-        rr:predicate ex:name ;
-        rr:objectMap [
-            rml:reference "ID" ; rr:termType rr:BlankNode ;
+    rml:logicalTable [ rml:tableName "AUTHOR" ; ] ;
+    rml:subjectMap [ rml:template "/person/{ID}" ; ] ;
+    rml:predicateObjectMap [
+        rml:predicate ex:name ;
+        rml:objectMap [
+            rml:reference "ID" ; rml:termType rml:BlankNode ;
             rml:gather ( 
                 [ rml:reference "TITLE" ]  [ rml:reference "FNAME" ]  [ rml:reference "LNAME" ] 
             ) ;
@@ -122,20 +122,20 @@ By default, empty lists and containers are withheld. One does have the possibili
 
 ### Using referencing object map
 
-Continuing with the [relational data example](#relationalexample), here we relate books to authors with a `rr:parentTriplesMap`. The authors of a book are represented as a list.
+Continuing with the [relational data example](#relationalexample), here we relate books to authors with a `rml:parentTriplesMap`. The authors of a book are represented as a list.
 
 <pre class="ex-mapping">
 <#BookTM>
-    rr:logicalTable [ rr:tableName "BOOK" ; ] ;
-    rr:subjectMap [ rr:template "/book/{ID}" ; ] ;
-    rr:predicateObjectMap [
-        rr:predicate ex:writtenBy ;
-        rr:objectMap [
-            rml:reference "ID" ; rr:termType rr:BlankNode ;
+    rml:logicalTable [ rml:tableName "BOOK" ; ] ;
+    rml:subjectMap [ rml:template "/book/{ID}" ; ] ;
+    rml:predicateObjectMap [
+        rml:predicate ex:writtenBy ;
+        rml:objectMap [
+            rml:reference "ID" ; rml:termType rml:BlankNode ;
             rml:gather ( 
                 [ 
-                    rr:parentTriplesMap <#AuthorTM>;
-                    rr:joinCondition [ rr:child "ID" ; rr:parent "BOOKID" ; ] ;
+                    rml:parentTriplesMap <#AuthorTM>;
+                    rml:joinCondition [ rml:child "ID" ; rml:parent "BOOKID" ; ] ;
                 ] 
             ) ;
             rml:gatherAs rdf:List;
@@ -159,22 +159,22 @@ In RML, it is assumed that each term map is multi-valued. That this, each term m
 Here we exemplify the use of a term map in a subject map. Continuing with the JSON file from the [running example](#runningexample), the following mapping generates an RDF sequence whose head node is used to state provenance information on that sequence:
 
 <pre class="ex-mapping">
-<#TM> a rr:TriplesMap;
+<#TM> a rml:TriplesMap;
   rml:logicalSource [
     rml:source "data.json" ;
     rml:referenceFormulation ql:JSONPath ;
     rml:iterator "$.*" ;
   ];
 
-  rr:subjectMap [
-    rr:template "seq/{id}" ;
+  rml:subjectMap [
+    rml:template "seq/{id}" ;
     rml:gather ( [ rml:reference "values.*" ; ] ) ;
     rml:gatherAs rdf:Seq ;  
   ] ;
   
-  rr:predicateObjectMap [
-    rr:predicate prov:wasDerivedFrom ;
-    rr:object <data.json> ;
+  rml:predicateObjectMap [
+    rml:predicate prov:wasDerivedFrom ;
+    rml:object <data.json> ;
   ] .
 </pre>
 

@@ -21,7 +21,7 @@ The `rml:gather` informs the RML processor where the terms of a collection or co
 That list of term maps may contain other gather maps thus generating nested containers and/or collections.
 
 * The domain of `rml:gather` is [`rml:GatherMap`](#rml-gathermap).
-* The range of `rml:gather` is a non-empty list (rdf:List) of `rr:TermMap` instances. In particular, this list may include instances of [`rml:GatherMap`](#rml-gathermap) thus allowing for nested gather maps.
+* The range of `rml:gather` is a non-empty list (rdf:List) of `rml:TermMap` instances. In particular, this list may include instances of [`rml:GatherMap`](#rml-gathermap) thus allowing for nested gather maps.
 
 
 #### `rml:strategy`
@@ -73,7 +73,7 @@ For the input document:
 
 The following term map:
 <pre class="ex-mapping">
-    rr:objectMap [
+    rml:objectMap [
         rml:gather ( [ rml:reference "a.*" ] [ rml:reference "b.*" ]) ;
         rml:gatherAs rdf:List ;
         rml:strategy rml:append;   # this is the default strategy
@@ -102,7 +102,7 @@ For the input document:
 
 The following term map:
 <pre class="ex-mapping">
-    rr:objectMap [
+    rml:objectMap [
         rml:gather ( [ rml:reference "a.*" ] [ rml:reference "b.*" ]) ;
         rml:gatherAs rdf:List ;
         rml:strategy rml:cartesianProduct;

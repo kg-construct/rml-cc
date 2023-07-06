@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
 <meta charset="utf-8">
-<meta name="generator" content="ReSpec 34.1.1">
+<meta name="generator" content="ReSpec 34.1.4">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 dfn{cursor:pointer}
@@ -154,6 +154,7 @@ dd{margin-left:0}
 .removeOnSave{display:none}
 }
 </style>
+<meta id="ConnectiveDocSignExtentionInstalled" name="ConnectiveDocSignExtentionInstalled" data-extension-version="1.0.6">
 <meta name="description" content="This document describes the [RML] vocabulary and approach to generating RDF containers and collections [RDF11-Concepts].">
 <style>
 .hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;background:#fafafa}
@@ -239,24 +240,6 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
   "noRecTrack": "true",
   "otherLinks": [
     {
-      "key": "This Version",
-      "data": [
-        {
-          "value": "https://kg-construct.github.io/rml-cc/%thisDate%/",
-          "href": "https://kg-construct.github.io/rml-cc/%thisDate%/"
-        }
-      ]
-    },
-    {
-      "key": "Previous Version",
-      "data": [
-        {
-          "value": "https://kg-construct.github.io/rml-cc/%prevDate%/",
-          "href": "https://kg-construct.github.io/rml-cc/%prevDate%/"
-        }
-      ]
-    },
-    {
       "key": "Website",
       "data": [
         {
@@ -266,16 +249,16 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       ]
     }
   ],
-  "publishISODate": "2023-05-09T00:00:00.000Z",
-  "generatedSubtitle": "Draft Community Group Report 09 May 2023"
+  "publishISODate": "2023-07-06T00:00:00.000Z",
+  "generatedSubtitle": "Draft Community Group Report 06 July 2023"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/cg-draft"></head>
-<body class="h-entry"><div class="head">
+<body data-new-gr-c-s-check-loaded="14.1114.0" data-gr-ext-installed="" class="h-entry"><div class="head">
     
     <h1 id="title" class="title">RML-CC: Collections and Containers in RML</h1> 
     <p id="w3c-state">
       <a href="https://www.w3.org/standards/types#reports">Draft Community Group Report</a>
-      <time class="dt-published" datetime="2023-05-09">09 May 2023</time>
+      <time class="dt-published" datetime="2023-07-06">06 July 2023</time>
     </p>
     <dl>
       
@@ -295,6 +278,9 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       
       
       
+      <dt>Website</dt><dd>
+    <a href="https://w3id.org/rml/cc/spec">https://w3id.org/rml/cc/spec</a>
+  </dd>
     </dl>
     
     <p class="copyright">
@@ -418,24 +404,23 @@ The <a href="#rml-gather"><code>rml:gather</code></a> predicate is used to link 
 ]</code></pre>
 
 <p>The associated RML mapping starts as follows:</p>
-<pre class="ex-mapping" aria-busy="false"><code class="hljs">@prefix rml: .
-@prefix rr:  .
-@prefix ql:  .
-@prefix ex:  .
-@base        .
+<pre class="ex-mapping" aria-busy="false"><code class="hljs">@prefix rml: &lt;http://w3id.org/rml/&gt;.
+@prefix rr:  &lt;http://www.w3.org/ns/r2rml#&gt;.
+@prefix ql:  &lt;http://semweb.mmlab.be/ns/ql#&gt;.
+@prefix ex:  &lt;http://example.com/ns&gt;.
+@base        &lt;http://example.com/ns&gt;.
 
-&lt;#TM&gt; a rr:TriplesMap;
+&lt;#TM&gt; a rml:TriplesMap;
   rml:logicalSource [
     rml:source "data.json" ;
     rml:referenceFormulation ql:JSONPath ;
     rml:iterator "$.*" ;
   ];
 
-  rr:subjectMap [
-    rr:template "{id}" ;
+  rml:subjectMap [
+    rml:template "{id}" ;
   ] ;
-.
-</code></pre>
+.</code></pre>
 
 <p>Note that the <code>rml:iterator</code> in the logical source will yield three <a href="#iterations">iterations</a>, each one providing one of the three sub-documents of the JSON array:</p>
 <pre class="ex-input" aria-busy="false"><code class="hljs">{ "id": "a",  "values": [ "1" , "2" , "3" ] }
@@ -444,9 +429,9 @@ The <a href="#rml-gather"><code>rml:gather</code></a> predicate is used to link 
 
 
 </section><section id="a-simple-example"><div class="header-wrapper"><h3 id="simpleexample"><bdi class="secno">4.2 </bdi>A simple example</h3><a class="self-link" href="#simpleexample" aria-label="Permalink for Section 4.2"></a></div><p>Given the JSON document and the RML mapping completed with the following predicate object map:</p>
-<pre class="ex-mapping" aria-busy="false"><code class="hljs">rr:predicateObjectMap [
-  rr:predicate ex:with ;
-  rr:objectMap [
+<pre class="ex-mapping" aria-busy="false"><code class="hljs">rml:predicateObjectMap [
+  rml:predicate ex:with ;
+  rml:objectMap [
       rml:gather ( [ rml:reference "values.*" ; ] ) ;
       rml:gatherAs rdf:List ;
   ] ;
@@ -460,13 +445,13 @@ The following output will be produced:</p>
 
 
 </section><section id="collections-and-containers-identified-with-an-iri-or-blank-node-id"><div class="header-wrapper"><h3 id="x4-3-collections-and-containers-identified-with-an-iri-or-blank-node-id"><bdi class="secno">4.3 </bdi>Collections and containers identified with an IRI or blank node ID</h3><a class="self-link" href="#collections-and-containers-identified-with-an-iri-or-blank-node-id" aria-label="Permalink for Section 4.3"></a></div>
-<p>In the previous example, the gather map does not contain any <code>rr:template</code>, <code>rr:constant</code> or <code>rml:reference</code> property.
-By contrast, the example below identifies the collection with a <code>rr:template</code> property. The IRI generated by the template will be assigned to the head node of the collection. We refer to this as a <strong><a href="#named">named collection</a></strong>.</p>
+<p>In the previous example, the gather map does not contain any <code>rml:template</code>, <code>rml:constant</code> or <code>rml:reference</code> property.
+By contrast, the example below identifies the collection with a <code>rml:template</code> property. The IRI generated by the template will be assigned to the head node of the collection. We refer to this as a <strong><a href="#named">named collection</a></strong>.</p>
 <p>The following mapping:</p>
-<pre class="ex-mapping" aria-busy="false"><code class="hljs">rr:predicateObjectMap [
-  rr:predicate ex:with ;
-  rr:objectMap [
-      rr:template "list/{id}" ;
+<pre class="ex-mapping" aria-busy="false"><code class="hljs">rml:predicateObjectMap [
+  rml:predicate ex:with ;
+  rml:objectMap [
+      rml:template "list/{id}" ;
       rml:gather ( [ rml:reference "values.*" ; ] ) ;
       rml:gatherAs rdf:List ;
   ] ;
@@ -494,7 +479,7 @@ By contrast, the example below identifies the collection with a <code>rr:templat
 That list of term maps may contain other gather maps thus generating nested containers and/or collections.</p>
 <ul>
 <li>The domain of <code>rml:gather</code> is <a href="#rml-gathermap"><code>rml:GatherMap</code></a>.</li>
-<li>The range of <code>rml:gather</code> is a non-empty list (rdf:List) of <code>rr:TermMap</code> instances. In particular, this list may include instances of <a href="#rml-gathermap"><code>rml:GatherMap</code></a> thus allowing for nested gather maps.</li>
+<li>The range of <code>rml:gather</code> is a non-empty list (rdf:List) of <code>rml:TermMap</code> instances. In particular, this list may include instances of <a href="#rml-gathermap"><code>rml:GatherMap</code></a> thus allowing for nested gather maps.</li>
 </ul>
 </section><section id="rml-strategy"><div class="header-wrapper"><h4 id="x5-2-2-rml-strategy"><bdi class="secno">5.2.2 </bdi><code>rml:strategy</code></h4><a class="self-link" href="#rml-strategy" aria-label="Permalink for Section 5.2.2"></a></div>
 <p>Declaring an <code>rml:strategy</code> in a gather map informs the processor about how to create collections and containers when faced with <a href="#multivaluedtermmap"><strong>multi-valued term maps</strong></a>.
@@ -529,7 +514,7 @@ Used as the object of property <a href="rml-strategy"><code>rml:strategy</code><
 }</code></pre>
 
 <p>The following term map:</p>
-<pre class="ex-mapping" aria-busy="false"><code class="hljs">rr:objectMap [
+<pre class="ex-mapping" aria-busy="false"><code class="hljs">rml:objectMap [
     rml:gather ( [ rml:reference "a.*" ] [ rml:reference "b.*" ]) ;
     rml:gatherAs rdf:List ;
     rml:strategy rml:append;   # this is the default strategy
@@ -550,7 +535,7 @@ Therefore, this constructs as many collections or containers as the product of t
 }</code></pre>
 
 <p>The following term map:</p>
-<pre class="ex-mapping" aria-busy="false"><code class="hljs">rr:objectMap [
+<pre class="ex-mapping" aria-busy="false"><code class="hljs">rml:objectMap [
     rml:gather ( [ rml:reference "a.*" ] [ rml:reference "b.*" ]) ;
     rml:gatherAs rdf:List ;
     rml:strategy rml:cartesianProduct;
@@ -571,13 +556,13 @@ If such a term map generates a collection or container by means of a gather map,
 In the case of an RDF list, this is the node that is the subject of the first <code>rdf:first</code> predicate.</p>
 <p>The <a href="#gatherinsubject">examples section</a> demonstrates how a gather map can be used within a subject map.</p>
 </section><section id="named-collection-or-container-assigning-an-iri-or-blank-node-identifier-to-a-collection-and-container"><div class="header-wrapper"><h3 id="x6-3-named-collection-or-container-assigning-an-iri-or-blank-node-identifier-to-a-collection-and-container"><bdi class="secno">6.3 </bdi>Named collection or container: assigning an IRI or blank node identifier to a collection and container</h3><a class="self-link" href="#named-collection-or-container-assigning-an-iri-or-blank-node-identifier-to-a-collection-and-container" aria-label="Permalink for Section 6.3"></a></div>
-<p>If a gather map does not contain any <code>rr:template</code>, <code>rr:constant</code> or <code>rml:reference</code> property, then the head node of each generated collection or container is a new blank node.</p>
-<p>Conversely, if a gather map contains either a <code>rr:template</code>, <code>rr:constant</code> or <code>rml:reference</code> property, then the gather map yields <a href="#named"><strong>named collections or containers</strong></a> whose head node is identified as instructed by the <code>rr:template</code>, <code>rr:constant</code> or <code>rml:reference</code> property.</p>
+<p>If a gather map does not contain any <code>rml:template</code>, <code>rml:constant</code> or <code>rml:reference</code> property, then the head node of each generated collection or container is a new blank node.</p>
+<p>Conversely, if a gather map contains either a <code>rml:template</code>, <code>rml:constant</code> or <code>rml:reference</code> property, then the gather map yields <a href="#named"><strong>named collections or containers</strong></a> whose head node is identified as instructed by the <code>rml:template</code>, <code>rml:constant</code> or <code>rml:reference</code> property.</p>
 <p>The following mapping:</p>
-<pre class="ex-mapping" aria-busy="false"><code class="hljs">rr:predicateObjectMap [
-  rr:predicate ex:with ;
-  rr:objectMap [
-      rr:template "seq/{id}" ;
+<pre class="ex-mapping" aria-busy="false"><code class="hljs">rml:predicateObjectMap [
+  rml:predicate ex:with ;
+  rml:objectMap [
+      rml:template "seq/{id}" ;
       rml:gather ( [ rml:reference "values.*" ; ] ) ;
       rml:gatherAs rdf:Seq ;
   ] ;
@@ -602,25 +587,25 @@ In other words, when a gather map creates a <a href="#named">named collection or
 ]</code></pre>
 
 <p>Let's consider the following mapping:</p>
-<pre class="ex-mapping" aria-busy="false"><code class="hljs">rr:predicateObjectMap [
-  rr:predicate ex:with ;
-  rr:objectMap [
+<pre class="ex-mapping" aria-busy="false"><code class="hljs">rml:predicateObjectMap [
+  rml:predicate ex:with ;
+  rml:objectMap [
       rml:gather ( [ rml:reference "values.*" ; ] ) ;
       rml:gatherAs rdf:List ;
   ] ;
 ] ;</code></pre>
 
-<p>The gather map has no <code>rr:template</code>, <code>rr:constant</code> nor <code>rml:reference</code> property. The expected output consists of three lists, two related to <code>:a</code> and one to <code>:b</code>:</p>
+<p>The gather map has no <code>rml:template</code>, <code>rml:constant</code> nor <code>rml:reference</code> property. The expected output consists of three lists, two related to <code>:a</code> and one to <code>:b</code>:</p>
 <pre class="ex-output" aria-busy="false"><code class="hljs">:a ex:with ("1" "2" "3"), ("7" "8" "9")  .
 :b ex:with ("4" "5" "6") .</code></pre>
 
-<p>Now, when an <code>rr:template</code>, <code>rr:constant</code> or <code>rml:reference</code> is provided, 
+<p>Now, when an <code>rml:template</code>, <code>rml:constant</code> or <code>rml:reference</code> is provided, 
 the two collections related to id <code>"a"</code> cannot be generated separately since they would share the same head node IRI or bank node identifier, thus generating an <a href="#wellformedness">ill-formed collection</a>. Therefore, the processor must concatenate the two collections related to id <code>"a"</code>.
 With the following predicate mapping:</p>
-<pre class="ex-mapping" aria-busy="false"><code class="hljs">rr:predicateObjectMap [
-  rr:predicate ex:with ;
-  rr:objectMap [
-      rr:template "list/{id}" ;
+<pre class="ex-mapping" aria-busy="false"><code class="hljs">rml:predicateObjectMap [
+  rml:predicate ex:with ;
+  rml:objectMap [
+      rml:template "list/{id}" ;
       rml:gather ( [ rml:reference "values.*" ; ] ) ;
       rml:gatherAs rdf:List ;
   ] ;
@@ -639,26 +624,26 @@ With the following predicate mapping:</p>
 }</code></pre>
 
 <p>and the following mapping:</p>
-<pre class="ex-mapping" aria-busy="false"><code class="hljs">rr:subjectMap [ rr:template "{id}" ] ;
+<pre class="ex-mapping" aria-busy="false"><code class="hljs">rml:subjectMap [ rml:template "{id}" ] ;
 
-rr:predicateObjectMap [
-  rr:predicate ex:with ;
-  rr:objectMap [
+rml:predicateObjectMap [
+  rml:predicate ex:with ;
+  rml:objectMap [
     rml:gather ( [ rml:reference "a.*" ] [ rml:reference "b.*" ]) ;
     rml:gatherAs rdf:List ;
     rml:strategy rml:cartesianProduct ;
   ] ;
 ] ;</code></pre>
 
-<p>The gather map has no <code>rr:template</code>, <code>rr:constant</code> nor <code>rml:reference</code> property. 
+<p>The gather map has no <code>rml:template</code>, <code>rml:constant</code> nor <code>rml:reference</code> property. 
 As already illustrated, the <a href="#rml-cartesianproduct"><code>rml:cartesianProduct</code></a> strategy will generate multiple collections, yielding the output:</p>
 <pre class="ex-output" aria-busy="false"><code class="hljs">:a ex:with ("1" "4"), ("1" "5"), ("2" "4"), ("2" "5"), ("3" "4"), ("3" "5") .</code></pre>
 
 
-<p>Now, when an <code>rr:template</code>, <code>rr:constant</code> or <code>rml:reference</code> is provided, to avoid generating <a href="#wellformedness">ill-formed lists</a> that would share the same head node IRI, the processor must concatenate the lists.</p>
-<p>If we add an <code>rr:template</code> in the object map:</p>
-<pre class="ex-mapping" aria-busy="false"><code class="hljs">rr:objectMap [
-  rr:template "list/{id}" ;
+<p>Now, when an <code>rml:template</code>, <code>rml:constant</code> or <code>rml:reference</code> is provided, to avoid generating <a href="#wellformedness">ill-formed lists</a> that would share the same head node IRI, the processor must concatenate the lists.</p>
+<p>If we add an <code>rml:template</code> in the object map:</p>
+<pre class="ex-mapping" aria-busy="false"><code class="hljs">rml:objectMap [
+  rml:template "list/{id}" ;
   rml:gather ( [ rml:reference "a.*" ] [ rml:reference "b.*" ]) ;
   rml:gatherAs rdf:List ;
   rml:strategy rml:cartesianProduct ;
@@ -683,12 +668,12 @@ As already illustrated, the <a href="#rml-cartesianproduct"><code>rml:cartesianP
   rml:iterator "$.*" ;
 ];
 
-rr:subjectMap [ rr:template "{id}" ] ;
+rml:subjectMap [ rml:template "{id}" ] ;
 
-rr:predicateObjectMap [
-  rr:predicate ex:with ;
-  rr:objectMap [
-      rr:template "list/{id}" ;
+rml:predicateObjectMap [
+  rml:predicate ex:with ;
+  rml:objectMap [
+      rml:template "list/{id}" ;
       rml:gather ( [ rml:reference "values1.*" ; ] [ rml:reference "values2.*" ; ] ) ;
       rml:gatherAs rdf:List ;
   ] ;
@@ -703,8 +688,8 @@ The expected output is:</p>
 :list/b rdf:first "3" ; rdf:rest ("4" "c" "d") .</code></pre>
 
 <p>Now let's change the default strategy to <code>rml:cartesianProduct</code>:</p>
-<pre class="ex-mapping" aria-busy="false"><code class="hljs">rr:objectMap [
-    rr:template "list/{id}" ;
+<pre class="ex-mapping" aria-busy="false"><code class="hljs">rml:objectMap [
+    rml:template "list/{id}" ;
     rml:gather ( [ rml:reference "values1.*" ; ] [ rml:reference "values2.*" ; ] ) ;
     rml:gatherAs rdf:List ;
     rml:strategy rml:cartesianProduct ;
@@ -733,9 +718,9 @@ Thus, processing the following JSON document with the predicate object map provi
 ]</code></pre>
 
 <p>However, when we override the value for this property and set it to true:</p>
-<pre class="ex-mapping" aria-busy="false"><code class="hljs">rr:predicateObjectMap [
-  rr:predicate ex:with ;
-  rr:objectMap [
+<pre class="ex-mapping" aria-busy="false"><code class="hljs">rml:predicateObjectMap [
+  rml:predicate ex:with ;
+  rml:objectMap [
       rml:allowEmptyListAndContainer true ;
       rml:gather ( [ rml:reference "values.*" ; ] ) ;
       rml:gatherAs rdf:List ;
@@ -750,10 +735,10 @@ Thus, processing the following JSON document with the predicate object map provi
 
 <p>There is one special case when dealing with empty <em>collections</em>. Since <code>rdf:nil</code> is reserved for the empty list, an RML processor <em class="rfc2119">MUST</em> replace each IRI or blank node that is an empty list with <code>rdf:nil</code>. 
 In other words, when the following predicate object map is used:</p>
-<pre class="ex-mapping" aria-busy="false"><code class="hljs">rr:predicateObjectMap [
-  rr:predicate ex:with ;
-  rr:objectMap [
-      rr:template "list/{id}" ;
+<pre class="ex-mapping" aria-busy="false"><code class="hljs">rml:predicateObjectMap [
+  rml:predicate ex:with ;
+  rml:objectMap [
+      rml:template "list/{id}" ;
       rml:allowEmptyListAndContainer true ;
       rml:gather ( [ rml:reference "values.*" ; ] ) ;
       rml:gatherAs rdf:List ;
@@ -831,12 +816,12 @@ We expect the following output where</p>
 </tbody></table>
 <p>The following mapping will relate instances of authors to names. The names of authors are, for the sake of the example, represented as bags containing a title, first name, and lastname.</p>
 <pre class="ex-mapping" aria-busy="false"><code class="hljs">&lt;#AuthorTM&gt;
-    rr:logicalTable [ rr:tableName "AUTHOR" ; ] ;
-    rr:subjectMap [ rr:template "/person/{ID}" ; ] ;
-    rr:predicateObjectMap [
-        rr:predicate ex:name ;
-        rr:objectMap [
-            rml:reference "ID" ; rr:termType rr:BlankNode ;
+    rml:logicalTable [ rml:tableName "AUTHOR" ; ] ;
+    rml:subjectMap [ rml:template "/person/{ID}" ; ] ;
+    rml:predicateObjectMap [
+        rml:predicate ex:name ;
+        rml:objectMap [
+            rml:reference "ID" ; rml:termType rml:BlankNode ;
             rml:gather ( 
                 [ rml:reference "TITLE" ]  [ rml:reference "FNAME" ]  [ rml:reference "LNAME" ] 
             ) ;
@@ -853,18 +838,18 @@ We expect the following output where</p>
 <p>While not shown in this example, different term maps allow to collect terms of different types: resources, literals, typed or language-tagged literals, etc. The fourth record in the table did not generate a bag, since each term map in the gather map did not yield a value. 
 By default, empty lists and containers are withheld. One does have the possibility to keep those with <a href="#rml-allowemptylistandcontainer"><code>rml:allowEmptyListAndContainer</code></a>`.</p>
 </section><section id="using-referencing-object-map"><div class="header-wrapper"><h3 id="x7-3-using-referencing-object-map"><bdi class="secno">7.3 </bdi>Using referencing object map</h3><a class="self-link" href="#using-referencing-object-map" aria-label="Permalink for Section 7.3"></a></div>
-<p>Continuing with the <a href="#relationalexample">relational data example</a>, here we relate books to authors with a <code>rr:parentTriplesMap</code>. The authors of a book are represented as a list.</p>
+<p>Continuing with the <a href="#relationalexample">relational data example</a>, here we relate books to authors with a <code>rml:parentTriplesMap</code>. The authors of a book are represented as a list.</p>
 <pre class="ex-mapping" aria-busy="false"><code class="hljs">&lt;#BookTM&gt;
-    rr:logicalTable [ rr:tableName "BOOK" ; ] ;
-    rr:subjectMap [ rr:template "/book/{ID}" ; ] ;
-    rr:predicateObjectMap [
-        rr:predicate ex:writtenBy ;
-        rr:objectMap [
-            rml:reference "ID" ; rr:termType rr:BlankNode ;
+    rml:logicalTable [ rml:tableName "BOOK" ; ] ;
+    rml:subjectMap [ rml:template "/book/{ID}" ; ] ;
+    rml:predicateObjectMap [
+        rml:predicate ex:writtenBy ;
+        rml:objectMap [
+            rml:reference "ID" ; rml:termType rml:BlankNode ;
             rml:gather ( 
                 [ 
-                    rr:parentTriplesMap &lt;#AuthorTM&gt;;
-                    rr:joinCondition [ rr:child "ID" ; rr:parent "BOOKID" ; ] ;
+                    rml:parentTriplesMap &lt;#AuthorTM&gt;;
+                    rml:joinCondition [ rml:child "ID" ; rml:parent "BOOKID" ; ] ;
                 ] 
             ) ;
             rml:gatherAs rdf:List;
@@ -878,22 +863,22 @@ By default, empty lists and containers are withheld. One does have the possibili
 
 <p>In RML, it is assumed that each term map is multi-valued. That this, each term map may return one or more values. The default behavior is to append the values in the order of the term maps appearing in the gather map.</p>
 </section><section id="using-a-gather-map-in-a-subject-map"><div class="header-wrapper"><h3 id="gatherinsubject"><bdi class="secno">7.4 </bdi>Using a gather map in a subject map</h3><a class="self-link" href="#gatherinsubject" aria-label="Permalink for Section 7.4"></a></div><p>Here we exemplify the use of a term map in a subject map. Continuing with the JSON file from the <a href="#runningexample">running example</a>, the following mapping generates an RDF sequence whose head node is used to state provenance information on that sequence:</p>
-<pre class="ex-mapping" aria-busy="false"><code class="hljs">&lt;#TM&gt; a rr:TriplesMap;
+<pre class="ex-mapping" aria-busy="false"><code class="hljs">&lt;#TM&gt; a rml:TriplesMap;
   rml:logicalSource [
     rml:source "data.json" ;
     rml:referenceFormulation ql:JSONPath ;
     rml:iterator "$.*" ;
   ];
 
-  rr:subjectMap [
-    rr:template "seq/{id}" ;
+  rml:subjectMap [
+    rml:template "seq/{id}" ;
     rml:gather ( [ rml:reference "values.*" ; ] ) ;
     rml:gatherAs rdf:Seq ;  
   ] ;
   
-  rr:predicateObjectMap [
-    rr:predicate prov:wasDerivedFrom ;
-    rr:object  ;
+  rml:predicateObjectMap [
+    rml:predicate prov:wasDerivedFrom ;
+    rml:object  ;
   ] .
 </code></pre>
 
