@@ -25,7 +25,6 @@ the following namespace prefix bindings unless otherwise stated:
 | Prefix | Namespace                         |
 | ------ | --------------------------------- |
 | `rml:` | http://w3id.org/rml/              |
-| `rr:`  | http://www.w3.org/ns/r2rml#       |
 | `xsd:` | http://www.w3.org/2001/XMLSchema# |
 | `ex:`  | http://example.org/               |
 | `:`    | http://example.org/               |

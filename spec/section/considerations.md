@@ -1,10 +1,5 @@
 ## Considerations {#considerations}
 
-### The use of `rr:column`
-
-In RML, `rr:column` is considered a subproperty of `rml:reference`. One can still avail of `rr:column` when creating mappings for relational databases. The use of `rr:column` is valid but one is encouraged to favor `rml:reference`. 
-
-
 ### Using a `rml:GatherMap` in various types of term map
 
 Although most examples demonstrate the use of a gather map in the context of an object map, a gather map is a regular term map.

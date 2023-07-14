@@ -33,7 +33,6 @@ The associated RML mapping starts as follows:
 
 <pre class="ex-mapping">
 @prefix rml: &lt;http://w3id.org/rml/&gt;.
-@prefix rr:  &lt;http://www.w3.org/ns/r2rml#&gt;.
 @prefix ql:  &lt;http://semweb.mmlab.be/ns/ql#&gt;.
 @prefix ex:  &lt;http://example.com/ns&gt;.
 @base        &lt;http://example.com/ns&gt;.
