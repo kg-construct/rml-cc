@@ -154,6 +154,9 @@ dd{margin-left:0}
 .removeOnSave{display:none}
 }
 </style>
+<style>
+@media print {#ghostery-tracker-tally {display:none !important}}
+</style>
 <meta name="description" content="This document describes the [RML] vocabulary and approach to generating RDF containers and collections [RDF11-Concepts].">
 <style>
 .hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;background:#fafafa}
@@ -870,20 +873,18 @@ By default, empty lists and containers are withheld. One does have the possibili
   
   rml:predicateObjectMap [
     rml:predicate prov:wasDerivedFrom ;
-    rml:object  ;
-  ] .
-</code></pre>
+    rml:object &lt;data.json&gt; ;
+  ] .</code></pre>
 
 <p>The expected result is:</p>
-<pre class="ex-output" aria-busy="false"><code class="hljs">  :seq/a rdf:_1 "1" ; rdf:_2 "2" ; rdf:_3 "3" .
-  :seq/a prov:wasDerivedFrom  .
-  
-  :seq/b rdf:_1 "4" ; rdf:_2 "5" ; rdf:_3 "6" .
-  :seq/b prov:wasDerivedFrom  .
-  
-  :seq/c rdf:_1 "7" ; rdf:_2 "8" ; rdf:_3 "9" .
-  :seq/c prov:wasDerivedFrom  .
-</code></pre></section></section>
+<pre class="ex-output" aria-busy="false"><code class="hljs">:seq/a rdf:_1 "1" ; rdf:_2 "2" ; rdf:_3 "3" .
+:seq/a prov:wasDerivedFrom &lt;data.json&gt; .
+
+:seq/b rdf:_1 "4" ; rdf:_2 "5" ; rdf:_3 "6" .
+:seq/b prov:wasDerivedFrom &lt;data.json&gt; .
+
+:seq/c rdf:_1 "7" ; rdf:_2 "8" ; rdf:_3 "9" .
+:seq/c prov:wasDerivedFrom &lt;data.json&gt; .</code></pre></section></section>
 
 
 
