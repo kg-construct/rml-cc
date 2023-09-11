@@ -1,10 +1,5 @@
 ## Considerations {#considerations}
 
-### The use of `rr:column`
-
-In RML, `rr:column` is considered a subproperty of `rml:reference`. One can still avail of `rr:column` when creating mappings for relational databases. The use of `rr:column` is valid but one is encouraged to favor `rml:reference`. 
-
-
 ### Using a `rml:GatherMap` in various types of term map
 
 Although most examples demonstrate the use of a gather map in the context of an object map, a gather map is a regular term map.
@@ -19,18 +14,18 @@ The [examples section](#gatherinsubject) demonstrates how a gather map can be us
 
 ### Named collection or container: assigning an IRI or blank node identifier to a collection and container
 
-If a gather map does not contain any `rr:template`, `rr:constant` or `rml:reference` property, then the head node of each generated collection or container is a new blank node.
+If a gather map does not contain any `rml:template`, `rml:constant` or `rml:reference` property, then the head node of each generated collection or container is a new blank node.
 
-Conversely, if a gather map contains either a `rr:template`, `rr:constant` or `rml:reference` property, then the gather map yields [**named collections or containers**](#named) whose head node is identified as instructed by the `rr:template`, `rr:constant` or `rml:reference` property.
+Conversely, if a gather map contains either a `rml:template`, `rml:constant` or `rml:reference` property, then the gather map yields [**named collections or containers**](#named) whose head node is identified as instructed by the `rml:template`, `rml:constant` or `rml:reference` property.
 
 
 The following mapping:
 
 <pre class="ex-mapping">
-  rr:predicateObjectMap [
-    rr:predicate ex:with ;
-    rr:objectMap [
-        rr:template "seq/{id}" ;
+  rml:predicateObjectMap [
+    rml:predicate ex:with ;
+    rml:objectMap [
+        rml:template "seq/{id}" ;
         rml:gather ( [ rml:reference "values.*" ; ] ) ;
         rml:gatherAs rdf:Seq ;
     ] ;
@@ -72,31 +67,31 @@ Here we reuse the [running example](#runningexample) yet with a slight variation
 Let's consider the following mapping:
 
 <pre class="ex-mapping">
-  rr:predicateObjectMap [
-    rr:predicate ex:with ;
-    rr:objectMap [
+  rml:predicateObjectMap [
+    rml:predicate ex:with ;
+    rml:objectMap [
         rml:gather ( [ rml:reference "values.*" ; ] ) ;
         rml:gatherAs rdf:List ;
     ] ;
   ] ;
 </pre>
 
-The gather map has no `rr:template`, `rr:constant` nor `rml:reference` property. The expected output consists of three lists, two related to `:a` and one to `:b`:
+The gather map has no `rml:template`, `rml:constant` nor `rml:reference` property. The expected output consists of three lists, two related to `:a` and one to `:b`:
 
 <pre class="ex-output">
   :a ex:with ("1" "2" "3"), ("7" "8" "9")  .
   :b ex:with ("4" "5" "6") .
 </pre>
 
-Now, when an `rr:template`, `rr:constant` or `rml:reference` is provided, 
+Now, when an `rml:template`, `rml:constant` or `rml:reference` is provided, 
 the two collections related to id `"a"` cannot be generated separately since they would share the same head node IRI or bank node identifier, thus generating an [ill-formed collection](#wellformedness). Therefore, the processor must concatenate the two collections related to id `"a"`.
 With the following predicate mapping:
 
 <pre class="ex-mapping">
-  rr:predicateObjectMap [
-    rr:predicate ex:with ;
-    rr:objectMap [
-        rr:template "list/{id}" ;
+  rml:predicateObjectMap [
+    rml:predicate ex:with ;
+    rml:objectMap [
+        rml:template "list/{id}" ;
         rml:gather ( [ rml:reference "values.*" ; ] ) ;
         rml:gatherAs rdf:List ;
     ] ;
@@ -127,11 +122,11 @@ Let's consider the following input document:
 and the following mapping:
 
 <pre class="ex-mapping">
-  rr:subjectMap [ rr:template "{id}" ] ;
+  rml:subjectMap [ rml:template "{id}" ] ;
 
-  rr:predicateObjectMap [
-    rr:predicate ex:with ;
-    rr:objectMap [
+  rml:predicateObjectMap [
+    rml:predicate ex:with ;
+    rml:objectMap [
       rml:gather ( [ rml:reference "a.*" ] [ rml:reference "b.*" ]) ;
       rml:gatherAs rdf:List ;
       rml:strategy rml:cartesianProduct ;
@@ -139,7 +134,7 @@ and the following mapping:
   ] ;
 </pre>
 
-The gather map has no `rr:template`, `rr:constant` nor `rml:reference` property. 
+The gather map has no `rml:template`, `rml:constant` nor `rml:reference` property. 
 As already illustrated, the [`rml:cartesianProduct`](#rml-cartesianproduct) strategy will generate multiple collections, yielding the output:
 
 <pre class="ex-output">
@@ -147,12 +142,12 @@ As already illustrated, the [`rml:cartesianProduct`](#rml-cartesianproduct) stra
 </pre>
 
 
-Now, when an `rr:template`, `rr:constant` or `rml:reference` is provided, to avoid generating [ill-formed lists](#wellformedness) that would share the same head node IRI, the processor must concatenate the lists.
+Now, when an `rml:template`, `rml:constant` or `rml:reference` is provided, to avoid generating [ill-formed lists](#wellformedness) that would share the same head node IRI, the processor must concatenate the lists.
 
-If we add an `rr:template` in the object map:
+If we add an `rml:template` in the object map:
 <pre class="ex-mapping">
-    rr:objectMap [
-      rr:template "list/{id}" ;
+    rml:objectMap [
+      rml:template "list/{id}" ;
       rml:gather ( [ rml:reference "a.*" ] [ rml:reference "b.*" ]) ;
       rml:gatherAs rdf:List ;
       rml:strategy rml:cartesianProduct ;
@@ -187,12 +182,12 @@ Let's consider the following document and mapping:
     rml:iterator "$.*" ;
   ];
 
-  rr:subjectMap [ rr:template "{id}" ] ;
+  rml:subjectMap [ rml:template "{id}" ] ;
 
-  rr:predicateObjectMap [
-    rr:predicate ex:with ;
-    rr:objectMap [
-        rr:template "list/{id}" ;
+  rml:predicateObjectMap [
+    rml:predicate ex:with ;
+    rml:objectMap [
+        rml:template "list/{id}" ;
         rml:gather ( [ rml:reference "values1.*" ; ] [ rml:reference "values2.*" ; ] ) ;
         rml:gatherAs rdf:List ;
     ] ;
@@ -213,8 +208,8 @@ The expected output is:
 Now let's change the default strategy to `rml:cartesianProduct`:
 
 <pre class="ex-mapping">
-    rr:objectMap [
-        rr:template "list/{id}" ;
+    rml:objectMap [
+        rml:template "list/{id}" ;
         rml:gather ( [ rml:reference "values1.*" ; ] [ rml:reference "values2.*" ; ] ) ;
         rml:gatherAs rdf:List ;
         rml:strategy rml:cartesianProduct ;
