@@ -32,7 +32,7 @@
 <http://w3id.org/rml/shapes/RMLGatherMapShape> a sh:NodeShape ;
     sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ sh:description """
             rml:strategy specifies the collection strategy to use: rml:append
-            or rml:catessianProduct. rml:append is the default strategy.
+            or rml:cartesianProduct. rml:append is the default strategy.
             """ ;
                 sh:maxCount 1 ;
                 sh:message """
