@@ -1,0 +1,24 @@
+@prefix rml: <http://w3id.org/rml/>.
+@prefix ql:  <http://semweb.mmlab.be/ns/ql#>.
+@prefix ex:  <http://example.com/ns#>.
+@base        <http://example.com/>.
+
+<#TM> a rml:TriplesMap;
+    rml:logicalSource [
+        rml:source "data.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$.*" ;
+    ] ;
+
+    rml:subjectMap [
+        rml:template "e/{id}" ;
+    ] ;
+
+    rml:predicateObjectMap [
+        rml:predicate ex:with ;
+        rml:objectMap [
+            rml:gather ( [ rml:reference "values.*" ; ] ) ;
+            rml:gatherAs rdf:Alt ;
+        ] ;
+    ] ;
+.
