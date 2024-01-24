@@ -6,7 +6,7 @@
 <#TM> a rml:TriplesMap;
     rml:logicalSource [
         rml:source "data.json" ;
-        rml:referenceFormulation ql:JSONPath ;
+        rml:referenceFormulation rml:JSONPath ;
         rml:iterator "$.*" ;
     ] ;
 
