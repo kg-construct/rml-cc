@@ -5,7 +5,7 @@
 
 <#TM> a rml:TriplesMap;
     rml:logicalSource [
-        rml:source "data.json" ;
+        rml:source <_:b738439> ;
         rml:referenceFormulation rml:JSONPath ;
         rml:iterator "$.*" ;
     ] ;
@@ -15,3 +15,6 @@
         rml:gatherAs rdf:List ;
     ] ;
 .
+
+<_:b738439> a rml:RelativePathSource ;
+    rml:path "data.json" .
