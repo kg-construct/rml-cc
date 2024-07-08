@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://w3id.org/rml/"
-     xml:base="http://w3id.org/rml/"
+<rdf:RDF xmlns="http://w3id.org/rml/cc/"
+     xml:base="http://w3id.org/rml/cc/"
      xmlns:ns="http://creativecommons.org/ns#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -28,10 +28,10 @@
         <vann:preferredNamespaceUri>http://w3id.org/rml/</vann:preferredNamespaceUri>
         <owl:versionInfo>0.1.0</owl:versionInfo>
     </owl:Ontology>
+    
 
 
-
-    <!--
+    <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Annotation properties
@@ -40,115 +40,115 @@
      -->
 
 
-
+    
 
 
     <!-- http://creativecommons.org/ns#license -->
 
 
     <owl:AnnotationProperty rdf:about="http://creativecommons.org/ns#license"/>
-
+    
 
 
     <!-- http://purl.org/dc/terms/contributor -->
 
 
     <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/contributor"/>
-
+    
 
 
     <!-- http://purl.org/dc/terms/created -->
 
 
     <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/created"/>
-
+    
 
 
     <!-- http://purl.org/dc/terms/creator -->
 
 
     <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
-
+    
 
 
     <!-- http://purl.org/dc/terms/description -->
 
 
     <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/description"/>
-
+    
 
 
     <!-- http://purl.org/dc/terms/issued -->
 
 
     <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/issued"/>
-
+    
 
 
     <!-- http://purl.org/dc/terms/license -->
 
 
     <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
-
+    
 
 
     <!-- http://purl.org/dc/terms/modified -->
 
 
     <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/modified"/>
-
+    
 
 
     <!-- http://purl.org/dc/terms/publisher -->
 
 
     <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/publisher"/>
-
+    
 
 
     <!-- http://purl.org/dc/terms/title -->
 
 
     <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/title"/>
-
+    
 
 
     <!-- http://purl.org/ontology/bibo/status -->
 
 
     <owl:AnnotationProperty rdf:about="http://purl.org/ontology/bibo/status"/>
-
+    
 
 
     <!-- http://purl.org/vocab/vann/preferredNamespacePrefix -->
 
 
     <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix"/>
-
+    
 
 
     <!-- http://purl.org/vocab/vann/preferredNamespaceUri -->
 
 
     <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri"/>
-
+    
 
 
     <!-- http://www.linkedmodel.org/schema/vaem#acronym -->
 
 
     <owl:AnnotationProperty rdf:about="http://www.linkedmodel.org/schema/vaem#acronym"/>
-
+    
 
 
     <!-- http://xmlns.com/foaf/0.1/name -->
 
 
     <owl:AnnotationProperty rdf:about="http://xmlns.com/foaf/0.1/name"/>
+    
 
 
-
-    <!--
+    <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Object Properties
@@ -157,7 +157,7 @@
      -->
 
 
-
+    
 
 
     <!-- http://w3id.org/rml/gather -->
@@ -169,7 +169,7 @@
         <rdfs:isDefinedBy rdf:resource="http://w3id.org/rml/cc/"/>
         <rdfs:label>gather</rdfs:label>
     </owl:ObjectProperty>
-
+    
 
 
     <!-- http://w3id.org/rml/gatherAs -->
@@ -191,10 +191,23 @@
         <rdfs:isDefinedBy rdf:resource="http://w3id.org/rml/cc/"/>
         <rdfs:label>gather as</rdfs:label>
     </owl:ObjectProperty>
+    
 
 
+    <!-- http://w3id.org/rml/strategy -->
 
-    <!--
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/rml/strategy">
+        <rdfs:domain rdf:resource="http://w3id.org/rml/GatherMap"/>
+        <rdfs:range rdf:resource="http://w3id.org/rml/Strategy"/>
+        <rdfs:comment xml:lang="en">A Strategy element to indicate how to perform an action (e.g. gather for collections and containers, join).</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://w3id.org/rml/cc/"/>
+        <rdfs:label>strategy</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Data properties
@@ -203,7 +216,7 @@
      -->
 
 
-
+    
 
 
     <!-- http://w3id.org/rml/allowEmptyListAndContainer -->
@@ -216,10 +229,10 @@
         <rdfs:isDefinedBy rdf:resource="http://w3id.org/rml/cc/"/>
         <rdfs:label>allow empty list and container</rdfs:label>
     </owl:DatatypeProperty>
+    
 
 
-
-    <!--
+    <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Classes
@@ -228,7 +241,7 @@
      -->
 
 
-
+    
 
 
     <!-- http://w3id.org/rml/GatherMap -->
@@ -240,24 +253,28 @@
         <rdfs:isDefinedBy rdf:resource="http://w3id.org/rml/cc/"/>
         <rdfs:label>Gather Map</rdfs:label>
     </owl:Class>
-
+    
 
 
     <!-- http://w3id.org/rml/Strategy -->
 
 
-    <owl:Class rdf:about="http://w3id.org/rml/Strategy"/>
-
+    <owl:Class rdf:about="http://w3id.org/rml/Strategy">
+        <rdfs:comment xml:lang="en">Denotes a strategy to perform a action (e.g. gather for collections and containers, joins).</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://w3id.org/rml/cc/"/>
+        <rdfs:label>Strategy</rdfs:label>
+    </owl:Class>
+    
 
 
     <!-- http://w3id.org/rml/TermMap -->
 
 
     <owl:Class rdf:about="http://w3id.org/rml/TermMap"/>
+    
 
 
-
-    <!--
+    <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Individuals
@@ -266,7 +283,7 @@
      -->
 
 
-
+    
 
 
     <!-- http://w3id.org/rml/append -->
@@ -278,7 +295,7 @@
         <rdfs:isDefinedBy rdf:resource="http://w3id.org/rml/cc/"/>
         <rdfs:label>Append</rdfs:label>
     </owl:NamedIndividual>
-
+    
 
 
     <!-- http://w3id.org/rml/cartesianProduct -->
@@ -290,28 +307,28 @@
         <rdfs:isDefinedBy rdf:resource="http://w3id.org/rml/cc/"/>
         <rdfs:label>Cartesian Product</rdfs:label>
     </owl:NamedIndividual>
-
+    
 
 
     <!-- http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt -->
 
 
     <owl:NamedIndividual rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt"/>
-
+    
 
 
     <!-- http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag -->
 
 
     <owl:NamedIndividual rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
-
+    
 
 
     <!-- http://www.w3.org/1999/02/22-rdf-syntax-ns#List -->
 
 
     <owl:NamedIndividual rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-
+    
 
 
     <!-- http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq -->
@@ -323,3 +340,5 @@
 
 
 <!-- Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/ -->
+
+
