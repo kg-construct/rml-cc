@@ -106,6 +106,13 @@ foaf:name rdf:type owl:AnnotationProperty .
           rdfs:isDefinedBy <http://w3id.org/rml/cc/> ;
           rdfs:label "gather as" .
 
+###  http://w3id.org/rml/strategy
+:strategy rdf:type owl:ObjectProperty ;
+          rdfs:domain :GatherMap ;
+          rdfs:range :Strategy ;
+          rdfs:comment "A Strategy element to indicate how to perform an action (e.g. gather for collections and containers, join)."@en ;
+          rdfs:isDefinedBy <http://w3id.org/rml/cc/> ;
+          rdfs:label "strategy" .
 
 
 
@@ -132,6 +139,13 @@ foaf:name rdf:type owl:AnnotationProperty .
            rdfs:comment "Denotes a term map that generates a collection (rdf:List) or container (rdf:Bag, rdf:Seq, rdf:Alt)."@en ;
            rdfs:isDefinedBy <http://w3id.org/rml/cc/> ;
            rdfs:label "Gather Map" .
+
+###  http://w3id.org/rml/Strategy
+:Strategy rdf:type owl:Class ;
+          rdfs:comment "Denotes a strategy to perform a action (e.g. gather for collections and containers, joins)."@en ;
+          rdfs:isDefinedBy <http://w3id.org/rml/cc/> ;
+          rdfs:label "Strategy" .
+
 
 
 #################################################################
