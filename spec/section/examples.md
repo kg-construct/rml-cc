@@ -161,8 +161,11 @@ Here we exemplify the use of a term map in a subject map. Continuing with the JS
 <pre class="ex-mapping">
 <#TM> a rml:TriplesMap;
   rml:logicalSource [
-    rml:source "data.json" ;
-    rml:referenceFormulation ql:JSONPath ;
+    rml:source [ 
+        a rml:RelativePathSource;
+        rml:root rml:MappingDirectory;
+        rml:path "data.json"
+    ] ;
     rml:iterator "$.*" ;
   ];
 
