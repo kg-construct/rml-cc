@@ -12,6 +12,9 @@ Gather maps are term maps that use [`rml:gather`](#rml-gather) and [`rml:gatherA
 * A `rml:GatherMap` MUST have exactly one [`rml:gatherAs`](#rml-gatheras) property.
 * A `rml:GatherMap` MAY have zero or exactly one [`rml:strategy`](#rml-strategy) property.
 
+#### `rml:Strategy` {#strategyclass}
+
+A strategy is a plan or set of actions designed to achieve a specific goal or outcome. Instances of `rml:Strategy` represent ways to perform an action such as combining two collections and containers. See [**constants**](#constants) for examples. 
 
 ### Properties
 
@@ -55,7 +58,7 @@ When false, the gather map will not generate a collection or container.
 
 Property `rml:allowEmptyListAndContainer` is optional, it takes the value **false** by default.
 
-### Constants
+### Constants {#constants}
 
 #### `rml:append`
 
