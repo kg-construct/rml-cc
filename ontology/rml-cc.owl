@@ -110,7 +110,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 :strategy rdf:type owl:ObjectProperty ;
           rdfs:domain :GatherMap ;
           rdfs:range :Strategy ;
-          rdfs:comment "A Strategy element to indicate how to perform an action (e.g. gather for collections and containers, join)."@en ;
+          rdfs:comment "A Strategy element to indicate how to perform an action."@en ;
           rdfs:isDefinedBy <http://w3id.org/rml/cc/> ;
           rdfs:label "strategy" .
 
@@ -142,7 +142,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/rml/Strategy
 :Strategy rdf:type owl:Class ;
-          rdfs:comment "Denotes a strategy to perform a action (e.g. gather for collections and containers, joins)."@en ;
+          rdfs:comment "Denotes a strategy to perform an action or process."@en ;
           rdfs:isDefinedBy <http://w3id.org/rml/cc/> ;
           rdfs:label "Strategy" .
 

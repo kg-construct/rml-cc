@@ -25,7 +25,7 @@ The following mapping:
   rml:predicateObjectMap [
     rml:predicate ex:with ;
     rml:objectMap [
-        rml:template "seq/{id}" ;
+        rml:template "seq{id}" ;
         rml:gather ( [ rml:reference "values.*" ; ] ) ;
         rml:gatherAs rdf:Seq ;
     ] ;
@@ -35,9 +35,9 @@ The following mapping:
 will yield the following output:
 
 <pre class="ex-output">
-  :a ex:with :seq/a . :seq/a rdf:_1 "1" ; rdf:_2 "2" , rdf:_3 "3" .
-  :b ex:with :seq/b . :seq/b rdf:_1 "4" ; rdf:_2 "5" , rdf:_3 "6" .
-  :c ex:with :seq/c . :seq/c rdf:_1 "7" ; rdf:_2 "8" , rdf:_3 "9"  .
+  :a ex:with :seqa . :seqa rdf:_1 "1" ; rdf:_2 "2" , rdf:_3 "3" .
+  :b ex:with :seqb . :seqb rdf:_1 "4" ; rdf:_2 "5" , rdf:_3 "6" .
+  :c ex:with :seqc . :seqc rdf:_1 "7" ; rdf:_2 "8" , rdf:_3 "9"  .
 </pre>
 
 
@@ -91,7 +91,7 @@ With the following predicate mapping:
   rml:predicateObjectMap [
     rml:predicate ex:with ;
     rml:objectMap [
-        rml:template "list/{id}" ;
+        rml:template "list{id}" ;
         rml:gather ( [ rml:reference "values.*" ; ] ) ;
         rml:gatherAs rdf:List ;
     ] ;
@@ -101,8 +101,8 @@ With the following predicate mapping:
 The processor must generate the following output:
 
 <pre class="ex-output">
-  :a ex:with :list/a . :list/a rdf:first "1" ; rdf:rest ("2" "3" "7" "8" "9") .
-  :b ex:with :list/b . :list/b rdf:first "4" ; rdf:rest ("5" "6") .
+  :a ex:with :lista . :lista rdf:first "1" ; rdf:rest ("2" "3" "7" "8" "9") .
+  :b ex:with :listb . :listb rdf:first "4" ; rdf:rest ("5" "6") .
 </pre>
 
 It is assumed that a processor will concatenate the collections or containers while respecting the order of the iterations as provided by the logical source.
@@ -147,7 +147,7 @@ Now, when an `rml:template`, `rml:constant` or `rml:reference` is provided, to a
 If we add an `rml:template` in the object map:
 <pre class="ex-mapping">
     rml:objectMap [
-      rml:template "list/{id}" ;
+      rml:template "list{id}" ;
       rml:gather ( [ rml:reference "a.*" ] [ rml:reference "b.*" ]) ;
       rml:gatherAs rdf:List ;
       rml:strategy rml:cartesianProduct ;
@@ -187,7 +187,7 @@ Let's consider the following document and mapping:
   rml:predicateObjectMap [
     rml:predicate ex:with ;
     rml:objectMap [
-        rml:template "list/{id}" ;
+        rml:template "list{id}" ;
         rml:gather ( [ rml:reference "values1.*" ; ] [ rml:reference "values2.*" ; ] ) ;
         rml:gatherAs rdf:List ;
     ] ;
@@ -199,17 +199,17 @@ Furthermore, the lists generated for id `"a"` must be concatenated since they sh
 The expected output is:
 
 <pre class="ex-output">
-  :a ex:with :list/a .
-  :list/a rdf:first "1" ; rdf:rest ("a" "b" "5" "6" "e") .
-  :b ex:with :list/b .
-  :list/b rdf:first "3" ; rdf:rest ("4" "c" "d") .
+  :a ex:with :lista .
+  :lista rdf:first "1" ; rdf:rest ("a" "b" "5" "6" "e") .
+  :b ex:with :listb .
+  :listb rdf:first "3" ; rdf:rest ("4" "c" "d") .
 </pre>
 
 Now let's change the default strategy to `rml:cartesianProduct`:
 
 <pre class="ex-mapping">
     rml:objectMap [
-        rml:template "list/{id}" ;
+        rml:template "list{id}" ;
         rml:gather ( [ rml:reference "values1.*" ; ] [ rml:reference "values2.*" ; ] ) ;
         rml:gatherAs rdf:List ;
         rml:strategy rml:cartesianProduct ;
@@ -227,8 +227,8 @@ But again, these lists must be concatenated since they share the same head node 
 Therefore, the processor must now generate the following output:
 
 <pre class="ex-output">
-  :a ex:with :list/a .
-  :list/a rdf:first "1" ; rdf:rest ("a" "1" "b" "5" "e" "6" "e") .
-  :b ex:with :list/b .
-  :list/b rdf:first "3" ; rdf:rest ("c" "3" "d" "4" "c" "4" "d") .
+  :a ex:with :lista .
+  :lista rdf:first "1" ; rdf:rest ("a" "1" "b" "5" "e" "6" "e") .
+  :b ex:with :listb .
+  :listb rdf:first "3" ; rdf:rest ("c" "3" "d" "4" "c" "4" "d") .
 </pre>

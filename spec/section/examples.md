@@ -46,7 +46,7 @@ In other words, when the following predicate object map is used:
   rml:predicateObjectMap [
     rml:predicate ex:with ;
     rml:objectMap [
-        rml:template "list/{id}" ;
+        rml:template "list{id}" ;
         rml:allowEmptyListAndContainer true ;
         rml:gather ( [ rml:reference "values.*" ; ] ) ;
         rml:gatherAs rdf:List ;
@@ -58,12 +58,12 @@ then the document with `"id": "d"` entails an empty list, that is a list whose h
 We expect the following output where
 
 <pre class="ex-output">
-  :a ex:with :list/a .
-  :list/a rdf:first "1" ; rdf:rest ("2" "3") .
-  :b ex:with :list/b .
-  :list/b rdf:first "4" ; rdf:rest ("5" "6") .
-  :c ex:with :list/c .
-  :list/c rdf:first "7" ; rdf:rest ("8" "9") .
+  :a ex:with :lista .
+  :lista rdf:first "1" ; rdf:rest ("2" "3") .
+  :b ex:with :listb .
+  :listb rdf:first "4" ; rdf:rest ("5" "6") .
+  :c ex:with :listc .
+  :listc rdf:first "7" ; rdf:rest ("8" "9") .
   :d ex:with () . 
 </pre>
 
@@ -94,7 +94,7 @@ The following mapping will relate instances of authors to names. The names of au
 <pre class="ex-mapping">
 <#AuthorTM>
     rml:logicalTable [ rml:tableName "AUTHOR" ; ] ;
-    rml:subjectMap [ rml:template "/person/{ID}" ; ] ;
+    rml:subjectMap [ rml:template "/person{ID}" ; ] ;
     rml:predicateObjectMap [
         rml:predicate ex:name ;
         rml:objectMap [
@@ -111,9 +111,9 @@ The following mapping will relate instances of authors to names. The names of au
 In this example we generate, for each row in table `AUTHOR`, an blank node of type `rdf:Bag`. Each such bag "gathers" values from different term maps. The execution of this mapping will produce the following result:
 
 <pre class="ex-output">
-:person/1 ex:name [ a rdf:Bag; rdf:_1 "Mary"; rdf:_2 "Shelley" ] . 
-:person/2 ex:name [ a rdf:Bag; rdf:_1 "Sir"; rdf:_2 "Terry"; rdf:_3 "Pratchett" ] . 
-:person/3 ex:name [ a rdf:Bag; rdf:_1 "Stephen"; rdf:_2 "Baxter" ] .
+:person1 ex:name [ a rdf:Bag; rdf:_1 "Mary"; rdf:_2 "Shelley" ] . 
+:person2 ex:name [ a rdf:Bag; rdf:_1 "Sir"; rdf:_2 "Terry"; rdf:_3 "Pratchett" ] . 
+:person3 ex:name [ a rdf:Bag; rdf:_1 "Stephen"; rdf:_2 "Baxter" ] .
 </pre>
 
 While not shown in this example, different term maps allow to collect terms of different types: resources, literals, typed or language-tagged literals, etc. The fourth record in the table did not generate a bag, since each term map in the gather map did not yield a value. 
@@ -127,7 +127,7 @@ Continuing with the [relational data example](#relationalexample), here we relat
 <pre class="ex-mapping">
 <#BookTM>
     rml:logicalTable [ rml:tableName "BOOK" ; ] ;
-    rml:subjectMap [ rml:template "/book/{ID}" ; ] ;
+    rml:subjectMap [ rml:template "/book{ID}" ; ] ;
     rml:predicateObjectMap [
         rml:predicate ex:writtenBy ;
         rml:objectMap [
@@ -147,8 +147,8 @@ Continuing with the [relational data example](#relationalexample), here we relat
 Intuitively, we will join each record (or iteration) with data from the parent triples map. The join may yield one or more results, which are then gathered into a list. The execution of this mapping will produce the following RDF:
 
 <pre class="ex-output">
-:book/1 ex:writtenby ( :person/1 ) . 
-:book/2 ex:writtenby ( :person/2 :person/3 ) .
+:book1 ex:writtenby ( :person1 ) . 
+:book2 ex:writtenby ( :person2 :person3 ) .
 </pre>
 
 In RML, it is assumed that each term map is multi-valued. That this, each term map may return one or more values. The default behavior is to append the values in the order of the term maps appearing in the gather map.
@@ -161,13 +161,16 @@ Here we exemplify the use of a term map in a subject map. Continuing with the JS
 <pre class="ex-mapping">
 <#TM> a rml:TriplesMap;
   rml:logicalSource [
-    rml:source "data.json" ;
-    rml:referenceFormulation ql:JSONPath ;
+    rml:source [ 
+        a rml:RelativePathSource;
+        rml:root rml:MappingDirectory;
+        rml:path "data.json"
+    ] ;
     rml:iterator "$.*" ;
   ];
 
   rml:subjectMap [
-    rml:template "seq/{id}" ;
+    rml:template "seq{id}" ;
     rml:gather ( [ rml:reference "values.*" ; ] ) ;
     rml:gatherAs rdf:Seq ;  
   ] ;
@@ -181,12 +184,12 @@ Here we exemplify the use of a term map in a subject map. Continuing with the JS
 The expected result is:
 
 <pre class="ex-output">
-  :seq/a rdf:_1 "1" ; rdf:_2 "2" ; rdf:_3 "3" .
-  :seq/a prov:wasDerivedFrom &lt;data.json&gt; .
+  :seqa rdf:_1 "1" ; rdf:_2 "2" ; rdf:_3 "3" .
+  :seqa prov:wasDerivedFrom &lt;data.json&gt; .
   
-  :seq/b rdf:_1 "4" ; rdf:_2 "5" ; rdf:_3 "6" .
-  :seq/b prov:wasDerivedFrom &lt;data.json&gt; .
+  :seqb rdf:_1 "4" ; rdf:_2 "5" ; rdf:_3 "6" .
+  :seqb prov:wasDerivedFrom &lt;data.json&gt; .
   
-  :seq/c rdf:_1 "7" ; rdf:_2 "8" ; rdf:_3 "9" .
-  :seq/c prov:wasDerivedFrom &lt;data.json&gt; .
+  :seqc rdf:_1 "7" ; rdf:_2 "8" ; rdf:_3 "9" .
+  :seqc prov:wasDerivedFrom &lt;data.json&gt; .
 </pre>

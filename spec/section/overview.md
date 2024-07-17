@@ -19,7 +19,7 @@ and only when, they appear in all capitals, as shown here.
 ### Document conventions {#conventions}
 We assume readers have basic familiarity with RDF and RML.
 
-In this document, examples assume
+In this document, examples assume `http://example.org/` as the base IRI provided to the RML engine and
 the following namespace prefix bindings unless otherwise stated:
 
 | Prefix | Namespace                         |
