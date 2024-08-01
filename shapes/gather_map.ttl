@@ -1,8 +1,9 @@
 ###############################################################################
 # RMLCC Gather Map shape                                                      #
-# Copyright Dylan Van Assche, IDLab - UGent - imec (2023)                     #
+# Copyright Dylan Van Assche, IDLab - UGent - imec (2023 - 2024)              #
 ###############################################################################
 @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix : <http://w3id.org/rml/shapes/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rml: <http://w3id.org/rml/> .
@@ -10,8 +11,8 @@
 
 :RMLGatherMapShape
     a sh:NodeShape ;
-    sh:name "GatherMap" ;
-    sh:description """
+    rdfs:label "GatherMap" ;
+    rdfs:comment """
     Represents a Gather Map.
     """ ;
     sh:message """
@@ -26,8 +27,8 @@
         # Gather Map specific shapes
         [
             sh:path rml:strategy ;
-            sh:name "strategy" ;
-            sh:description """
+            rdfs:label "strategy" ;
+            rdfs:comment """
             rml:strategy specifies the collection strategy to use: rml:append
             or rml:cartesianProduct. rml:append is the default strategy.
             """ ;
@@ -41,8 +42,8 @@
         ]
         [
             sh:path rml:gatherAs ;
-            sh:name "gatherAs" ;
-            sh:description """
+            rdfs:label "gatherAs" ;
+            rdfs:comment """
             rml:gatherAs specifies how to gather the collection e.g. a rdf:Alt,
             rdf:List, rdf:Bag, or rdf:Seq.
             """ ;
@@ -56,8 +57,8 @@
         ]
         [
             sh:path rml:allowEmptyListAndContainer ;
-            sh:name "allowEmptyListAndContainer" ;
-            sh:description """
+            rdfs:label "allowEmptyListAndContainer" ;
+            rdfs:comment """
             Defines the behavior when the collection is empty. True will generate
             a rdf:nil for a RDF collection or a resource with no members for an RDF
             container. False will not generate any collection or container.
@@ -74,8 +75,8 @@
         ]
         [
             sh:path rml:gather ;
-            sh:name "gather" ;
-            sh:description """
+            rdfs:label "gather" ;
+            rdfs:comment """
             RML Term Maps to gather in the collection or container.
             """ ;
             sh:message """
