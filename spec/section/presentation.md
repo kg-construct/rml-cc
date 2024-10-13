@@ -33,14 +33,16 @@ The associated RML mapping starts as follows:
 
 <pre class="ex-mapping">
 @prefix rml: &lt;http://w3id.org/rml/&gt;.
-@prefix ql:  &lt;http://semweb.mmlab.be/ns/ql#&gt;.
 @prefix ex:  &lt;http://example.com/ns&gt;.
-@base        &lt;http://example.com/ns&gt;.
 
 <#TM> a rml:TriplesMap;
   rml:logicalSource [
-    rml:source "data.json" ;
-    rml:referenceFormulation ql:JSONPath ;
+    rml:referenceFormulation rml:JSONPath;
+    rml:source [ 
+        a rml:RelativePathSource;
+        rml:root rml:MappingDirectory;
+        rml:path "data.json"
+    ] ;
     rml:iterator "$.*" ;
   ];
 
@@ -93,7 +95,7 @@ The following mapping:
   rml:predicateObjectMap [
     rml:predicate ex:with ;
     rml:objectMap [
-        rml:template "list/{id}" ;
+        rml:template "list{id}" ;
         rml:gather ( [ rml:reference "values.*" ; ] ) ;
         rml:gatherAs rdf:List ;
     ] ;
@@ -103,9 +105,9 @@ The following mapping:
 will yield the following output:
 
 <pre class="ex-output">
-  :a ex:with :list/a . :list/a rdf:first "1" ; rdf:rest ("2" "3") .
-  :b ex:with :list/b . :list/b rdf:first "4" ; rdf:rest ("5" "6") .
-  :c ex:with :list/c . :list/c rdf:first "7" ; rdf:rest ("8" "9") .
+  :a ex:with :lista . :lista rdf:first "1" ; rdf:rest ("2" "3") .
+  :b ex:with :listb . :listb rdf:first "4" ; rdf:rest ("5" "6") .
+  :c ex:with :listc . :listc rdf:first "7" ; rdf:rest ("8" "9") .
 </pre>
 
-This is similar to the previous example, yet in this case the head node of each produced collection is assigned an IRI `:list/a`, `:list/b` and `:list/c`.
+This is similar to the previous example, yet in this case the head node of each produced collection is assigned an IRI `:lista`, `:listb` and `:listc`.
