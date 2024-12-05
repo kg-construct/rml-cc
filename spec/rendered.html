@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
 <meta charset="utf-8">
-<meta name="generator" content="ReSpec 35.1.1">
+<meta name="generator" content="ReSpec 35.2.0">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 dfn{cursor:pointer}
@@ -140,7 +140,6 @@ dd{margin-left:0}
 .removeOnSave{display:none}
 }
 </style>
-<meta id="ConnectiveDocSignExtentionInstalled" name="ConnectiveDocSignExtentionInstalled" data-extension-version="1.0.6">
 <meta name="color-scheme" content="light">
 <meta name="description" content="This document describes the [RML] vocabulary and approach to generating RDF containers and collections [RDF11-Concepts].">
 <style>
@@ -207,21 +206,37 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
   "processVersion": 2021,
   "specStatus": "CG-DRAFT",
   "shortName": "rml-cc",
-  "copyrightStart": "2023",
+  "copyrightStart": "2022",
   "edDraftURI": "https://w3id.org/rml/cc/spec",
-  "editors": [
+  "authors": [
     {
       "name": "Christophe Debruyne",
       "company": "Montefiore Institute, University of Liège",
       "url": "http://www.christophedebruyne.be/",
-      "orcidid": "0000-0003-4734-3847",
+      "orcid": "https://orcid.org/0000-0003-4734-3847",
       "companyURL": "https://www.montefiore.uliege.be/"
     },
     {
       "name": "Franck Michel",
       "company": "Université Côte d'Azur, CNRS, Inria",
       "url": "https://w3id.org/people/franckmichel",
-      "orcidid": "0000-0001-9064-0463",
+      "orcid": "https://orcid.org/0000-0001-9064-0463",
+      "companyURL": "https://www.cnrs.fr/"
+    }
+  ],
+  "editors": [
+    {
+      "name": "Christophe Debruyne",
+      "company": "Montefiore Institute, University of Liège",
+      "url": "http://www.christophedebruyne.be/",
+      "orcid": "https://orcid.org/0000-0003-4734-3847",
+      "companyURL": "https://www.montefiore.uliege.be/"
+    },
+    {
+      "name": "Franck Michel",
+      "company": "Université Côte d'Azur, CNRS, Inria",
+      "url": "https://w3id.org/people/franckmichel",
+      "orcid": "https://orcid.org/0000-0001-9064-0463",
       "companyURL": "https://www.cnrs.fr/"
     }
   ],
@@ -234,22 +249,22 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       "key": "Website",
       "data": [
         {
-          "value": "https://w3id.org/rml/cc/spec",
-          "href": "https://w3id.org/rml/cc/spec"
+          "value": "https://github.com/kg-construct/rml-cc/",
+          "href": "https://github.com/kg-construct/rml-cc/"
         }
       ]
     }
   ],
-  "publishISODate": "2024-07-18T00:00:00.000Z",
-  "generatedSubtitle": "Draft Community Group Report 18 July 2024"
+  "publishISODate": "2024-12-05T00:00:00.000Z",
+  "generatedSubtitle": "Draft Community Group Report 05 December 2024"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/cg-draft"></head>
-<body class="h-entry" data-new-gr-c-s-check-loaded="14.1187.0" data-gr-ext-installed=""><div class="head">
+<body class="h-entry"><div class="head">
     
     <h1 id="title" class="title">RML-CC: Collections and Containers in RML</h1> 
     <p id="w3c-state">
       <a href="https://www.w3.org/standards/types#reports">Draft Community Group Report</a>
-      <time class="dt-published" datetime="2024-01-10">18 July 2024</time>
+      <time class="dt-published" datetime="2024-12-05">05 December 2024</time>
     </p>
     <dl>
       
@@ -262,22 +277,66 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       
       
       <dt>Editors:</dt><dd class="editor p-author h-card vcard">
-    <a class="u-url url p-name fn" href="http://www.christophedebruyne.be/">Christophe Debruyne</a> (<a class="p-org org h-org" href="https://www.montefiore.uliege.be/">Montefiore Institute, University of Liège</a>)
+    <a class="u-url url p-name fn" href="http://www.christophedebruyne.be/">Christophe Debruyne</a><a class="p-name orcid" href="https://orcid.org/0000-0003-4734-3847"><svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+    <style>
+
+      .st1 {
+        fill: #fff;
+      }
+    
+</style>
+    <path d="M256 128c0 70.7-57.3 128-128 128S0 198.7 0 128 57.3 0 128 0s128 57.3 128 128z" fill="#a6ce39"></path>
+    <path class="st1" d="M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7C191.7 111.2 178 93 148 93h-23.7v79.4zM88.7 56.8c0 5.5-4.5 10.1-10.1 10.1s-10.1-4.6-10.1-10.1c0-5.6 4.5-10.1 10.1-10.1s10.1 4.6 10.1 10.1z"></path>
+  </svg></a> (<a class="p-org org h-org" href="https://www.montefiore.uliege.be/">Montefiore Institute, University of Liège</a>)
   </dd><dd class="editor p-author h-card vcard">
-    <a class="u-url url p-name fn" href="https://w3id.org/people/franckmichel">Franck Michel</a> (<a class="p-org org h-org" href="https://www.cnrs.fr/">Université Côte d'Azur, CNRS, Inria</a>)
+    <a class="u-url url p-name fn" href="https://w3id.org/people/franckmichel">Franck Michel</a><a class="p-name orcid" href="https://orcid.org/0000-0001-9064-0463"><svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+    <style>
+
+      .st1 {
+        fill: #fff;
+      }
+    
+</style>
+    <path d="M256 128c0 70.7-57.3 128-128 128S0 198.7 0 128 57.3 0 128 0s128 57.3 128 128z" fill="#a6ce39"></path>
+    <path class="st1" d="M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7C191.7 111.2 178 93 148 93h-23.7v79.4zM88.7 56.8c0 5.5-4.5 10.1-10.1 10.1s-10.1-4.6-10.1-10.1c0-5.6 4.5-10.1 10.1-10.1s10.1 4.6 10.1 10.1z"></path>
+  </svg></a> (<a class="p-org org h-org" href="https://www.cnrs.fr/">Université Côte d'Azur, CNRS, Inria</a>)
   </dd>
       
-      
+      <dt>Authors:</dt><dd class="editor p-author h-card vcard">
+    <a class="u-url url p-name fn" href="http://www.christophedebruyne.be/">Christophe Debruyne</a><a class="p-name orcid" href="https://orcid.org/0000-0003-4734-3847"><svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+    <style>
+
+      .st1 {
+        fill: #fff;
+      }
+    
+</style>
+    <path d="M256 128c0 70.7-57.3 128-128 128S0 198.7 0 128 57.3 0 128 0s128 57.3 128 128z" fill="#a6ce39"></path>
+    <path class="st1" d="M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7C191.7 111.2 178 93 148 93h-23.7v79.4zM88.7 56.8c0 5.5-4.5 10.1-10.1 10.1s-10.1-4.6-10.1-10.1c0-5.6 4.5-10.1 10.1-10.1s10.1 4.6 10.1 10.1z"></path>
+  </svg></a> (<a class="p-org org h-org" href="https://www.montefiore.uliege.be/">Montefiore Institute, University of Liège</a>)
+  </dd><dd class="editor p-author h-card vcard">
+    <a class="u-url url p-name fn" href="https://w3id.org/people/franckmichel">Franck Michel</a><a class="p-name orcid" href="https://orcid.org/0000-0001-9064-0463"><svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+    <style>
+
+      .st1 {
+        fill: #fff;
+      }
+    
+</style>
+    <path d="M256 128c0 70.7-57.3 128-128 128S0 198.7 0 128 57.3 0 128 0s128 57.3 128 128z" fill="#a6ce39"></path>
+    <path class="st1" d="M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7C191.7 111.2 178 93 148 93h-23.7v79.4zM88.7 56.8c0 5.5-4.5 10.1-10.1 10.1s-10.1-4.6-10.1-10.1c0-5.6 4.5-10.1 10.1-10.1s10.1 4.6 10.1 10.1z"></path>
+  </svg></a> (<a class="p-org org h-org" href="https://www.cnrs.fr/">Université Côte d'Azur, CNRS, Inria</a>)
+  </dd>
       
       <dt>Website</dt><dd>
-    <a href="https://w3id.org/rml/cc/spec">https://w3id.org/rml/cc/spec</a>
+    <a href="https://github.com/kg-construct/rml-cc/">https://github.com/kg-construct/rml-cc/</a>
   </dd>
     </dl>
     
     <p class="copyright">
           <a href="https://www.w3.org/policies/#copyright">Copyright</a>
           ©
-          2023-2024
+          2022-2024
           
           the Contributors to the RML-CC: Collections and Containers in RML
           Specification, published by the
@@ -392,7 +451,8 @@ The <a href="#rml-gather"><code>rml:gather</code></a> predicate is used to link 
 
 <p>The associated RML mapping starts as follows:</p>
 <pre class="ex-mapping" aria-busy="false"><code class="hljs">@prefix rml: &lt;http://w3id.org/rml/&gt;.
-@prefix ex:  &lt;http://example.com/ns&gt;.
+@prefix ex:  &lt;http://example.com/ns/&gt;.
+@base        &lt;http://example.com/ns/&gt;.
 
 &lt;#TM&gt; a rml:TriplesMap;
   rml:logicalSource [
@@ -623,7 +683,7 @@ rml:predicateObjectMap [
 
 <p>The gather map has no <code>rml:template</code>, <code>rml:constant</code> nor <code>rml:reference</code> property. 
 As already illustrated, the <a href="#rml-cartesianproduct"><code>rml:cartesianProduct</code></a> strategy will generate multiple collections, yielding the output:</p>
-<pre class="ex-output" aria-busy="false"><code class="hljs">:a ex:with ("1" "4"), ("1" "5"), ("2" "4"), ("2" "5"), ("3" "4"), ("3" "5") .</code></pre>
+<pre class="ex-output" aria-busy="false"><code class="hljs">[] ex:with ("1" "4"), ("1" "5"), ("2" "4"), ("2" "5"), ("3" "4"), ("3" "5") .</code></pre>
 
 
 <p>Now, when an <code>rml:template</code>, <code>rml:constant</code> or <code>rml:reference</code> is provided, to avoid generating <a href="#wellformedness">ill-formed lists</a> that would share the same head node IRI, the processor must concatenate the lists.</p>
@@ -636,7 +696,7 @@ As already illustrated, the <a href="#rml-cartesianproduct"><code>rml:cartesianP
 ] ;</code></pre>
 
 <p>The processor must now generate the following output:</p>
-<pre class="ex-output" aria-busy="false"><code class="hljs">:a ex:with ("1" "4" "1" "5" "2" "4" "2" "5" "3" "4" "3" "5" ).</code></pre>
+<pre class="ex-output" aria-busy="false"><code class="hljs">:myid ex:with ("1" "4" "1" "5" "2" "4" "2" "5" "3" "4" "3" "5" ).</code></pre>
 
 
 
@@ -1124,4 +1184,4 @@ function hidePanel(panel) {
   panel.hidden = true;
   panel.classList.remove("docked");
 }
-})()</script><script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
+})()</script><script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script></body></html>
