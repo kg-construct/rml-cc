@@ -138,7 +138,7 @@ The gather map has no `rml:template`, `rml:constant` nor `rml:reference` propert
 As already illustrated, the [`rml:cartesianProduct`](#rml-cartesianproduct) strategy will generate multiple collections, yielding the output:
 
 <pre class="ex-output">
-:a ex:with ("1" "4"), ("1" "5"), ("2" "4"), ("2" "5"), ("3" "4"), ("3" "5") .
+[] ex:with ("1" "4"), ("1" "5"), ("2" "4"), ("2" "5"), ("3" "4"), ("3" "5") .
 </pre>
 
 
@@ -157,7 +157,7 @@ If we add an `rml:template` in the object map:
 The processor must now generate the following output:
 
 <pre class="ex-output">
-:a ex:with ("1" "4" "1" "5" "2" "4" "2" "5" "3" "4" "3" "5" ).
+:myid ex:with ("1" "4" "1" "5" "2" "4" "2" "5" "3" "4" "3" "5" ).
 </pre>
 
 

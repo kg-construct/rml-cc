@@ -33,7 +33,8 @@ The associated RML mapping starts as follows:
 
 <pre class="ex-mapping">
 @prefix rml: &lt;http://w3id.org/rml/&gt;.
-@prefix ex:  &lt;http://example.com/ns&gt;.
+@prefix ex:  &lt;http://example.com/ns/&gt;.
+@base        &lt;http://example.com/ns/&gt;.
 
 <#TM> a rml:TriplesMap;
   rml:logicalSource [
