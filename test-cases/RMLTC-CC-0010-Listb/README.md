@@ -1,8 +1,8 @@
 ## RMLTC-CC-0010-Listb
 
-**Title**: 
+**Title**: Combining graph maps and gather maps (both graph map and gather map have a template)
 
-**Description**: 
+**Description**: Tests the behavior of combining graph- and gather maps. In this example, lists are concatinated in some named graphs via blank node identifiers constructed with templates.
 
 **Error expected?** No
 

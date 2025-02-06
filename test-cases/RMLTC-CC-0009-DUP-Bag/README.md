@@ -1,8 +1,8 @@
 ## RMLTC-CC-0009-DUP-Bag
 
-**Title**: 
+**Title**: Gather duplicate values in an RDF Bag
 
-**Description**: 
+**Description**: Testing the expected behavior of multi-valued expression maps containing duplicate values when these expression maps are used in a gather map to create an RDF Bag.
 
 **Error expected?** No
 
