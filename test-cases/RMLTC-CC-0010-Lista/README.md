@@ -1,8 +1,8 @@
 ## RMLTC-CC-0010-Lista
 
-**Title**: 
+**Title**: Combining graph maps and gather maps (graph map has a template and gather map does not)
 
-**Description**: 
+**Description**: Tests the behavior of combining graph- and gather maps. In this example, a blank node for each list is expected.
 
 **Error expected?** No
 

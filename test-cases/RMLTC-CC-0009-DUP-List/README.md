@@ -1,8 +1,8 @@
 ## RMLTC-CC-0009-DUP-List
 
-**Title**: 
+**Title**: Gather duplicate values in an RDF List
 
-**Description**: 
+**Description**: Testing the expected behavior of multi-valued expression maps containing duplicate values when these expression maps are used in a gather map to create a list.
 
 **Error expected?** No
 
