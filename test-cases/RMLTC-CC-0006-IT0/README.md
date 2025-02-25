@@ -1,8 +1,8 @@
 ## RMLTC-CC-0006-IT0
 
-**Title**: Gather values accross iterations.
+**Title**: Gather values across iterations to create a collection.
 
-**Description**: When no template, constant, or reference is given to a gather map, then each iteration yields a different collection or container.
+**Description**: When no template, constant, or reference is given to a gather map, then each iteration yields a different collection.
 
 **Error expected?** No
 

@@ -1,6 +1,6 @@
 ## RMLTC-CC-0006-IT1
 
-**Title**: Gather values accross iterations.
+**Title**: Gather values across iterations to create a collection.
 
 **Description**: When using a template, constant, or reference for a gather map, this tests determines whether the values are correctly appended to the list. The natural order of the term maps inside the gather map as well as the iteration are respected. This test covers one term map in the gather map.
 
