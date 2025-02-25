@@ -1,13 +1,13 @@
-## RMLTC-CC-0003-EL
+## RMLTC-CC-0003-EL-BN
 
-**Title**: Allow the generation of empty lists
+**Title**: Allow the generation of empty lists identified by blank node identifiers.
 
-**Description**: Tests if the use of rml:allowEmptyListAndContainer yields an empty list.
+**Description**: Tests if the use of rml:allowEmptyListAndContainer yields an empty list. The lists are identified by a blank node identifier generated in the mapping.
 
 **Error expected?** No
 
 **Input**
- [http://w3id.org/rml/resources/rml-io/RMLTC-CC-0003-EL/Friends.json](http://w3id.org/rml/resources/rml-io/RMLTC-CC-0003-EL/Friends.json)
+ [http://w3id.org/rml/resources/rml-io/RMLTC-CC-0003-EL-BN/Friends.json](http://w3id.org/rml/resources/rml-io/RMLTC-CC-0003-EL-BN/Friends.json)
 
 **Mapping**
 ```
@@ -30,6 +30,7 @@
     rml:predicateObjectMap [
         rml:predicate ex:with ;
         rml:objectMap [
+            rml:template "c/{$.id}" ; rml:termType rml:BlankNode ;
             rml:allowEmptyListAndContainer true ;
             rml:gather ( [ rml:reference "$.values.*" ; ] ) ;
             rml:gatherAs rdf:List ;

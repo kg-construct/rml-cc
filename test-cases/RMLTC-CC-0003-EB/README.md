@@ -2,7 +2,7 @@
 
 **Title**: Allow the generation of empty bags
 
-**Description**: Tests if the use of rml:allowTemptyListAndContainer yields an empty bag.
+**Description**: Tests if the use of rml:allowEmptyListAndContainer yields an empty bag.
 
 **Error expected?** No
 
