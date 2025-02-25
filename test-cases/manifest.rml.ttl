@@ -3,13 +3,16 @@
 @prefix rml: <http://w3id.org/rml/> .
 @prefix rmltest: <http://w3id.org/rml/test/> .
 @prefix test: <http://www.w3.org/2006/03/test-description#> .
-@base <http://w3id.org/rml/io/test/> .
+@base <http://w3id.org/rml/cc/test/> .
 
 <#TriplesMapTestcase>
   a rml:TriplesMap;
     
   rml:logicalSource [ 
-    rml:source "metadata.csv";
+    rml:source [
+      a rml:RelativePathSource ;
+      rml:path "metadata.csv" 
+    ];
     rml:referenceFormulation rml:CSV;
   ];
 
@@ -111,7 +114,10 @@
   a rml:TriplesMap;
 
   rml:logicalSource [ 
-    rml:source "metadata.csv";
+    rml:source [
+      a rml:RelativePathSource ;
+      rml:path "metadata.csv" 
+    ];
     rml:referenceFormulation rml:CSV;
   ];
 
@@ -139,7 +145,10 @@
   a rml:TriplesMap;
 
   rml:logicalSource [ 
-    rml:source "metadata.csv";
+    rml:source [
+      a rml:RelativePathSource ;
+      rml:path "metadata.csv" 
+    ];
     rml:referenceFormulation rml:CSV;
   ];
 
@@ -167,7 +176,10 @@
   a rml:TriplesMap;
 
   rml:logicalSource [ 
-    rml:source "metadata.csv";
+    rml:source [
+      a rml:RelativePathSource ;
+      rml:path "metadata.csv" 
+    ];
     rml:referenceFormulation rml:CSV;
   ];
 
@@ -195,7 +207,10 @@
   a rml:TriplesMap;
 
   rml:logicalSource [ 
-    rml:source "metadata.csv";
+    rml:source [
+      a rml:RelativePathSource ;
+      rml:path "metadata.csv" 
+    ];
     rml:referenceFormulation rml:CSV;
   ];
 
@@ -223,7 +238,10 @@
   a rml:TriplesMap;
 
   rml:logicalSource [ 
-    rml:source "metadata.csv";
+    rml:source [
+      a rml:RelativePathSource ;
+      rml:path "metadata.csv" 
+    ];
     rml:referenceFormulation rml:CSV;
   ];
 
@@ -251,10 +269,12 @@
   a rml:TriplesMap;
 
   rml:logicalSource [ 
-    rml:source "metadata.csv";
+    rml:source [
+      a rml:RelativePathSource ;
+      rml:path "metadata.csv" 
+    ];
     rml:referenceFormulation rml:CSV;
   ];
-
   rml:subjectMap [ 
     rml:template "{ID}/output/{output3}/";
     rml:class rmltest:Output;
