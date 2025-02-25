@@ -24,8 +24,8 @@ There is an important difference between valid RDF and well-formed containers an
 
 <pre class="ex-output">
 ex:illformedList 
-  rdf:first 1 ; rdf:rest (2, 3) ;
-  rdf:first 4 ; rdf:rest (5, 6) .
+  rdf:first 1 ; rdf:rest (2 3) ;
+  rdf:first 4 ; rdf:rest (5 6) .
 </pre>
 
 Similarly, an ill-formed container would have multiple times the same `rdf:_n` property, e.g.:

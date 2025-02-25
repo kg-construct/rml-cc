@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
 <meta charset="utf-8">
-<meta name="generator" content="ReSpec 35.2.0">
+<meta name="generator" content="ReSpec 35.2.2">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 dfn{cursor:pointer}
@@ -255,16 +255,16 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       ]
     }
   ],
-  "publishISODate": "2024-12-05T00:00:00.000Z",
-  "generatedSubtitle": "Draft Community Group Report 05 December 2024"
+  "publishISODate": "2025-02-25T00:00:00.000Z",
+  "generatedSubtitle": "Draft Community Group Report 25 February 2025"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/cg-draft"></head>
-<body class="h-entry"><div class="head">
+<body data-new-gr-c-s-check-loaded="14.1223.0" data-gr-ext-installed="" class="h-entry"><div class="head">
     
     <h1 id="title" class="title">RML-CC: Collections and Containers in RML</h1> 
     <p id="w3c-state">
       <a href="https://www.w3.org/standards/types#reports">Draft Community Group Report</a>
-      <time class="dt-published" datetime="2024-12-05">05 December 2024</time>
+      <time class="dt-published" datetime="2025-02-25">25 February 2025</time>
     </p>
     <dl>
       
@@ -336,7 +336,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <p class="copyright">
           <a href="https://www.w3.org/policies/#copyright">Copyright</a>
           ©
-          2022-2024
+          2022-2025
           
           the Contributors to the RML-CC: Collections and Containers in RML
           Specification, published by the
@@ -420,8 +420,8 @@ An iteration results from the input data (documents, records returned by a query
 </section><section id="named-collection-or-container"><div class="header-wrapper"><h3 id="named"><bdi class="secno">3.3 </bdi>Named collection or container</h3><a class="self-link" href="#named" aria-label="Permalink for Section 3.3"></a></div><p>A <strong>named collection or container</strong> is a collection or container whose head node is assigned either an IRI or a blank node identifier.</p>
 </section><section id="well-formed-vs-ill-formed-collections-and-containers"><div class="header-wrapper"><h3 id="wellformedness"><bdi class="secno">3.4 </bdi>Well-formed vs. ill-formed collections and containers</h3><a class="self-link" href="#wellformedness" aria-label="Permalink for Section 3.4"></a></div><p>There is an important difference between valid RDF and well-formed containers and collections. The following RDF is valid, though the collection is ill-formed since the first cons-pair has two <code>rdf:first</code> and two <code>rdf:rest</code> properties:</p>
 <pre class="ex-output" aria-busy="false"><code class="hljs">ex:illformedList 
-  rdf:first 1 ; rdf:rest (2, 3) ;
-  rdf:first 4 ; rdf:rest (5, 6) .</code></pre>
+  rdf:first 1 ; rdf:rest (2 3) ;
+  rdf:first 4 ; rdf:rest (5 6) .</code></pre>
 
 <p>Similarly, an ill-formed container would have multiple times the same <code>rdf:_n</code> property, e.g.:</p>
 <pre class="ex-output" aria-busy="false"><code class="hljs">ex:illformedContainer rdf:_1 1 ; rdf:_2 2 ; rdf:_3 3 ; rdf:_1 4 .</code></pre>
@@ -1184,4 +1184,4 @@ function hidePanel(panel) {
   panel.hidden = true;
   panel.classList.remove("docked");
 }
-})()</script><script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script></body></html>
+})()</script><script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
