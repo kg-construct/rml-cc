@@ -88,7 +88,7 @@ def main(spec: str):
                 output1 = 'default.nq'
                 output_format1 = 'application/n-quads'
             else:
-                raise NotImplementedError('output1 is not known, but required')
+                error = "true"
 
             if os.path.exists(os.path.join(testcase, 'dump1.nq')):
                 output2 = 'dump1.nq'
