@@ -7,7 +7,13 @@
 **Error expected?** No
 
 **Input**
- [http://w3id.org/rml/resources/rml-io/RMLTC-CC-0008-ROMa/Friends.json](http://w3id.org/rml/resources/rml-io/RMLTC-CC-0008-ROMa/Friends.json)
+```
+ID,Name,Sport
+10,Venus Williams,Tennis
+20,Serena Williams,Tennis
+30,Loena Hendrickx,Figure skating
+
+```
 
 **Mapping**
 ```

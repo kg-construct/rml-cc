@@ -73,9 +73,14 @@ def main(spec: str):
             elif os.path.exists(os.path.join(testcase, 'Friends.xml')):
                 input1 = 'Friends.xml'
                 input_format1 = 'text/xml'
-            else:
-                input1 = f'http://w3id.org/rml/resources/rml-io/{testcase}/Friends.json'
+            elif os.path.exists(os.path.join(testcase, 'data.json')):
+                input1 = 'data.json'
                 input_format1 = 'application/json'
+            elif os.path.exists(os.path.join(testcase, 'student.csv')):
+                input1 = 'student.csv'
+                input_format1 = 'text/csv'
+            else:
+                raise ValueError(f'Input file missing in {testcase}!')
 
             # Mapping file
             if os.path.exists(os.path.join(testcase, 'mapping.ttl')):
