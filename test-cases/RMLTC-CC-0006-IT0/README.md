@@ -7,7 +7,31 @@
 **Error expected?** No
 
 **Input**
- [http://w3id.org/rml/resources/rml-io/RMLTC-CC-0006-IT0/Friends.json](http://w3id.org/rml/resources/rml-io/RMLTC-CC-0006-IT0/Friends.json)
+```
+[
+    {
+        "id": "a",
+        "v1": [
+            "1",
+            "2"
+        ]
+    },
+    {
+        "id": "b",
+        "v1": [
+            "3",
+            "4"
+        ]
+    },
+    {
+        "id": "a",
+        "v1": [
+            "5",
+            "6"
+        ]
+    }
+]
+```
 
 **Mapping**
 ```

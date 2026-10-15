@@ -7,7 +7,34 @@
 **Error expected?** No
 
 **Input**
- [http://w3id.org/rml/resources/rml-io/RMLTC-CC-0009-DUP-List/Friends.json](http://w3id.org/rml/resources/rml-io/RMLTC-CC-0009-DUP-List/Friends.json)
+```
+[
+    {
+        "id": "a",
+        "values": [
+            "1",
+            "1",
+            "1"
+        ]
+    },
+    {
+        "id": "b",
+        "values": [
+            "2",
+            "2",
+            "6"
+        ]
+    },
+    {
+        "id": "c",
+        "values": [
+            "7",
+            "8",
+            "9"
+        ]
+    }
+]
+```
 
 **Mapping**
 ```
